@@ -1,0 +1,42 @@
+/* CSS STYLESHEET FOR LOGIN PAGE */
+
+.login {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    border-style: solid;
+    
+    height: 190px;
+    width: 260px;
+
+    transform: translate(-50%, -50%);
+
+}
+
+.inputText{
+    position: relative;
+    border: solid red 2px;
+    
+    transform: translate(-50%, -50%);
+    
+    left: 50%;
+    
+    width: 50%;
+    
+    
+
+}
+
+.button {
+    position: relative;
+    top: 24px;
+    left: -21px;
+    width: 80px;
+}
+
+.login p {
+    position: relative;
+    left: 10px;
+    
+    padding-bottom: 5px;
+}
