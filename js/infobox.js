@@ -1,3 +1,4 @@
+//Funktion der sørger for redigering af tekst i nyhed 0.
 function editNews0(button) {
     var x = document.getElementsByClassName("news0");
     var i;
@@ -15,6 +16,7 @@ function editNews0(button) {
     }
 }
 
+//Funktion der sørger for redigering af tekst i nyhed 1.
 function editNews1(button) {
     var x = document.getElementsByClassName("news1");
     var i;
