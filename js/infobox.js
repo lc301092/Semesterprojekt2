@@ -6,7 +6,13 @@ $(document).ready(function () {
 });
 //Funktion der sørger for redigering af tekst i nyheder.
 function editNews(button, news) {
-    var x = document.getElementsByClassName(news); //Virker ikke
+    var thisNews;
+    if (news == news0) {
+        thisNews = "news0";
+    } else if (news == news1) {
+        thisNews = "news1"
+    }
+    var x = document.getElementsByClassName(thisNews); //Virker ikke
     var i;
     for (i = 0; i < x.length; i++) {
         if (x[i].contentEditable == "true") {
