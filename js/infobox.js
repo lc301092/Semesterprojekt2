@@ -1,4 +1,4 @@
-//Tilføjer en nyhed
+//Tilføjer en nyhed - Variabler for knapper og tekst defineres, og smækkes ind øverst i infoboxen
 function createNews() {
     var div = $("<div></div>").addClass("newsTab");
     var deleteButton = $("<button>-</button>").addClass("deleteNews");
@@ -8,7 +8,7 @@ function createNews() {
     $(".infobox").prepend(div);
     $(".newsTab").first().append(deleteButton, editButton, overskrift, paragraf);
 }
-//Funktion der sørger for redigering af tekst i nyheder.
+//Redigerer en nyhed - Finder alle nyheder i nuværende div, og gør dem redigerbare
 $(document).on('click', '.editNews', function () {
     var x = $(this).parent('div').find('.news');
     if (x.attr('contentEditable') == "true") {
@@ -23,7 +23,7 @@ $(document).on('click', '.editNews', function () {
     }
 });
 
-//Sletter nyheden, ved at fjerne div tagget den er i.
+//Sletter en nyhed - Sletter nyhedens div m. alt indhold
 $(document).on('click', '.deleteNews', function () {
     $(this).parent('div').remove();
 });
