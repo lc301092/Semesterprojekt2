@@ -24,23 +24,15 @@
         </div>
         <!--Infobox med admin rettigheder.-->
         <div class='infobox'>
-            <button onclick="createNews">+</button>
-            <div class='newsTab'>
-                <button class="deleteNews">-</button>
-                <button onclick="editNews(this, news0); ">...</button>
-                <h1 class="news0 " contentEditable="false ">Header 0</h1>
-                <p class="news0 " contentEditable="false ">Text 0
-                </p>
-            </div>
-            <div class='newsTab'>
-                <button class="deleteNews ">-</button>
-                <button onclick="editNews(this, news1); ">...</button>
-                <h1 class="news1 " contentEditable="false ">Header 1</h1>
-                <p class="news1 " contentEditable="false ">Text 1
-                </p>
+            <button class="createNews" onclick="createNews();">+</button>
+            <div class="newsTab">
+                <button class="deleteNews">-</button><button class="editNews">...</button>
+                <h1 class="news" contenteditable="false">Overskrift</h1>
+                <p class="news" contenteditable="false">Tekst...</p>
             </div>
         </div>
     </div>
+
     <div class='bottombar'>
         <p>This is the bottombar</p>
     </div>
