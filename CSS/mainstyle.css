@@ -7,6 +7,9 @@
     transform: translate(-50%, -50%);
 }
 
+
+/* Infobox styles */
+
 .infobox {
     position: fixed;
     width: 30%;
@@ -15,6 +18,16 @@
     top: 50%;
     transform: translate(0%, -50%);
 }
+
+.createNews {
+    position: fixed;
+    top: 0%;
+    left: 100%;
+    transform: translate(-100%, 0%);
+}
+
+
+/* Kalender styles*/
 
 .calendar {
     position: relative;

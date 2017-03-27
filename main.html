@@ -8,12 +8,10 @@
     <title>The HTML5 Herald</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="SitePoint">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="css/n_stylesheet.css">
-    <script>
-
-
-    </script>
+    <link rel="stylesheet" href="css/mainstyle.css">
+    <script src="js/infobox.js"></script>
 </head>
 
 <body>
@@ -24,10 +22,17 @@
         <div class='calendar'>
             <p>This is the calendar</p>
         </div>
+        <!--Infobox med admin rettigheder.-->
         <div class='infobox'>
-            <p>This is the infobox</p>
+            <button class="createNews" onclick="createNews();">+</button>
+            <div class="newsTab">
+                <button class="deleteNews">-</button><button class="editNews">...</button>
+                <h1 class="news" contenteditable="false">Overskrift</h1>
+                <p class="news" contenteditable="false">Tekst...</p>
+            </div>
         </div>
     </div>
+
     <div class='bottombar'>
         <p>This is the bottombar</p>
     </div>
