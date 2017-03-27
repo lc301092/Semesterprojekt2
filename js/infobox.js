@@ -1,4 +1,4 @@
-//Tilføjer en nyhed - Variabler for knapper og tekst defineres, og smækkes ind øverst i infoboxen
+//Tilføjer en nyhed - Variabler for div, knapper og tekst defineres, og sættes samlet ind øverst i infoboxen
 function createNews() {
     var div = $("<div></div>").addClass("newsTab");
     var deleteButton = $("<button>-</button>").addClass("deleteNews");
