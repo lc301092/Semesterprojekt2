@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Questrial', sans-serif;
+}
+
+body {
+    background: url("../img/lejelighed.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overskrift {
+    color: black;
+    font-size: 1.5em;
+    font-family: "Times New Roman", Georgia, Serif;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 15px 0px 15px 0px;
+}
+
+.container {
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    margin-top: 200px;
+}
+
+
+/* hvordan center vertical uden margin-top? */
+
+
+/* hvorfor er den ikke responsiv længere? */
+
+input[type=text],
+input[type=password] {
+    box-sizing: border-box;
+    border: 1px solid #c53c37;
+    width: 300px;
+    height: 45px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-image: url("../img/user23.png");
+    background-repeat: no-repeat;
+    background-color: white;
+    padding: 12px 20px 12px 60px;
+}
+
+input[type=password] {
+    background-image: url("../img/padlock233.png");
+    background-color: white;
+}
+
+input[type=button],
+input[type=submit] {
+    background-color: #c53c37;
+    color: #fff;
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 1.25em;
+    padding: 10px, 15px;
+    cursor: pointer;
+    width: 300px;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+
+/*Media Queries Section*/
+
+
+/* Responsiv del */
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+        height: auto;
+        padding: 0 5%;
+    }
+}
+
+@media screen and (max-width: 332px) {
+    .container {
+        height: 350px;
+    }
+    input[type=text],
+    input[type=password] {
+        width: 275px;
+        height: auto;
+    }
+    input[type=button],
+    input[type=submit],
+    input[type=reset] {
+        width: 150px;
+        height: 30px;
+    }
+}
