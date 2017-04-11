@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// Connect to MongoDB mLab
+/*// Connect to MongoDB mLab
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb://<dbuser>:<dbpassword>@ds157500.mlab.com:57500/heroku_kr26vbnh"
+var uri = "mongodb://@ds157500.mlab.com:57500/heroku_kr26vbnh"
 MongoClient.connect(uri, function (err, db) {
     db.close();
-});
+});*/
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -31,11 +31,11 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make our db accessible to our router
+/*// Make our db accessible to our router
 app.use(function (req, res, next) {
     req.db = db;
     next();
-});
+});*/
 
 app.use('/', index);
 app.use('/users', users);
