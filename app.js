@@ -5,12 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-/*// Connect to MongoDB mLab
+// Connect to MongoDB mLab
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb://@ds157500.mlab.com:57500/heroku_kr26vbnh"
-MongoClient.connect(uri, function (err, db) {
-    db.close();
-});*/
+var uri = "mongodb://admin:admin@ds157500.mlab.com:57500/heroku_kr26vbnh";
+var db = MongoClient.connect(uri, function (err, db) {
+    // Only close the connection when your app is terminating.
+    db.close(function (err) {
+        if (err) throw err;
+    });
+});
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
