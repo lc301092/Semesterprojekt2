@@ -7,11 +7,18 @@ var bodyParser = require('body-parser');
 
 // Connect to MongoDB mLab
 var MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb://admin:admin@ds157500.mlab.com:57500/heroku_kr26vbnh";
-var db = MongoClient.connect(uri, function (err, db) {
+var url = "mongodb://admin:admin@ds157500.mlab.com:57500/heroku_kr26vbnh";
+MongoClient.connect(url, function (err, db) {
+    //Check if connection is succesfull
+    if (err) {
+        throw err;
+    } else {
+        console.log("Successfully connected to the database");
+    }
     // Only close the connection when your app is terminating.
     db.close(function (err) {
         if (err) throw err;
+        console.log("Successfully disconnected from the database");
     });
 });
 
