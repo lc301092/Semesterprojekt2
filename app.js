@@ -5,6 +5,24 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Connect to MongoDB mLab
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://admin:admin@ds157500.mlab.com:57500/heroku_kr26vbnh";
+MongoClient.connect(url, function (err, db) {
+    //Check if connection is succesfull
+    if (err) {
+        throw err;
+    } else {
+        console.log("Successfully connected to the database");
+    }
+    // Only close the connection when your app is terminating.
+    db.close(function (err) {
+        if (err) throw err;
+        console.log("Successfully disconnected from the database");
+    });
+});
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -23,6 +41,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/*// Make our db accessible to our router
+app.use(function (req, res, next) {
+    req.db = db;
+    next();
+});*/
 
 app.use('/', index);
 app.use('/users', users);
