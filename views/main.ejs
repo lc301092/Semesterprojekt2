@@ -16,15 +16,6 @@
 </head>
 
 <body>
-    <h1>TEST DATABASE</h1>
-    <ul>
-        <% db.get('usercollection').find({}).forEach(function(user) { %>
-            <li>
-                <%=user.username%> -
-                    <%=user.email%>
-            </li>
-            <%});%>
-    </ul>
     <div class='topbar'>
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
@@ -49,9 +40,17 @@
                 <h1 class="news" contenteditable="false">Overskrift</h1>
                 <p class="news" contenteditable="false">Tekst...</p>
             </div>
+            <h1>TEST</h1>
+            <ul>
+                <%users.each(function(user) { %>
+                    <li>
+                        <%=user.username%> -
+                            <%=user.email%>
+                    </li>
+                    <%});%>
+            </ul>
         </div>
     </div>
-
     <div class='bottombar'>
         <p>This is the bottombar</p>
     </div>
