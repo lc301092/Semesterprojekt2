@@ -3,21 +3,27 @@ var router = express.Router();
 var monk = require('monk');
 
 /* GET home page. */
-router.get('/main', function (req, res, next) {
-    //retrieve data from MongoDB
-    var users = req.db.collection('usercollection').find({});
-    res.render('main', {
-        title: 'main',
-        "users": users
+router.route('/main')
+    .get(function (req, res, next) {
+        //retrieve data from MongoDB
+        var usercollection = req.db.collection('usercollection').find({});
+        res.render('main', {
+            title: 'main',
+            "usercollection": usercollection
+        });
     });
-    next();
-});
+//    .post(function (req, res, next) {
+//
+//    })
+//    .delete(function (req, res, next) {
+//
+//    });
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('login', {
-        title: 'login'
+/* GET login page. */
+router.route('/')
+    .get(function (req, res, next) {
+        res.render('login', {
+            title: 'login'
+        });
     });
-    next();
-});
 module.exports = router;

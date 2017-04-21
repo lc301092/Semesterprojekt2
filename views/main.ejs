@@ -42,12 +42,13 @@
             </div>
             <h1>TEST</h1>
             <ul>
-                <%users.each(function(user) { %>
-                    <li>
-                        <%=user.username%> -
-                            <%=user.email%>
-                    </li>
-                    <%});%>
+                <%console.log(usercollection)%>
+                    <%usercollection.each((users.username, users.email) => {}).then(() => {%>
+                        <li>
+                            <%=users.username%> -
+                                <%=users.email%>
+                        </li>
+                        <%});%>
             </ul>
         </div>
     </div>
