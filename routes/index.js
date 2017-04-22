@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var monk = require('monk');
 
 /* GET home page. */
 router.route('/main')
-    .get(function (req, res, next) {
+    .get(function (req, res) {
         //retrieve data from MongoDB
-        var usercollection = req.db.collection('usercollection').find({});
-        res.render('main', {
-            title: 'main',
-            "usercollection": usercollection
+        var db = req.db;
+        db.get('usercollection').find({}).then((data) => {
+            res.render('main', {
+                "userlist": data[0].users
+            });
         });
     });
 //    .post(function (req, res, next) {
@@ -21,7 +21,7 @@ router.route('/main')
 
 /* GET login page. */
 router.route('/')
-    .get(function (req, res, next) {
+    .get(function (req, res) {
         res.render('login', {
             title: 'login'
         });
