@@ -14,12 +14,6 @@ db.then(() => {
     console.log('Connected correctly to server')
 });
 
-//Test Database collection
-var usercollection = db.collection('usercollection').find({});
-usercollection.then((data) => {
-    console.log(data[0])
-});
-
 var routes = require('./routes/index');
 
 var app = express();
