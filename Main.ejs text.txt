@@ -1,9 +1,0 @@
-    <h1>TEST DATABASE</h1>
-    <ul>
-        <% db.collection('usercollection').users.find().forEach(function(user) { %>
-            <li>
-                <%=user.username%> -
-                    <%= user.email %>
-            </li>
-            <%});%>
-    </ul>
