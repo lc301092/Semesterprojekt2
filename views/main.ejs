@@ -40,16 +40,15 @@
             </div>
             <h2>dbtest - .get</h2>
             <ul>
-                <%userlist.forEach(function(user) {%>
+                <%newslist.forEach(function(news) {%>
                     <li>
-                        <a href="mailto:<%=user.email%>">
-                            <%=user.username%>
+                        <a>
+                            <%=news.title%> -
+                                <%=news.paragraph%>
                         </a>
                     </li>
                     <% }) %>
             </ul>
-            <h2>dbtest - .post</h2>
-            <form id="formAddUser" name="adduser" method="post" action="/main"><input id="inputUserName" type="text" placeholder="username" name="username"><input id="inputUserEmail" type="text" placeholder="email" name="email"><button id="btnSubmit" type="submit">submit</button></form>
         </div>
     </div>
     <div class='bottombar'>
