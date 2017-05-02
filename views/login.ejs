@@ -5,17 +5,32 @@
     <title>Portfolio</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
+    <script>
+        // istedet for hardcodet brugernavn og password kan man referere til databasen hvor der itereres over samtlige brugere (som gerne skulle være et array) - Miriam
+
+        function validateForm() {
+            var x = document.forms["myForm"]["User"].value;
+            var y = document.forms["myForm"]["Password"].value;
+            if (x == "test123" && y == "123456") {
+                return true;
+            } else {
+                alert("Forkert brugernavn eller password")
+                return false;
+            }
+        }
+
+    </script>
 </head>
 
 <body>
 
     <div class="container">
         <p class="overskrift">Velkommen til</p>
-        <form>
-            <input type="text" name="User" placeholder="Brugernavn" required="">
-            <input type="password" name="Password" placeholder="Adgangskode" required=""> <br /><br />
+        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
+            <input id="userName" type="text" name="User" placeholder="Brugernavn" required="">
+            <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required=""> <br /><br />
             <!-- <input type="checkbox" name="remember" value="checked">Husk mig<br /><br /><br /> -->
-            <input type="submit" name="submit" value="LOG IND" onclick=location.href='main'>
+            <input type="submit" name="submit" value="LOG IND">
         </form>
     </div>
 </body>
