@@ -11,6 +11,9 @@
         function validateForm() {
             var x = document.forms["myForm"]["User"].value;
             var y = document.forms["myForm"]["Password"].value;
+            //userlist.forEach(function(i, user) { 
+            //if (x == user.username[i] && y == user.password[i] && i == i)
+            //Noget ligende det ovenstående, der skal bruges hvis der skal checkes i databasen samt at der skal laves en .get i routes/index.js til login ruten så appen ved databasen skal kunne tilgås.
             if (x == "test123" && y == "123456") {
                 return true;
             } else {
