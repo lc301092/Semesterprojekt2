@@ -11,9 +11,10 @@
     <script src="js/infobox.js"></script>
     <link rel="stylesheet" href="css/mainstyle.css">
 
+
 </head>
 
-<body>
+<body onload="initializeNews(<%=newslist.length%>, <%newslist%>);">
     <div class='topbar'>
         <div class="dropdown">
             <button class="dropbtn">Menu</button>
@@ -32,23 +33,6 @@
         <!--Infobox med admin rettigheder.-->
         <div class='infobox'>
             <button class="createDialog" onclick="createDialog();">+</button>
-            <div class="newsTab">
-                <button class="deleteNews">-</button>
-                <button class="editNews">...</button>
-                <h1 class="news" contenteditable="false">Overskrift</h1>
-                <p class="news" contenteditable="false">Tekst...</p>
-            </div>
-            <h2>dbtest - .get</h2>
-            <ul>
-                <%newslist.forEach(function(news) {%>
-                    <li>
-                        <a>
-                            <%=news.title%> -
-                                <%=news.paragraph%>
-                        </a>
-                    </li>
-                    <% }) %>
-            </ul>
         </div>
     </div>
     <div class='bottombar'>

@@ -13,6 +13,23 @@ function createDialog() {
     }
 }
 
+//Henter nyheder fra newscollection og laver dem ved page load.
+function initializeNews(newslength, news) {
+    var array = [news];
+    //Make the newsbox
+    for (var i = 0; i < newslength; i++) { //Connection til database virker ikke i static js filer?? Alternativ løsning
+        var div = $("<div></div>").addClass("newsTab");
+        var deleteButton = $("<button>-</button>").addClass("deleteNews");
+        var editButton = $("<button>...</button>").addClass("editNews");
+        var title = $("<h1></h1>").addClass("news").attr('contenteditable', 'false');
+        var paragraph = $("<p></p>").addClass("news").attr('contenteditable', 'false');
+        $(".createDialog").after(div);
+        $(".newsTab").first().append(deleteButton, editButton, title, paragraph);
+        //Get the input values from the database
+        //        $(".newsTab h1").first().append(newslist[i].title); //Virker ikke endnu 
+        //        $(".newsTab p").first().append(newslist[i].paragraph); //Virker ikke endnu
+    }
+}
 
 //Tilføjer en nyhed - Variabler for div, knapper og tekst defineres, og sættes samlet ind øverst i infoboxen
 function createNews() {
@@ -27,8 +44,10 @@ function createNews() {
     //Get the input values from createDialog();
     $(".newsTab h1").first().append($('.newTitle').val());
     $(".newsTab p").first().append($('.newParagraph').val());
+    //Push the input values to the database
     deleteDialog();
 }
+
 //Redigerer en nyhed - Finder alle nyheder i nuværende div, og gør dem redigerbare
 $(document).on('click', '.editNews', function () {
     var x = $(this).parent('div').find('.news');
@@ -53,7 +72,3 @@ $(document).on('click', '.deleteNews', function () {
 function deleteDialog() {
     $(".dialogBox").remove();
 }
-
-$(function () {
-    $("#dialog").dialog();
-});
