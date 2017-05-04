@@ -13,8 +13,8 @@ function createDialog() {
         var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr("type", "submit").attr('onclick', 'createNews();');
         $(".body").prepend(div);
         $(".dialogBox").first().append(top, main);
-        $(".main").first().append(form, cancel, addNews);
-        $("#formAddNews").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph);
+        $(".main").first().append(form);
+        $("#formAddNews").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph, cancel, addNews);
         $(".dialogBox").draggable({
             containment: "parent"
         });
@@ -52,7 +52,6 @@ function createNews(newslist) {
     $(".newsTab h1").first().append($('.newTitle').val());
     $(".newsTab p").first().append($('.newParagraph').val());
     //Push the input values to the database
-    deleteDialog();
 }
 
 //Redigerer en nyhed - Finder alle nyheder i nuværende div, og gør dem redigerbare
