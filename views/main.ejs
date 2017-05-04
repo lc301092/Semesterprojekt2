@@ -9,12 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="js/infobox.js"></script>
+    <script src="js/ejs.min.js"></script>
     <link rel="stylesheet" href="css/mainstyle.css">
 
 
 </head>
 
-<body onload="initializeNews(<%=newslist.length%>, <%newslist%>);">
+<body onload="initializeNews((<%=JSON.stringify(newslist)%>));">
     <div class='topbar'>
         <div class="dropdown">
             <button class="dropbtn">Menu</button>

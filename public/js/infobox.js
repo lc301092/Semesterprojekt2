@@ -20,10 +20,9 @@ function createDialog() {
 }
 
 //Henter nyheder fra newscollection og laver dem ved page load.
-function initializeNews(newslength, news) {
-    var array = [news];
+function initializeNews(newslist) {
     //Make the newsbox
-    for (var i = 0; i < newslength; i++) { //Connection til database virker ikke i static js filer?? Alternativ løsning
+    for (var i = 0; i < newslist.length; i++) { //Connection til database virker ikke i static js filer?? Alternativ løsning
         var div = $("<div></div>").addClass("newsTab");
         var deleteButton = $("<button>-</button>").addClass("deleteNews");
         var editButton = $("<button>...</button>").addClass("editNews");
@@ -32,8 +31,8 @@ function initializeNews(newslength, news) {
         $(".createDialog").after(div);
         $(".newsTab").first().append(deleteButton, editButton, title, paragraph);
         //Get the input values from the database
-        //        $(".newsTab h1").first().append(newslist[i].title); //Virker ikke endnu 
-        //        $(".newsTab p").first().append(newslist[i].paragraph); //Virker ikke endnu
+        $(".newsTab h1").first().append(newslist[i].title); //Virker ikke endnu 
+        $(".newsTab p").first().append(newslist[i].paragraph); //Virker ikke endnu
     }
 }
 
