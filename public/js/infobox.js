@@ -63,7 +63,7 @@ function createDialog() {
         $(".newDato").first().val(datoString);
         //Gør dialogboxen draggable i hele dokumentet.
         $(".dialogBox").draggable({
-            containment: "parent"
+            containment: "parent",
         });
     }
 }
