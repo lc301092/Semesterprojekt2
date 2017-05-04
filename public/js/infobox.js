@@ -4,15 +4,17 @@ function createDialog() {
         var div = $("<div></div>").addClass("dialogBox");
         var top = $("<div></div>").addClass("top");
         var main = $("<div></div>").addClass("main");
+        var form = $("<form></form>").attr("id", "formAddNews").attr("name", "addNews").attr("method", "post").attr("action", "/main");
         var newTitleLabel = $("<label>Overskrift:</label>").attr('for', 'newTitle');
         var newTitle = $("<input>").attr('type', 'text').addClass("newTitle").attr('name', 'newTitle');
         var newParagraphLabel = $("<label>Tekst:</label>").attr('for', 'newParagraph');
         var newParagraph = $("<input>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
         var cancel = $("<button>Annuller</button>").addClass("addNews").attr('onclick', 'deleteDialog();');
-        var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr('onclick', 'createNews();');
+        var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr("type", "submit").attr('onclick', 'createNews();');
         $(".body").prepend(div);
         $(".dialogBox").first().append(top, main);
-        $(".main").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph, cancel, addNews);
+        $(".main").first().append(form, cancel, addNews);
+        $("#formAddNews").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph);
         $(".dialogBox").draggable({
             containment: "parent"
         });
@@ -22,12 +24,12 @@ function createDialog() {
 //Henter nyheder fra newscollection og laver dem ved page load.
 function initializeNews(newslist) {
     //Make the newsbox
-    for (var i = 0; i < newslist.length; i++) { //Connection til database virker ikke i static js filer?? Alternativ løsning
+    for (var i = 0; i < newslist.length; i++) { //Connection til database virker ikke i static js filer?? 
         var div = $("<div></div>").addClass("newsTab");
         var deleteButton = $("<button>-</button>").addClass("deleteNews");
         var editButton = $("<button>...</button>").addClass("editNews");
-        var title = $("<h1></h1>").addClass("news").attr('contenteditable', 'false');
-        var paragraph = $("<p></p>").addClass("news").attr('contenteditable', 'false');
+        var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
+        var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
         $(".createDialog").after(div);
         $(".newsTab").first().append(deleteButton, editButton, title, paragraph);
         //Get the input values from the database
@@ -37,20 +39,19 @@ function initializeNews(newslist) {
 }
 
 //Tilføjer en nyhed - Variabler for div, knapper og tekst defineres, og sættes samlet ind øverst i infoboxen
-function createNews() {
+function createNews(newslist) {
     //Make the newsbox
     var div = $("<div></div>").addClass("newsTab");
     var deleteButton = $("<button>-</button>").addClass("deleteNews");
     var editButton = $("<button>...</button>").addClass("editNews");
-    var title = $("<h1></h1>").addClass("news").attr('contenteditable', 'false');
-    var paragraph = $("<p></p>").addClass("news").attr('contenteditable', 'false');
+    var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
+    var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
     $(".createDialog").after(div);
     $(".newsTab").first().append(deleteButton, editButton, title, paragraph);
     //Get the input values from createDialog();
     $(".newsTab h1").first().append($('.newTitle').val());
     $(".newsTab p").first().append($('.newParagraph').val());
     //Push the input values to the database
-
     deleteDialog();
 }
 
