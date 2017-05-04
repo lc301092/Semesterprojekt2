@@ -2,14 +2,20 @@
 function createDialog() {
     if (document.getElementsByClassName("dialogBox").length == 0) {
         var div = $("<div></div>").addClass("dialogBox");
+        var top = $("<div></div>").addClass("top");
+        var main = $("<div></div>").addClass("main");
         var newTitleLabel = $("<label>Overskrift:</label>").attr('for', 'newTitle');
         var newTitle = $("<input>").attr('type', 'text').addClass("newTitle").attr('name', 'newTitle');
         var newParagraphLabel = $("<label>Tekst:</label>").attr('for', 'newParagraph');
         var newParagraph = $("<input>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
         var cancel = $("<button>Annuller</button>").addClass("addNews").attr('onclick', 'deleteDialog();');
         var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr('onclick', 'createNews();');
-        $(".createDialog").after(div);
-        $(".dialogBox").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph, cancel, addNews);
+        $(".body").prepend(div);
+        $(".dialogBox").first().append(top, main);
+        $(".main").first().append(newTitleLabel, newTitle, newParagraphLabel, newParagraph, cancel, addNews);
+        $(".dialogBox").draggable({
+            containment: "parent"
+        });
     }
 }
 
