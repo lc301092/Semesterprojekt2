@@ -50,6 +50,7 @@ function createNews() {
     $(".newsTab h1").first().append($('.newTitle').val());
     $(".newsTab p").first().append($('.newParagraph').val());
     //Push the input values to the database
+
     deleteDialog();
 }
 
@@ -58,13 +59,11 @@ $(document).on('click', '.editNews', function () {
     var x = $(this).parent('div').find('.news');
     if (x.attr('contentEditable') == "true") {
         x.attr('contentEditable', 'false');
+        this.innerHTML = "...";
+        //Save new values to the database
     } else {
         x.attr('contentEditable', 'true');
-    }
-    if (this.innerHTML == "...") {
         this.innerHTML = "Save";
-    } else {
-        this.innerHTML = "...";
     }
 });
 
