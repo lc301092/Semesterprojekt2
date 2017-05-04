@@ -17,13 +17,29 @@ router.route('/main')
         // Set our internal DB variable
         var db = req.db;
         var title = req.body.newTitle;
+        var dato = req.body.newDato;
         var paragraph = req.body.newParagraph;
+        
+        //var ID = 0;
+        //var thisCollection = db.get('newscollection').find({});    
+//        var newsList = thisCollection[0].news;
+//        
+//        for (i = 0; i < newsList.length; i++) {
+//            if (newsList.ID.parseInt() >= ID)
+//            {
+//                ID = newsList.ID.parseInt() + 1;
+//                ID = ID.toString();
+//            }
+//        }
+        
         // Submit to the DB
         db.get('newscollection').update({}, {
                 "$push": {
                     "news": {
                         "title": title,
-                        "paragraph": paragraph
+                        "paragraph": paragraph,
+                        "dato": dato,
+//                        "ID": ID
                     }
                 }
             },
