@@ -12,7 +12,7 @@
 		$(document).ready(function () {
 
 			$('#calendar').fullCalendar({
-				aspectRatio: 2,
+				aspectRatio: 1.8,
 				defaultDate: '2017-04-12',
 				weekNumbers: true,
 				weekNumbersWithinDays: true,
@@ -42,14 +42,15 @@
 	</script>
 	<style>
 		body {
-			margin: 40px;
+			max-width: 1200px;
+			width: 98vw;
+			margin-top: 40px;
 			padding: 0;
 			font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 			font-size: 14px;
 		}
 		
 		#calendar {
-			max-width: 900px;
 			margin: 0 auto;
 		}
 	</style>
