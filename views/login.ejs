@@ -1,41 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Portfolio</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
-    <script>
-        // istedet for hardcodet brugernavn og password kan man referere til databasen hvor der itereres over samtlige brugere (som gerne skulle være et array) - Miriam
-
-        function validateForm() {
-            var x = document.forms["myForm"]["User"].value;
-            var y = document.forms["myForm"]["Password"].value;
-            //userlist.forEach(function(i, user) { 
-            //if (x == user.username[i] && y == user.password[i] && i == i)
-            //Noget ligende det ovenstående, der skal bruges hvis der skal checkes i databasen samt at der skal laves en .get i routes/index.js til login ruten så appen ved databasen skal kunne tilgås.
-            if (x == "test123" && y == "123456") {
-                return true;
-            } else {
-                alert("Forkert brugernavn eller password")
-                return false;
-            }
-        }
-
-    </script>
-</head>
-
-<body>
-
-    <div class="container">
-        <p class="overskrift">Velkommen til</p>
-        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
-            <input id="userName" type="text" name="User" placeholder="Brugernavn" required="">
-            <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required=""> <br /><br />
-            <!-- <input type="checkbox" name="remember" value="checked">Husk mig<br /><br /><br /> -->
-            <input type="submit" name="submit" value="LOG IND">
-        </form>
-    </div>
-</body>
-
-</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Portfolio</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
+    <script>
+        // istedet for hardcodet brugernavn og password kan man referere til databasen hvor der itereres over samtlige brugere (som gerne skulle være et array) - Miriam
+        var testUsers = [
+            [
+                "test123",
+                "123456"
+            ],
+            [
+                "123test",
+                "654321"
+            ]
+        ];
+
+
+
+        function validateForm() {
+            var x = document.forms["myForm"]["User"].value;
+            var y = document.forms["myForm"]["Password"].value;
+            for (i = 0; i <= 1; i++) {
+                if (x == testUser[i][0] && y == testUser[i][1]) {
+                    return true;
+                } else {
+                    alert("Forkert brugernavn eller password")
+                    return false;
+                }
+
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <p class="overskrift">Velkommen til</p>
+        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
+            <input id="username" type="text" name="User" placeholder="Brugernavn" required="">
+            <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required=""> <br /><br />
+            <!-- <input type="checkbox" name="remember" value="checked">Husk mig<br /><br /><br /> -->
+            <input type="submit" name="submit" value="LOG IND">
+        </form>
+    </div>
+</body>
+
+</html>
