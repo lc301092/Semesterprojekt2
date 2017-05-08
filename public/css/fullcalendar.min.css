@@ -414,7 +414,7 @@ a[data-goto]:hover {
 }
 
 .fc-scroller {
-	-webkit-overflow-scrolling: touch
+	/*	-webkit-overflow-scrolling: touch*/
 }
 
 .fc-row.fc-rigid,
@@ -427,7 +427,7 @@ a[data-goto]:hover {
 	position: relative;
 	width: 100%;
 	height: auto!important;
-	overflow-y: auto;
+	/*	overflow-y: auto;*/
 }
 
 .fc-event {
