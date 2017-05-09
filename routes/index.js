@@ -1,38 +1,51 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* main page. */
 router.route('/main')
+    /* GET route for main page. */
     .get(function (req, res) {
-        // Set our internal DB variable
+        // Require our DB variable
         var db = req.db;
-        // Get the DB
-        db.get('usercollection').find({}).then((data) => {
+        // Get the newscollection and make it accesible in main through ejs
+        db.get('newscollection').find({}).then((data) => {
+            //Load main page
             res.render('main', {
-                "userlist": data[0].users,
-                "currentUser": req.params.userName
+                "newslist": data[0].news,
+                title: 'mainpage'
             });
         });
     })
+    /* POST route for main page. */
     .post(function (req, res) {
-        // Set our internal DB variable
+        // Require our DB variable
         var db = req.db;
-        // Get our form values. These rely on the "name" attributes
-        console.log('your user is ' + req.body.User);
+        //Define title, date and paragraph from inputs on main page
+        var title = req.body.newTitle;
+        var dato = req.body.newDato;
+        var paragraph = req.body.newParagraph;
 
-        res.cookie('userName', req.body.User);
-        res.redirect("main");
+        //Jamie WIP
+        //var ID = 0;
+        //var thisCollection = db.get('newscollection').find({});    
+        //        var newsList = thisCollection[0].news;
+        //        
+        //        for (i = 0; i < newsList.length; i++) {
+        //            if (newsList.ID.parseInt() >= ID)
+        //            {
+        //                ID = newsList.ID.parseInt() + 1;
+        //                ID = ID.toString();
+        //            }
+        //        }
 
-        var userName = req.body.username;
-        var userEmail = req.body.email;
-        var userBookings = req.body.bookings;
-        // Submit to the DB
-        db.get('usercollection').update({}, {
+        // Push data to newscollection
+        db.get('newscollection').update({}, {
                 "$push": {
-                    "users": {
-                        "username": userName,
-                        "email": userEmail,
-                        "bookings": userBookings
+                    "news": {
+                        "title": title,
+                        "paragraph": paragraph,
+                        "dato": dato,
+                        //                        "ID": ID
                     }
                 }
             },
@@ -45,15 +58,15 @@ router.route('/main')
                     res.redirect("main");
                 }
             });
+    })
+    /* DELETE route for main page. */
+    .delete(function (req, res, next) {});
 
-    });
-//    .delete(function (req, res, next) {
-//
-//    });
-
-/* GET login page. */
+/* Login page. */
 router.route('/')
+    /* GET route for login page. */
     .get(function (req, res) {
+        //Load login page
         res.render('login', {
             title: 'login'
         });
