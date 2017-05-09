@@ -7,12 +7,17 @@ body {
 /* Infobox styles */
 
 .newsbox {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 10px;
-    height: 80%;
-    border: solid 3px #c53c37;
-    box-shadow: 0 0 0pt 3pt #900903;
+    background: rgba(255, 255, 255, 1);
     overflow-y: auto;
+    height: 300px;
+    max-height: 500px;
+}
+
+.infobox {
+    background: rgba(255, 255, 255, 1);
+    overflow-y: auto;
+    height: 300px;
+    max-height: 500px;
 }
 
 .newsbox button {
@@ -32,34 +37,33 @@ body {
     border: 1px solid black;
 }
 
+
 /* Kalender styles*/
 
 #calendarHolder {
-    background: rgba(255, 255, 255, 0.92);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
     /*	    border-style: solid;*/
-	height: 535px;
-    border: solid 3pt #c53c37;
-    box-shadow: 0 0 0pt 3pt #900903;
+    height: 300px;
 }
 
 .topbar {
-    border-style: solid;
-    background: rgba(150, 20, 20, 1);
-    height: 25px;
+    background: rgba(255, 255, 255, 1);
+    height: 60px;
     margin: 0px;
 }
 
 .body {
     margin-left: 2%;
-    margin-right:2%;
+    margin-right: 2%;
 }
 
 .topbar p {
     line-height: 0px;
 }
 
+
 /* Booking oversigt styles */
+
 
 /* The Modal (background) */
 
