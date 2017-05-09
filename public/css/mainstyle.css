@@ -1,6 +1,7 @@
 body {
     background: url("../img/lejelighed.jpg") no-repeat center center fixed;
     background-size: cover;
+    min-width: 400px;
 }
 
 
@@ -12,6 +13,8 @@ body {
     height: 200px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+    max-width: 575px;
+    min-width: 200px;
 }
 
 .newsbox button {
@@ -39,6 +42,8 @@ body {
     max-height: 500px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+    max-width: 575px;
+    min-width: 200px;
 }
 
 
@@ -103,11 +108,15 @@ body {
 
 #calendarHolder {
     background: rgba(255, 255, 255, 1);
-    /*	    border-style: solid;*/
-    height: 500px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+    height: 470px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    max-width: 1200px;
+    min-width: 360px;
 }
+
+
+/* topbar styles*/
 
 .topbar {
     background: rgba(255, 255, 255, 1);
@@ -192,7 +201,7 @@ body {
 }
 
 .dropdown {
-    position: fixed;
+    position: absolute;
     display: inline-block;
     z-index: 1;
     right: 0%;
