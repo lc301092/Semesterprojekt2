@@ -47,7 +47,7 @@ function createDialog() {
         //Holder paragrafen
         var newParagraph = $("<input>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
         //Holder annuler knappen
-        var cancel = $("<button>Annuller</button>").addClass("addNews").attr('onclick', 'deleteDialog();');
+        var cancel = $("<button>Annuller</button>").addClass("cancelNews").attr('onclick', 'deleteDialog();');
         //Holder tilføj nyhed knappen
         var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr("type", "submit").attr('onclick', 'createNews();');
 
@@ -61,10 +61,6 @@ function createDialog() {
         $("#formAddNews").first().append(newTitleLabel, newTitle, newDato, newParagraphLabel, newParagraph, cancel, addNews);
         //Giver datoen til et det skjulte input (newDato)
         $(".newDato").first().val(datoString);
-        //Gør dialogboxen draggable i hele dokumentet.
-        $(".dialogBox").draggable({
-            containment: "parent",
-        });
     }
 }
 
