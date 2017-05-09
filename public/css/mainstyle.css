@@ -16,13 +16,20 @@ h1 {
 /* Newsbox styles */
 
 .newsbox {
+    font-family: "Times New Roman", Georgia, Serif;
     background: rgba(255, 255, 255, 1);
     overflow-y: auto;
-    height: 200px;
+    height: 250px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     max-width: 575px;
     min-width: 200px;
+}
+
+.nyhed_header {
+    font-size: 25px;
+    padding-left: 30px;
+    letter-spacing: 5px;
 }
 
 .newsbox button {
@@ -58,21 +65,71 @@ h1 {
     height: 0.8px;
     background: #c53c37;
     border-bottom: 1px solid #c53c37;
-    width: 70px;
+    width: 250px;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 
 /*infobox styles*/
 
 .infobox {
+    font-family: "Times New Roman", Georgia, Serif;
     background: rgba(255, 255, 255, 1);
     overflow-y: auto;
-    height: 200px;
+    height: 250px;
     max-height: 500px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     max-width: 575px;
     min-width: 200px;
+}
+
+.infobox_header {
+    font-size: 25px;
+    padding-left: 30px;
+    letter-spacing: 5px;
+}
+
+.info {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 18px;
+    padding-left: 40px;
+    margin-right: 5px;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.konto {
+    font-size: 20px;
+    font-family: "Times New Roman", Georgia, Serif;
+    padding-left: 270px;
+}
+
+.kontonr{
+    font-size: 30px;
+    font-family: "Times New Roman", Georgia, Serif;
+    padding-left: 240px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+    color: #c53c37;
+}
+
+.reg {
+    font-size: 20px;
+    font-family: "Times New Roman", Georgia, Serif;
+    padding-left: 50px;
+    margin-top: -15px;
+    
+}
+
+.regnr{
+    font-size: 30px;
+    font-family: "Times New Roman", Georgia, Serif;
+    padding-left: 50px;
+    margin-top: -27px;
+    color: #c53c37;
 }
 
 
@@ -118,14 +175,24 @@ h1 {
 /* Kalender styles*/
 
 #calendarHolder {
+    font-family: "Times New Roman", Georgia, Serif;
     background: rgba(255, 255, 255, 1);
     border-radius: 5px;
     height: 470px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     max-width: 1200px;
     min-width: 360px;
+    
 }
 
+.kalender_head {
+    text-align: center;
+    position: 150
+    
+    
+    
+    
+}
 
 /* topbar styles*/
 
@@ -134,6 +201,7 @@ h1 {
     height: 60px;
     margin: 0px;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    padding-left: 35px;
 }
 
 .body {
@@ -143,6 +211,7 @@ h1 {
 
 .topbar p {
     line-height: 0px;
+    
 }
 
 
@@ -210,6 +279,29 @@ h1 {
     border: none;
     cursor: pointer;
 }
+
+.logud{
+    background-color: #c53c37;
+    color: white;
+    width: 110px;
+    height: 60px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+/*
+
+.minresevationer{
+    background-color: #c53c37;
+    color: white;
+    width: 150px;
+    height: 60px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 0px;
+}
+*/
 
 .dropdown {
     position: absolute;
