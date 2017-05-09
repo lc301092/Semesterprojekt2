@@ -2,63 +2,61 @@
 <html>
 
 <head>
-    <meta charset='utf-8' />
-    <link href='../css/fullcalendar.min.css' rel='stylesheet' />
-    <link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-    <script src='../js/lib/moment.min.js'></script>
-    <script src='../js/lib/jquery.min.js'></script>
-    <script src='../js/lib/fullcalendar.min.js'></script>
-    <script>
-        $(document).ready(function() {
+	<meta charset='utf-8' />
+	<link href='../css/fullcalendar.min.css' rel='stylesheet' />
+	<link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+	<script src='../js/lib/moment.min.js'></script>
+	<script src='../js/lib/jquery.min.js'></script>
+	<script src="/js/testEvents.js"></script>
+	<script src='../js/lib/fullcalendar.min.js'></script>
 
-            $('#calendar').fullCalendar({
-                aspectRatio: 1.8,
-                defaultDate: $('#calendar').fullCalendar('today'),
-                weekNumbers: true,
-                weekNumbersWithinDays: true,
-                weekNumberCalculation: 'ISO',
-                selectable: true, // vælg datoer
-                select: function(start, end) {
-                    if (eventData) {
-                        alert('optaget');
-                    }
-                    var title = prompt('Event Title:');
-                    var eventData;
-                    if (title) {
-                        eventData = {
-                            title: title,
-                            start: start
-                        };
-                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
-                    $('#calendar').fullCalendar('unselect');
-                },
-                editable: false,
-                eventLimit: true
-            }); // allow "more" link when too many events
-        });
+	<script>
+		$(document).ready(function () {
 
-    </script>
-    <style>
-        body {
-            max-width: 1200px;
-            width: 98vw;
-            margin-top: 40px;
-            padding: 0;
-            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
-            font-size: 14px;
-        }
-        
-        #calendar {
-            margin: 0 auto;
-        }
-
-    </style>
+			$('#calendar').fullCalendar({
+				height: "auto",
+				defaultDate: $('#calendar').fullCalendar('today'),
+				weekNumbers: true,
+				weekNumbersWithinDays: true,
+				weekNumberCalculation: 'ISO',
+				selectable: true, // vælg datoer
+				select: function (start, end) {
+					var title = 1;
+					var eventData;
+					if (title) {
+						eventData = {
+							title: 'username', //username/id skal ind her, når det virker.
+							start: start
+						};
+						$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+					}
+					$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
+				},
+				editable: false,
+				eventLimit: true
+			}); // allow "more" link when too many events
+		});
+	</script>
+	<style>
+		body {
+			max-width: 1200px;
+			width: auto;
+			margin-top: 40px;
+			padding: 0;
+			font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+			font-size: 14px;
+		}
+		
+		#calendar {
+			margin: 0 auto;
+		}
+	</style>
 </head>
 
 <body>
+	<button type="button" onclick="testCalendar()"></button>
 
-    <div id='calendar'></div>
+	<div id='calendar'></div>
 
 </body>
 
