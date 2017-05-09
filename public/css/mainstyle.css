@@ -16,6 +16,18 @@ body {
 }
 
 
+.newsTitle {
+    
+    font-size: 24px;
+    
+    padding-left: 33%;
+    
+    border-bottom: solid 3px black;
+
+
+    
+}
+
 /* Infobox*/
 
 .infobox {
@@ -24,11 +36,15 @@ body {
     border-radius: 10px;
     width: 250px;
     height: 80%;
+    
+    border: solid 3px #c53c37;
+    
     /*    border-style: solid;*/
-    top: 50%;
-    right: 65%;
+    top: 10%;
+    right: 80%;
     overflow-y: auto;
-    transform: translate(0%, -50%);
+    transform: translate(0%, 0%);
+
 }
 
 .infobox button {
@@ -42,10 +58,12 @@ body {
     top: 0%;
     left: 100%;
     transform: translate(-100%, 0%);
+    
+
 }
 
 .newsTab {
-    border: 1px solid black;
+    border-top: 3px solid black;
 }
 
 
@@ -111,14 +129,50 @@ body {
 #calendarHolder {
     position: fixed;
     background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    width: 800px;
-    height: 500px;
+  
+    width: 1000px;
+    height: 70%;
     /*	    border-style: solid;*/
-    right: 5%;
-    top: 50%;
-    transform: translate(0%, -50%);
+    right: 10%;
+    top: 10%;
+
+    transform: translate(0%, 0%);
+    
+    overflow: hidden;
+
+    box-sizing: border-box;
+    
+    border: solid 3pt #c53c37;
+    
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
+
+#calendarLore {
+    height: 10%;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.9);
+
+    width: 1000px;
+
+    /*	    border-style: solid;*/
+    right: 10%;
+    
+    /* skal være = calendarHolders top+height*/
+    top: 80%;
+    
+  box-sizing: border-box;
+    
+    border: solid 3pt #c53c37;
+    border-top: none;
+    
+    transform: translate(0%, 0%);
+    
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+
 
 .topbar {
     border-style: solid;
@@ -126,9 +180,10 @@ body {
     position: fixed;
     z-index: 0;
     width: 100%;
-    height: 25px;
+    height: 33px;
     top: 0px;
     left: 0px;
+    border: solid 3px #c53c37;
 }
 
 .topbar p {
@@ -155,11 +210,13 @@ body {
 .dropbtn {
     background-color: #c53c37;
     color: white;
-    width: 110px;
-    height: 25px;
+    width: 210px;
+    height: 33px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border-top: solid 3px black;
+    border-bottom: solid 3px black;
 }
 
 .dropdown {
