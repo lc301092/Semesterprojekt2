@@ -20,20 +20,31 @@ body {
 }
 
 .container {
+    position: absolute;
     background-color: white;
     width: 400px;
     height: 300px;
     text-align: center;
-    margin: 0 auto;
-    padding: 15px;
-    margin-top: 200px;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
 }
 
-
-/* hvordan center vertical uden margin-top? */
-
-
-/* hvorfor er den ikke responsiv længere? */
+.padlock {
+ position: absolute;
+margin-top:5px; 
+margin-left: 50px;
+ 
+ 
+ 
+}
+.user{
+    position: absolute;
+    margin-top: -60px;
+    margin-left: 50px;
+    
+    
+}
 
 input[type=text],
 input[type=password] {
@@ -43,17 +54,28 @@ input[type=password] {
     height: 45px;
     font-size: 16px;
     margin-bottom: 15px;
-    margin-top: 15px;
-    background-image: url("../img/user23.png");
-    background-repeat: no-repeat;
+    margin-top: 5px;
     background-color: white;
-    padding: 12px 20px 12px 60px;
+    padding: 0px 50px 0px 50px;
 }
 
 input[type=password] {
-    background-image: url("../img/padlock233.png");
     background-color: white;
+    
 }
+
+/*
+sørger for at autofill ikke bliver gul
+*/
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+    border: -3px solid #c53c37;
+    -webkit-border: 1px solid #c53c37;
+    
+    
+}
+
+
 
 input[type=button],
 input[type=submit] {
@@ -65,7 +87,7 @@ input[type=submit] {
     cursor: pointer;
     width: 300px;
     height: 45px;
-    margin-bottom: 20px;
+    margin-top: 0px;
 }
 
 
@@ -74,27 +96,3 @@ input[type=submit] {
 
 /* Responsiv del */
 
-@media screen and (max-width: 480px) {
-    .container {
-        width: 90%;
-        height: auto;
-        padding: 0 5%;
-    }
-}
-
-@media screen and (max-width: 332px) {
-    .container {
-        height: 350px;
-    }
-    input[type=text],
-    input[type=password] {
-        width: 275px;
-        height: auto;
-    }
-    input[type=button],
-    input[type=submit],
-    input[type=reset] {
-        width: 150px;
-        height: 30px;
-    }
-}
