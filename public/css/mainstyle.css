@@ -9,8 +9,9 @@ body {
 .newsbox {
     background: rgba(255, 255, 255, 1);
     overflow-y: auto;
-    height: 300px;
-    max-height: 500px;
+    height: 200px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .newsbox button {
@@ -26,9 +27,7 @@ body {
     transform: translate(-100%, 0%);
 }
 
-.newsTab {
-    border: 1px solid black;
-}
+.newsTab {}
 
 
 /*infobox styles*/
@@ -36,8 +35,10 @@ body {
 .infobox {
     background: rgba(255, 255, 255, 1);
     overflow-y: auto;
-    height: 300px;
+    height: 200px;
     max-height: 500px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 
@@ -103,13 +104,16 @@ body {
 #calendarHolder {
     background: rgba(255, 255, 255, 1);
     /*	    border-style: solid;*/
-    height: 300px;
+    height: 500px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .topbar {
     background: rgba(255, 255, 255, 1);
     height: 60px;
     margin: 0px;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .body {
@@ -120,9 +124,6 @@ body {
 .topbar p {
     line-height: 0px;
 }
-
-
-/* Booking oversigt styles */
 
 
 /* The Modal (background) */
@@ -184,18 +185,17 @@ body {
     background-color: #c53c37;
     color: white;
     width: 110px;
-    height: 25px;
+    height: 60px;
     font-size: 16px;
     border: none;
     cursor: pointer;
 }
 
 .dropdown {
-    position: relative;
-    left: 100%;
+    position: fixed;
     display: inline-block;
-    transform: translate(-100%, 0%);
     z-index: 1;
+    right: 0%;
 }
 
 .dropdown-content {

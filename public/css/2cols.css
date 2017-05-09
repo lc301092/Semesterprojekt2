@@ -1,21 +1,25 @@
-/*  GRID OF TWO   ============================================================================= */
-
+/*  GRID OF TWO  */
 
 .span_2_of_2 {
-	width: 100%;
+    width: 100%;
 }
 
 .span_1_of_2 {
-	width: 49.2%;
+    width: 48%;
 }
+
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-	.span_2_of_2 {
-		width: 100%; 
-	}
-	.span_1_of_2 {
-		width: 100%; 
-	}
+    .col {
+        margin: 1% 0 1% 0%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .span_2_of_2,
+    .span_1_of_2 {
+        width: 100%;
+    }
 }
