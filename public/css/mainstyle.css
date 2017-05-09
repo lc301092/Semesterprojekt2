@@ -37,8 +37,7 @@ body {
 #calendarHolder {
     background: rgba(255, 255, 255, 0.92);
     border-radius: 10px;
-    /*	    border-style: solid;*/
-	height: 535px;
+	height: 600px;
     border: solid 3pt #c53c37;
     box-shadow: 0 0 0pt 3pt #900903;
 }
@@ -53,6 +52,7 @@ body {
 .body {
     margin-left: 2%;
     margin-right:2%;
+    height: 100%;
 }
 
 .topbar p {
