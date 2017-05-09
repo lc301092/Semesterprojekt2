@@ -52,7 +52,7 @@ function createDialog() {
         var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr("type", "submit").attr('onclick', 'createNews();');
 
         //Smidder dialogboxens div tag ind i dokumentet
-        $(".body").prepend(div);
+        $(document.body).prepend(div);
         //Smidder top baren og hovedfeltet ind i dialogboxen
         $(".dialogBox").first().append(top, main);
         //Smidder formen ind i hovedfeltet
