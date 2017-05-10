@@ -88,6 +88,7 @@ h1 {
     border-radius: 5px;
     max-width: 575px;
     min-width: 200px;
+    
 }
 
 .infobox_header {
@@ -104,37 +105,6 @@ h1 {
     margin-top: -10px;
     margin-bottom: 25px;
 }
-
-.konto {
-    font-size: 20px;
-    font-family: "Times New Roman", Georgia, Serif;
-    padding-left: 270px;
-}
-
-.kontonr {
-    font-size: 30px;
-    font-family: "Times New Roman", Georgia, Serif;
-    padding-left: 240px;
-    padding-top: 10px;
-    margin-bottom: 0px;
-    color: #c53c37;
-}
-
-.reg {
-    font-size: 20px;
-    font-family: "Times New Roman", Georgia, Serif;
-    padding-left: 50px;
-    margin-top: -15px;
-}
-
-.regnr {
-    font-size: 30px;
-    font-family: "Times New Roman", Georgia, Serif;
-    padding-left: 50px;
-    margin-top: -27px;
-    color: #c53c37;
-}
-
 
 /* createDialog */
 
@@ -186,6 +156,8 @@ h1 {
     /*max-width: 1200px;*/
     min-width: 360px;
     margin-top: 0;
+    position:relative;
+    top:40px;
 }
 
 .kalender_head {
@@ -202,6 +174,7 @@ h1 {
     margin: 0px;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
     position: fixed;
+    z-index: 1;
 }
 
 .body {
