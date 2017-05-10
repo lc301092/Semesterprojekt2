@@ -81,6 +81,45 @@ router.route('/main')
         });
     });
 
+router.route('/editnews')
+    /* POST route for main page. */
+    .post(function (req, res) {
+        //Define title, date and paragraph from inputs on main page
+        var index = req.body.index;
+        var title = req.body.title;
+        var paragraph = req.body.paragraph;
+        // Request our DB variable
+        var db = req.db;
+        db.get('newscollection').find({}).then((data) => {
+            console.log('[ *** ');
+            console.log(data[0].news);
+            var i = data[0].news.length - index - 1;
+            console.log(i, data[0].news[i]);
+            console.log(' *** ]');
+
+            data[0].news[i].title = title;
+            data[0].news[i].paragraph = paragraph;
+
+            console.log(i, data[0].news[i]);
+
+            db.get('newscollection').update({}, {
+                    $set: {
+                        "news": data[0].news
+                    }
+                }),
+                function (err, doc) {
+                    if (err) {
+                        // If it failed, return error
+                        res.send("There was a problem adding the information to the database.");
+                    } else {
+                        // And forward to success page
+                        res.send("Jamie");
+                    }
+                }
+        });
+    });
+
+
 /* Login page. */
 router.route('/')
     /* GET route for login page. */
