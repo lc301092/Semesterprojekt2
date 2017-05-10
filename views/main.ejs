@@ -68,17 +68,19 @@
 			<ul>
 				<%userlist.forEach(function(user) {%>
 					<li>
-						<a href="mailto:<%=user.email%>">
+						<a<%=user.email%>>
 							<%=user.username%>
-						</a>
+								</a>
 					</li>
 					<% }) %>
 			</ul>
 			<h2>dbtest - .post</h2>
 			<form id="formAddUser" name="adduser" method="post" action="/main">
+
 				<input id="inputUserName" type="text" placeholder="username" name="username">
-				<input id="inputUserEmail" type="text" placeholder="email" name="email">
-				<input id="inputUserBookings" type="text" placeholder="date" name="bookings">
+
+				<input id="inputUserf" type="text" placeholder="date" name="bookings">
+
 				<button id="btnSubmit" type="submit">submit</button>
 			</form>
 

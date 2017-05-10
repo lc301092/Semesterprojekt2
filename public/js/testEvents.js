@@ -1,9 +1,9 @@
-function testCalendar() {
+function addAndRenderBooking(username, date) {
 	console.log("is testCalendar wokring?");
-	var testEvent = {
-		title: 'event1',
-		start: '2017-05-05'
+	var event = {
+		title: username,
+		start: date
 	}
-	$('#calendar').fullCalendar('addEvent', testEvent);
-	$('#calendar').fullCalendar('renderEvent', testEvent, true);
+	$('#calendar').fullCalendar('addEvent', event);
+	$('#calendar').fullCalendar('renderEvent', event, true);
 }
