@@ -109,7 +109,18 @@ $(document).on('click', '.editNews', function () {
 //Sletter en nyhed
 $(document).on('click', '.deleteNews', function () {
     //Sletter nyhedens parent div m. alt indhold
+    var index = $(this).parent('div').index() - 1;
     $(this).parent('div').remove();
+    $.ajax({
+            url: '/main',
+            method: 'DELETE',
+            data: {
+                'index': index
+            }
+        })
+        .done(function (data) {
+            console.log('from server: ', data);
+        });
 });
 
 

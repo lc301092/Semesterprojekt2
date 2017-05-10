@@ -25,19 +25,6 @@ router.route('/main')
         var dato = req.body.newDato;
         var paragraph = req.body.newParagraph;
 
-        //Jamie WIP
-        //var ID = 0;
-        //var thisCollection = db.get('newscollection').find({});    
-        //        var newsList = thisCollection[0].news;
-        //        
-        //        for (i = 0; i < newsList.length; i++) {
-        //            if (newsList.ID.parseInt() >= ID)
-        //            {
-        //                ID = newsList.ID.parseInt() + 1;
-        //                ID = ID.toString();
-        //            }
-        //        }
-
         // Push data to newscollection
         db.get('newscollection').update({}, {
                 "$push": {
@@ -45,7 +32,6 @@ router.route('/main')
                         "title": title,
                         "paragraph": paragraph,
                         "dato": dato,
-                        //                        "ID": ID
                     }
                 }
             },
@@ -60,7 +46,40 @@ router.route('/main')
             });
     })
     /* DELETE route for main page. */
-    .delete(function (req, res, next) {});
+    .delete(function (req, res, next) {
+        console.log("delete function works");
+        console.log(req.body);
+        var index = req.body.index;
+
+        // Require our DB variable
+        var db = req.db;
+
+        db.get('newscollection').find({}).then((data) => {
+            console.log('[ *** ');
+            console.log(data[0].news);
+            var i = data[0].news.length - index - 1;
+            console.log(i, data[0].news[i]);
+            console.log(' *** ]');
+
+            data[0].news.splice(i, 1);
+            console.log('new array', data[0].news);
+            // delete data to newscollection
+            db.get('newscollection').update({}, {
+                    "$splice": {
+                        "news": {}
+                    }
+                },
+                function (err, doc) {
+                    if (err) {
+                        // If it failed, return error
+                        res.send("There was a problem deleting the object in the database.");
+                    } else {
+                        // And forward to success page
+                        res.redirect("main");
+                    }
+                });
+        });
+    });
 
 /* Login page. */
 router.route('/')
