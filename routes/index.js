@@ -55,18 +55,18 @@ router.route('/main')
         var db = req.db;
 
         db.get('newscollection').find({}).then((data) => {
-            console.log('[ *** ');
-            console.log(data[0].news);
+            //            console.log('[ *** ');
+            //            console.log(data[0].news);
             var i = data[0].news.length - index - 1;
-            console.log(i, data[0].news[i]);
-            console.log(' *** ]');
+            //            console.log(i, data[0].news[i]);
+            //            console.log(' *** ]');
 
             data[0].news.splice(i, 1);
-            console.log('new array', data[0].news);
+            //           console.log('new array', data[0].news);
             // delete data to newscollection
             db.get('newscollection').update({}, {
-                    "$splice": {
-                        "news": {}
+                    "$set": {
+                        "news": data[0].news
                     }
                 },
                 function (err, doc) {
@@ -74,8 +74,8 @@ router.route('/main')
                         // If it failed, return error
                         res.send("There was a problem deleting the object in the database.");
                     } else {
-                        // And forward to success page
-                        res.redirect("main");
+                        // And respond with complete
+                        res.send("Collection updated");
                     }
                 });
         });
