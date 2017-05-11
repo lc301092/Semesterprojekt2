@@ -4,8 +4,8 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
     for (var i = 0; i < newslist.length; i++) {
         //Definerer elementerne der skal være i nyheden
         var div = $("<div></div>").addClass("newsTab");
-        var deleteButton = $("<button>-</button>").addClass("deleteNews");
-        var editButton = $("<button>...</button>").addClass("editNews");
+        var deleteButton = $("<button>Slet nyhed</button>").addClass("deleteNews");
+        var editButton = $("<button>Rediger nyhed</button>").addClass("editNews");
         var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
         var dato = $("<h3></h3>").attr("name", "dato");
         var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
@@ -68,8 +68,8 @@ function createDialog() {
 function createNews() {
     //Definerer elementerne der skal være i nyheden
     var div = $("<div></div>").addClass("newsTab");
-    var deleteButton = $("<button>-</button>").addClass("deleteNews");
-    var editButton = $("<button>...</button>").addClass("editNews");
+    var deleteButton = $("<button>Slet nyhed</button>").addClass("deleteNews");
+    var editButton = $("<button>Rediger nyhed</button>").addClass("editNews");
     var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
     var dato = $("<h3></h3>").attr("name", "dato");
     var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
@@ -89,15 +89,34 @@ function createNews() {
 //Redigerer en nyhed
 $(document).on('click', '.editNews', function () {
     //Finder alle nyheder i nuværende div, og gør dem redigerbare
+    var index = $(this).parent('div').index() - 1;
     var x = $(this).parent('div').find('.news');
     //Ændrer stadie mellem redigerbar og låst
     if (x.attr('contentEditable') == "true") {
         x.attr('contentEditable', 'false');
-        this.innerHTML = "...";
+
+        this.innerHTML = "Rediger nyhed";
+
+        var title = $(this).parent('div').find('h1').text();
+        var paragraph = $(this).parent('div').find('p').text();
+        console.log("title is: " + title, "paragraph is: " + paragraph);
+
+        $.ajax({
+                url: '/editnews',
+                method: 'POST',
+                data: {
+                    'index': index,
+                    "title": title,
+                    "paragraph": paragraph
+                }
+            })
+            .done(function (data) {
+                console.log('from server: ', data);
+            });
         //Save new values to the database
     } else {
         x.attr('contentEditable', 'true');
-        this.innerHTML = "Save";
+        this.innerHTML = "Gem nyhed";
     }
 });
 
@@ -105,7 +124,18 @@ $(document).on('click', '.editNews', function () {
 //Sletter en nyhed
 $(document).on('click', '.deleteNews', function () {
     //Sletter nyhedens parent div m. alt indhold
+    var index = $(this).parent('div').index() - 1;
     $(this).parent('div').remove();
+    $.ajax({
+            url: '/main',
+            method: 'DELETE',
+            data: {
+                'index': index
+            }
+        })
+        .done(function (data) {
+            console.log('from server: ', data);
+        });
 });
 
 
