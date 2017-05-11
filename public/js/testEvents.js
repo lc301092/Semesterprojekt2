@@ -14,8 +14,16 @@ function initUnavailableDates() {
 	addAndRenderBooking('blokeret', '2017-05-13', 'black');
 	addAndRenderBooking('blokeret', '2017-05-14', 'black');
 	addAndRenderBooking('blokeret', '2017-05-15', 'black');
+
+	addAndRenderBooking('blokeret', '2017-06-13', 'black');
+	addAndRenderBooking('blokeret', '2017-07-14', 'black');
+	addAndRenderBooking('blokeret', '2017-07-15', 'black');
 	// resereved 
 	addAndRenderBooking('reserveret', '2017-05-27', 'red');
-	addAndRenderBooking('reserveret', '2017-05-06', 'red');
+	addAndRenderBooking('reserveret', '2017-06-01', 'red');
 	addAndRenderBooking('reserveret', '2017-05-17', 'red');
+
+	addAndRenderBooking('reserveret', '2017-07-27', 'red');
+	addAndRenderBooking('reserveret', '2017-07-06', 'red');
+	addAndRenderBooking('reserveret', '2017-07-17', 'red');
 }

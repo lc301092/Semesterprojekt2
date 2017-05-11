@@ -1,145 +1,145 @@
 body {
-    background: url("../img/lejelighed.jpg") no-repeat center center fixed;
-    background-size: cover;
-    min-width: 400px;
+	background: url("../img/lejelighed.jpg") no-repeat center center fixed;
+	background-size: cover;
+	min-width: 400px;
 }
 
 h1 {
-    color: black;
-    font-size: 1.5em;
-    font-family: "Times New Roman", Georgia, Serif;
-    text-transform: uppercase;
-    margin: 10px;
+	color: black;
+	font-size: 1.5em;
+	font-family: "Times New Roman", Georgia, Serif;
+	text-transform: uppercase;
+	margin: 10px;
 }
 
 
 /* Newsbox styles */
 
 .newsbox {
-    font-family: "Times New Roman", Georgia, Serif;
-    background: rgba(255, 255, 255, 1);
-    overflow-y: auto;
-    height: 250px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    max-width: 575px;
-    min-width: 200px;
+	font-family: "Times New Roman", Georgia, Serif;
+	background: rgba(255, 255, 255, 1);
+	overflow-y: auto;
+	height: 250px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	max-width: 575px;
+	min-width: 200px;
 }
 
 .nyhed_header {
-    font-size: 25px;
-    padding-left: 30px;
-    letter-spacing: 5px;
+	font-size: 25px;
+	padding-left: 30px;
+	letter-spacing: 5px;
 }
 
 .newsbox button {
-    border-radius: 5px;
-    background-color: #c53c37;
-    color: white;
+	border-radius: 5px;
+	background-color: #c53c37;
+	color: white;
 }
 
 .createNews {
-    position: relative;
-    top: 0%;
-    left: 100%;
-    transform: translate(-100%, 0%);
+	position: relative;
+	top: 0%;
+	left: 100%;
+	transform: translate(-100%, 0%);
 }
 
 .newsTab h1 {
-    text-align: center;
-    color: black;
-    font-size: 1.5em;
-    font-family: "Times New Roman", Georgia, Serif;
-    text-transform: none;
+	text-align: center;
+	color: black;
+	font-size: 1.5em;
+	font-family: "Times New Roman", Georgia, Serif;
+	text-transform: none;
 }
 
 .infobox h1 {
-    text-align: center;
+	text-align: center;
 }
 
 .newsTab h3 {
-    text-align: center;
+	text-align: center;
 }
 
 .newsTab p {
-    text-align: center;
+	text-align: center;
 }
 
 .line-separator {
-    height: 0.8px;
-    background: #c53c37;
-    border-bottom: 1px solid #c53c37;
-    width: 250px;
-    margin-left: 20px;
-    margin-top: 15px;
-    margin-bottom: 20px;
+	height: 0.8px;
+	background: #c53c37;
+	border-bottom: 1px solid #c53c37;
+	width: 250px;
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 20px;
 }
 
 
 /*infobox styles*/
 
 .infobox {
-    font-family: "Times New Roman", Georgia, Serif;
-    background: rgba(255, 255, 255, 1);
-    overflow-y: auto;
-    height: 250px;
-    max-height: 500px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    max-width: 575px;
-    min-width: 200px;
-    
+	font-family: "Times New Roman", Georgia, Serif;
+	background: rgba(255, 255, 255, 1);
+	overflow-y: auto;
+	height: 250px;
+	max-height: 500px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	max-width: 575px;
+	min-width: 200px;
 }
 
 .infobox_header {
-    font-size: 25px;
-    padding-left: 30px;
-    letter-spacing: 5px;
+	font-size: 25px;
+	padding-left: 30px;
+	letter-spacing: 5px;
 }
 
 .info {
-    font-family: "Times New Roman", Georgia, Serif;
-    font-size: 18px;
-    padding-left: 40px;
-    margin-right: 5px;
-    margin-top: -10px;
-    margin-bottom: 25px;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size: 18px;
+	padding-left: 40px;
+	margin-right: 5px;
+	margin-top: -10px;
+	margin-bottom: 25px;
 }
+
 
 /* createDialog */
 
 .dialogBox {
-    position: fixed;
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 300px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+	position: fixed;
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 300px;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
 }
 
 .main {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    height: 30%;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	height: 30%;
 }
 
 .cancelNews {
-    bottom: 0px;
-    left: 50%;
+	bottom: 0px;
+	left: 50%;
 }
 
 .top {}
@@ -148,118 +148,118 @@ h1 {
 /* Kalender styles*/
 
 #calendarHolder {
-    font-family: "Times New Roman", Georgia, Serif;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 5px;
-    height: 470px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    /*max-width: 1200px;*/
-    min-width: 360px;
-    margin-top: 0;
-    position:relative;
-    top:40px;
+	font-family: "Times New Roman", Georgia, Serif;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 5px;
+	height: 470px;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+	/*max-width: 1200px;*/
+	min-width: 360px;
+	margin-top: 0;
+	position: relative;
+	top: 40px;
 }
 
 .kalender_head {
-    text-align: center;
-    position: 150
+	text-align: center;
+	position: 150
 }
 
 
 /* topbar styles*/
 
 .topbar {
-    background: rgba(255, 255, 255, 1);
-    height: 60px;
-    margin: 0px;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    z-index: 1;
+	background: rgba(255, 255, 255, 1);
+	height: 60px;
+	margin: 0px;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+	position: fixed;
+	z-index: 1;
 }
 
 .body {
-    margin-left: 2%;
-    margin-right: 2%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
 .topbar p {
-    line-height: 0px;
+	line-height: 0px;
 }
 
 
 /* The Modal (background) */
 
 .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 100px;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
 }
 
 
 /* Modal Content */
 
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
 }
 
 
 /* The Close Button */
 
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 
 /*Dropdown menu*/
 
 .dropbtn {
-    background-color: #c53c37;
-    color: white;
-    width: 110px;
-    height: 60px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+	background-color: #c53c37;
+	color: white;
+	width: 110px;
+	height: 60px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
 }
 
 .logud {
-    background-color: #c53c37;
-    color: white;
-    width: 110px;
-    height: 60px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+	background-color: #c53c37;
+	color: white;
+	width: 110px;
+	height: 60px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
 }
 
 
@@ -289,58 +289,57 @@ h1 {
 
 */
 
-.logudPlacering{
-    position: absolute;
-    display: inline-block;
-    right: 120px;
+.logudPlacering {
+	position: absolute;
+	display: inline-block;
+	right: 120px;
 }
 
 .dropdown {
-    position: absolute;
-    display: inline-block;
-    right: 0%;
+	position: absolute;
+	display: inline-block;
+	right: 0%;
 }
 
-
 .dropdown-content {
-    display: none;
-    position: relative;
-    background-color: #f9f9f9;
-    min-width: 110px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    /*    z-index: 1;*/
+	display: none;
+	position: relative;
+	background-color: #f9f9f9;
+	min-width: 110px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	/*    z-index: 1;*/
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+	display: block;
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #e09d38;
+	background-color: #e09d38;
 }
 
 .konto {
-    font-size: 1.3em;
-    color: rgb(150, 20, 0);
+	font-size: 1.3em;
+	color: rgb(150, 20, 0);
 }
 
 .infobox p {
-    margin: 3.43%;
-    font-size: 1.2em;
+	margin: 3.43%;
+	font-size: 1.2em;
 }
 
 .konto,
 .kontoText {
-    text-align: center;
+	text-align: center;
 }
