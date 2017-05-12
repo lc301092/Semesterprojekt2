@@ -5,56 +5,26 @@
     <title>Portfolio</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
-    <script>
-        // istedet for hardcodet brugernavn og password kan man referere til databasen hvor der itereres over samtlige brugere (som gerne skulle være et array) - Miriam
-        var testUsers = [
-            [
-                "test123",
-                "123456"
-            ],
-            [
-                "123test",
-                "654321"
-            ]
-        ];
-
-
-
-        function validateForm() {
-            var x = document.forms["myForm"]["User"].value;
-            var y = document.forms["myForm"]["Password"].value;
-            for (i = 0; i <= 1; i++) {
-                if (x == testUser[i][0] && y == testUser[i][1]) {
-                    return true;
-                } else {
-                    alert("Forkert brugernavn eller password")
-                    return false;
-                }
-
-            }
-        }
-    </script>
+    <link rel="stylesheet" type="text/css" href="css/12cols.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </head>
 
 <body>
     <div class="container">
         <p class="overskrift">Velkommen</p>
-        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
+        <form name="myForm" action="/signin" method="post">
             <div>
                 <input id="username" type="text" name="User" placeholder="Brugernavn" required="">
                 <div class="user">
                     <img src="../img/user23.png" height="45px">
-
                 </div>
-
-
+                <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required="">
                 <div class="padlock">
                     <img src="../img/padlock233.png" height="45px">
                 </div>
-                <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required="">
             </div>
-            <br />
-            <br />
+            <br/><br/>
             <!-- <input type="checkbox" name="remember" value="checked">Husk mig<br /><br /><br /> -->
             <input type="submit" name="submit" value="LOG IND">
         </form>
