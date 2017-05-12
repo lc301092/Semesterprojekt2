@@ -196,20 +196,19 @@ router.route('/signin')
     .post(function (req, res) {
         var x = req.body.User;
         var y = req.body.Password;
+        console.log("Form username and password:");
+        console.log("username x: " + x, "password y: " + y);
         // getcollectionfind iterate over users etc
         var db = req.db;
         db.get('usercollection').find({}).then((data) => {
-            console.log("Server username and password:");
-            console.log("username: " + data[0].username, "password: " + data[0].userPassword);
-            console.log("Form username and password:");
-            console.log("username x: " + x, "password y: " + y);
             for (var i = 0; i < data.length; i++) {
+                console.log("Server username and password:");
+                console.log("username: " + data[i].username, "password: " + data[i].userPassword);
                 if (x == data[i].username && y == data[i].userPassword) {
                     return res.redirect("/main");
-                } else {
-                    return res.redirect('/');
                 }
             }
+            return res.redirect('/');
         });
     });
 
