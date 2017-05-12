@@ -8,40 +8,12 @@
     <link rel="stylesheet" type="text/css" href="css/12cols.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script>
-        function validateForm(event) {
-            console.log('hej');
-            var x = document.forms["myForm"]["User"].value;
-            var y = document.forms["myForm"]["Password"].value;
-            $.ajax({
-                    url: '/signin',
-                    method: 'POST',
-                    data: {
-                        userName: 'bbb'
-                    }
-                })
-                .done(function(dataStr) {
-                    var data = JSON.parse(dataStr);
-
-                    console.log('from server: ', data);
-                    for (var i = 0; i < data.length; i++) {
-                        if (x == data[i].username && y == data[i].password) {
-                            return true;
-                        } else {
-                            alert("Forkert brugernavn eller password")
-                            return false;
-                        }
-                    }
-                });
-        };
-
-    </script>
 </head>
 
 <body>
     <div class="container">
         <p class="overskrift">Velkommen</p>
-        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
+        <form name="myForm" action="/signin" method="post">
             <div>
                 <input id="username" type="text" name="User" placeholder="Brugernavn" required="">
                 <div class="user">
