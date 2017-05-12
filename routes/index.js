@@ -41,7 +41,7 @@ router.route('/main')
                     res.send("There was a problem adding the information to the database.");
                 } else {
                     // And forward to success page
-                    res.redirect("main");
+                    res.redirect("/main");
                 }
             });
     })
@@ -123,17 +123,17 @@ router.route('/editnews')
 router.route('/calendarbooking')
     //GET route for calendar
     .post(function (req, res) {
-        console.log('calendarbooking request ', req.body);
+        //        console.log('calendarbooking request ', req.body);
         // getcollectionfind iterate over users etc
         var db = req.db;
         db.get('usercollection').find({}).then((data) => {
             var t = [];
             for (var i = 0; i < data.length; i++) {
                 var user = data[i].username;
-                console.log("users " + user)
+                //                console.log("users " + user)
                 for (var j = 0; j < data[i].bookings.length; j++) {
                     var date = data[i].bookings[j];
-                    console.log("date " + date)
+                    //                    console.log("date " + date)
                     t.push({
                         status: user,
                         date: date
@@ -150,24 +150,17 @@ router.route('/calendarbookingpost')
     .post(function (req, res) {
         console.log('post request ', req.body);
         var date = req.body.date;
+        var currentUser = req.body.currentUser;
         // Request our DB variable
         var db = req.db;
-        //		db.get('usercollection').find({}).then((data) => {
-        //			console.log('[ *** ');
-        //			//placeholder: index for datoen bookningen skal ske
-        //			console.log(' *** ]');
-        //console.log(i, data[0].news[i]);
-
-        // NB virker først når currentUser virker og har _id med sig fra database.
         db.get('usercollection').update({
-                // eksempel med usertest1
-                _id: '5915c116f36d282ace28e293'
-                // _id: currentUser._id
+                username: {
+                    $in: [currentUser]
+                }
             }, {
                 //scope er med users ikke med bookings. DET SKAL FIKSES 
                 $push: {
                     "bookings": date
-
                 }
             }),
             function (err, doc) {
@@ -187,6 +180,7 @@ router.route('/')
     /* GET route for login page. */
     .get(function (req, res) {
         //Load login page
+        var currentUser = req.currentUser;
         res.render('login', {
             title: 'login'
         });
@@ -205,10 +199,11 @@ router.route('/signin')
                 //                console.log("Server username and password:");
                 //                console.log("username: " + data[i].username, "password: " + data[i].userPassword);
                 if (x == data[i].username && y == data[i].userPassword) {
-                    return res.redirect("/main");
+                    res.cookie('currentUser', data[i].username);
+                    res.redirect('/main');
                 }
             }
-            return res.redirect('/');
+            res.redirect('/');
         });
     });
 
