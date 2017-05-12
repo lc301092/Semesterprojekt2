@@ -35,25 +35,17 @@
     <!--Top baren-->
     <div class="section group">
         <div class='topbar col span_12_of_12'>
-            <img src="../img/logo.PNG" height="60px">
+            <img src="../img/logo.PNG" height="50px">
             <!--Dropdown menuen-->
             <div class="logudPlacering">
                 <button class="logud"><a onclick=location.href='/'>LOG UD</a></button>
                 <!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    <a href="#">Option 1</a>
-                    <a href="#">Option 2</a>
-                    <a href='#'>Option 3</a>
-                </div>
-            </div>
         </div>
     </div>
 
     <!--Hjemmesidens "body"-->
-    <div class="section group">
+    <div class="body section group">
         <!--Mellemrum til venstre for centrering-->
         <div class="col span_1_of_12"></div>
 
@@ -63,78 +55,62 @@
 
         <div class="col span_10_of_12">
 
-            <div class="body section group">
+            <div class="section group">
 
                 <!-- Kalenderboks-->
 
-                <div id='calendarHolder' class='col span_12_of_12'>
+                <div id='calendarHolder' class='col span_8_of_12'>
 
                     <iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
 
+                    <!--Infoboxen-->
+                    <div class="section group">
+                        <div class='infobox col span_12_of_12'>
+                            <h1>Praktisk information</h1>
+                            <div class="line-separator"></div>
+                            <!--Information om betaling-->
+                            <p>Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
+                            <div class="line-separator"></div>
+                            <!--Konto- og reg. nr.-->
+                            <div class="section group">
+                                <div class="col span 1_of_12"></div>
+                                <!--Registreringsnummer-->
+
+                                <div class="col span_5_of_12">
+
+                                    <div class="kontoText">Reg. nr.</div>
+
+                                    <br>
+
+                                    <div class="konto">1234</div>
+
+                                </div>
+
+                                <!--Kontonummer-->
+
+                                <div class="col span_5_of_12">
+
+                                    <div class="kontoText">Konto nr.:</div>
+
+                                    <br>
+
+                                    <div class="konto">xxx123456xxx</div>
+                                </div>
+
+                                <div class="col span 1_of_12"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
-            </div>
-
-            <!--Infoboxen-->
-
-            <div class="body section group">
-
-                <div class='newsbox col span_6_of_12'>
+                <div class='newsbox col span_4_of_12'>
 
                     <h1>Nyheder</h1>
 
                     <button class="createDialog" onclick="createDialog();">+</button>
-
-                </div>
-
-                <div class='infobox col span_6_of_12'>
-
-                    <h1>Praktisk information</h1>
-
-                    <div class="line-separator"></div>
-
-                    <!--Information om betaling-->
-
-                    <p>Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
-
-
-
-                    <div class="line-separator"></div>
-
-
-
-                    <!--Konto- og reg. nr.-->
-
-                    <div class="section group">
-
-                        <div class="col span 1_of_12"></div>
-
-                        <!--Registreringsnummer-->
-
-                        <div class="col span_5_of_12">
-
-                            <div class="kontoText">Reg. nr.</div>
-
-                            <br>
-
-                            <div class="konto">1234</div>
-
-                        </div>
-
-                        <!--Kontonummer-->
-
-                        <div class="col span_5_of_12">
-
-                            <div class="kontoText">Konto nr.:</div>
-
-                            <br>
-
-                            <div class="konto">xxx123456xxx</div>
-                        </div>
-
-                        <div class="col span 1_of_12"></div>
-
-                    </div>
 
                 </div>
 
