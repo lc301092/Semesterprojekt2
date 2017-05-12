@@ -414,7 +414,7 @@ a[data-goto]:hover {
 }
 
 .fc-scroller {
-	-webkit-overflow-scrolling: touch
+	/*	-webkit-overflow-scrolling: touch*/
 }
 
 .fc-row.fc-rigid,
@@ -425,7 +425,9 @@ a[data-goto]:hover {
 .fc-scroller>.fc-day-grid,
 .fc-scroller>.fc-time-grid {
 	position: relative;
-	width: 100%
+	width: 100%;
+	height: auto!important;
+	/*	overflow-y: auto;*/
 }
 
 .fc-event {
