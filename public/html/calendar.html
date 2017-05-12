@@ -6,13 +6,14 @@
 	<link href='../css/fullcalendar.min.css' rel='stylesheet' />
 	<link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 	<script src='../js/lib/moment.min.js'></script>
-	<script src='../js/lib/jquery.min.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="/js/testEvents.js"></script>
 	<script src='../js/lib/fullcalendar.min.js'></script>
 
 	<script>
 		$(document).ready(function () {
-
 			$('#calendar').fullCalendar({
 				height: "auto",
 				defaultDate: $('#calendar').fullCalendar('today'),
@@ -29,8 +30,20 @@
 							start: start,
 							color: 'green'
 						};
+						//						$.ajax({
+						//								url: '/calendarbookingpost',
+						//								method: 'POST',
+						//								data: {
+						//									date: eventData.start
+						//								}
+						//							})
+						//							.done(function (dataStr) {
+						//								var data = JSON.parse(dataStr);
+						//								console.log('from server: ', data);
+						//							});
 						$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 					}
+
 					$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
 				},
 				editable: false,
