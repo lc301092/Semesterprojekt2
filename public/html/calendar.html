@@ -13,6 +13,13 @@
     <script src='../js/lib/fullcalendar.min.js'></script>
 
     <script>
+        var color;
+        var currentUser = localStorage.getItem('currentUser');
+        if (currentUser != 'admin') {
+            color = "#1E90FF";
+        } else {
+            color = "black";
+        }
         $(document).ready(function() {
             $('#calendar').fullCalendar({
                 height: "auto",
@@ -24,9 +31,9 @@
                 select: function(start, end) {
 
                     var eventData = {
-                        title: localStorage.getItem('currentUser'), //username/id skal ind her, når det virker.
+                        title: currentUser, //username/id skal ind her, når det virker.
                         start: start,
-                        color: 'green'
+                        color: color
                     };
 
                     $.ajax({

@@ -24,7 +24,7 @@ function addAndRenderBooking(username, date, color) {
 //}
 
 function initUnavailableDates() {
-//    console.log('initUnavailableDates');
+    //    console.log('initUnavailableDates');
 
     $.ajax({
             url: '/calendarbooking',
@@ -36,16 +36,19 @@ function initUnavailableDates() {
         .done(function (dataStr) {
             var data = JSON.parse(dataStr);
             var currentUser = localStorage.getItem('currentUser');
-//            console.log('from server: ', data);
+            //            console.log('from server: ', data);
             for (var i = 0; i < data.length; i++) {
                 //                console.log(i);
                 //Skal tilføjes localuser
-                if (data[i].status == currentUser) {
+                if (data[i].status != currentUser && data[i].status != 'admin') {
                     addAndRenderBooking(data[i].status, data[i].date,
-                        "green");
-                } else if (data[i].status != currentUser) {
-                    addAndRenderBooking(data[i].status, data[i].date,
+                        "#c53c37");
+                } else if (data[i].status == 'admin') {
+                    addAndRenderBooking('Blokeret', data[i].date,
                         "black");
+                } else {
+                    addAndRenderBooking(data[i].status, data[i].date,
+                        "#1E90FF");
                 }
             }
             //            console.log(data);
