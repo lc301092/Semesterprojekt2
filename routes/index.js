@@ -199,9 +199,9 @@ router.route('/signin')
         var db = req.db;
         db.get('usercollection').find({}).then((data) => {
             var t = [];
-            for (var i = 0; i < data[0].users.length; i++) {
-                var user = data[0].users[i].username;
-                var pass = data[0].users[i].userPassword;
+            for (var i = 0; i < data.length; i++) {
+                var user = data[i].username;
+                var pass = data[i].userPassword;
                 t.push({
                     username: user,
                     password: pass

@@ -9,9 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script>
-        $('#signinform').submit(function validateForm(event) {
-            event.preventDefault();
+        function validateForm(event) {
             console.log('hej');
+            var x = document.forms["myForm"]["User"].value;
+            var y = document.forms["myForm"]["Password"].value;
             $.ajax({
                     url: '/signin',
                     method: 'POST',
@@ -21,18 +22,18 @@
                 })
                 .done(function(dataStr) {
                     var data = JSON.parse(dataStr);
-                    var x = document.forms["myForm"]["User"].value;
-                    var y = document.forms["myForm"]["Password"].value;
+
                     console.log('from server: ', data);
                     for (var i = 0; i < data.length; i++) {
                         if (x == data[i].username && y == data[i].password) {
-                            window.location.href = "/main";
+                            return true;
                         } else {
-                            alert("Forkert brugernavn eller password");
+                            alert("Forkert brugernavn eller password")
+                            return false;
                         }
                     }
                 });
-        });
+        };
 
     </script>
 </head>
@@ -40,7 +41,7 @@
 <body>
     <div class="container">
         <p class="overskrift">Velkommen</p>
-        <form id="signinform" name="myForm">
+        <form name="myForm" action="/main" onsubmit="return validateForm()" method="post">
             <div>
                 <input id="username" type="text" name="User" placeholder="Brugernavn" required="">
                 <div class="user">
