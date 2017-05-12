@@ -22,27 +22,27 @@
 				weekNumberCalculation: 'ISO',
 				selectable: true, // vælg datoer
 				select: function (start, end) {
-					var title = 1;
-					var eventData;
-					if (title) {
-						eventData = {
-							title: 'username', //username/id skal ind her, når det virker.
-							start: start,
-							color: 'green'
-						};
-						//						$.ajax({
-						//								url: '/calendarbookingpost',
-						//								method: 'POST',
-						//								data: {
-						//									date: eventData.start
-						//								}
-						//							})
-						//							.done(function (dataStr) {
-						//								var data = JSON.parse(dataStr);
-						//								console.log('from server: ', data);
-						//							});
-						$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-					}
+
+					var eventData = {
+						title: 'username', //username/id skal ind her, når det virker.
+						start: start,
+						color: 'green'
+					};
+
+					$.ajax({
+							url: '/calendarbookingpost',
+							method: 'POST',
+							// ID skal også med HER - husk at hive id med ned fra server ved login.	
+							data: {
+								date: start._d
+							}
+						})
+						.done(function (dataStr) {
+							var data = JSON.parse(dataStr);
+							console.log('from server: ', data);
+						});
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+
 
 					$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
 				},

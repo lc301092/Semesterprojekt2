@@ -123,23 +123,26 @@ router.route('/editnews')
 router.route('/calendarbooking')
 	//GET route for calendar
 	.post(function (req, res) {
-		console.log('request ', req.body);
+		console.log('calendarbooking request ', req.body);
 
 		// getcollectionfind iterate over users etc
 		var db = req.db;
 		db.get('usercollection').find({}).then((data) => {
 			var t = [];
-			for (var i = 0; i < data[0].users.length; i++) {
-				var user = data[0].users[i].username;
+			console.log(data[0].bookings);
+			var user = data[0].username;
+			for (var i = 0; i < data[0].bookings.length; i++) {
+				var date = data[0].bookings[i];
+				console.log('inde i loop ' + date);
 
-				for (var j = 0; j < data[0].users[i].bookings.length; j++) {
-					var dates = data[0].users[i].bookings[j];
+				//				for (var j = 0; j < data[0].users[i].bookings.length; j++) {
+				//					var dates = data[0].users[i].bookings[j];
 
-					t.push({
-						status: user,
-						date: dates
-					});
-				}
+				t.push({
+					status: user,
+					date: date
+				});
+				//}
 
 			}
 			//			console.log("t ", t);
@@ -151,33 +154,38 @@ router.route('/calendarbooking')
 router.route('/calendarbookingpost')
 	/* POST route for main page. */
 	.post(function (req, res) {
-		console.log('request ', req.body);
-		var date = req.body;
+		console.log('post request ', req.body);
+		var date = req.body.date;
 		// Request our DB variable
 		var db = req.db;
-		db.get('usercollection').find({}).then((data) => {
-			console.log('[ *** ');
-			//placeholder: index for datoen bookningen skal ske
-			console.log(' *** ]');
-			//console.log(i, data[0].news[i]);
-			db.get('usercollection').update({}, {
-					//scope er med users ikke med bookings. DET SKAL FIKSES 
-					$push: {
-						"bookings": {
-							date
-						}
-					}
-				}),
-				function (err, doc) {
-					if (err) {
-						// If it failed, return error
-						res.send("There was a problem adding the information to the database.");
-					} else {
-						// And forward to success page
-						res.send("editNews complete");
-					}
+		//		db.get('usercollection').find({}).then((data) => {
+		//			console.log('[ *** ');
+		//			//placeholder: index for datoen bookningen skal ske
+		//			console.log(' *** ]');
+		//console.log(i, data[0].news[i]);
+
+		// NB virker først når currentUser virker og har _id med sig fra database.
+		db.get('usercollection').update({
+				// eksempel med usertest1
+				_id: '5915c116f36d282ace28e293'
+					// _id: currentUser._id
+			}, {
+				//scope er med users ikke med bookings. DET SKAL FIKSES 
+				$push: {
+					"bookings": date
+
 				}
-		});
+			}),
+			function (err, doc) {
+				if (err) {
+					// If it failed, return error
+					res.send("There was a problem adding the information to the database.");
+				} else {
+					// And forward to success page
+					res.send("editNews complete");
+				}
+			}
+			//		});
 	});
 //
 

@@ -38,9 +38,11 @@ function initUnavailableDates() {
 			console.log('from server: ', data);
 
 			for (var i = 0; i < data.length; i++) {
+				console.log(i);
 				addAndRenderBooking(data[i].status, data[i].date,
 					'black');
 			}
+			console.log(data);
 		});
 	//	// blocked
 	//	addAndRenderBooking('blokeret', '2017-05-13', 'black');
