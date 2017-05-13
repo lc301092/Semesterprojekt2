@@ -153,19 +153,36 @@ router.route('/calendarbookingpost')
         console.log('post request ', req.body);
         var date = req.body.date;
         var currentUser = req.body.currentUser;
+        var t = [];
         // Request our DB variable
         var db = req.db;
-        db.get('usercollection').update({
-            username: {
-                $in: [currentUser]
+        db.get('usercollection').find({}).then((data) => {
+            for (var i = 0; i < data.length; i++) {
+                console.log('users: ', data[i].username);
+                for (var j = 0; j < data[i].bookings.length; j++) {
+                    var booking = data[i].bookings[j];
+                    t.push(booking);
+                }
             }
-        }, {
-            $push: {
-                "bookings": date
+            console.log('bookings: ', t);
+            if (t.includes(date) == false) {
+                db.get('usercollection').update({
+
+                    username: {
+                        $in: [currentUser]
+                    }
+                }, {
+                    $push: {
+                        "bookings": date
+                    }
+                });
             }
         });
         res.send('done');
     });
+
+
+
 
 
 
