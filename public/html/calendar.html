@@ -19,12 +19,32 @@
             color = "black";
         }
         $(document).ready(function() {
+
             $('#calendar').fullCalendar({
                 height: "auto",
                 defaultDate: $('#calendar').fullCalendar('today'),
                 weekNumbers: true,
                 weekNumbersWithinDays: true,
                 weekNumberCalculation: 'ISO',
+                viewRender: function(view, element) {
+                    var now = new Date();
+                    var end = new Date();
+                    end.setMonth(now.getMonth() + 12); //Adjust as needed
+                    now.setMonth(now.getMonth() - 3);
+                    if (view.start < now) {
+                        $('.fc-prev-button').addClass("fc-state-disabled");
+                        return false;
+                    } else {
+                        $('.fc-prev-button').removeClass("fc-state-disabled");
+                    }
+
+                    if (end < view.end) {
+                        $('.fc-next-button').addClass("fc-state-disabled");
+                        return false;
+                    } else {
+                        $('.fc-next-button').removeClass("fc-state-disabled");
+                    }
+                },
                 eventClick: function(event) {
                     var m = $.fullCalendar.moment(event.start);
                     m.stripTime();
