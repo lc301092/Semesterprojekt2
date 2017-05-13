@@ -80,6 +80,8 @@ router.route('/main')
                 });
         });
     });
+
+
 //route to edit news in newsbox
 router.route('/editnews')
     /* POST route for main page. */
@@ -152,35 +154,34 @@ router.route('/calendarbookingpost')
         var date = req.body.date;
         var currentUser = req.body.currentUser;
         // Request our DB variable
-        var db = req.db;
-        db.get('usercollection').update({
-                username: {
-                    $in: [currentUser]
+        var db = req.db; {
+            db.get('usercollection').update({
+                    username: {
+                        $in: [currentUser]
+                    }
+                }, {
+                    //scope er med users ikke med bookings. DET SKAL FIKSES 
+                    $push: {
+                        "bookings": date
+                    }
+                }),
+                function (err, doc) {
+                    if (err) {
+                        // If it failed, return error
+                        res.send("There was a problem adding the information to the database.");
+                    } else {
+                        // And forward to success page
+                        res.send("booking complete");
+                    }
                 }
-            }, {
-                //scope er med users ikke med bookings. DET SKAL FIKSES 
-                $push: {
-                    "bookings": date
-                }
-            }),
-            function (err, doc) {
-                if (err) {
-                    // If it failed, return error
-                    res.send("There was a problem adding the information to the database.");
-                } else {
-                    // And forward to success page
-                    res.send("booking complete");
-                }
-            }
+        }
     });
-
 
 /* Login page. */
 router.route('/')
     /* GET route for login page. */
     .get(function (req, res) {
         //Load login page
-        var currentUser = req.currentUser;
         res.render('login', {
             title: 'login'
         });
