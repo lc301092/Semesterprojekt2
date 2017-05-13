@@ -7,8 +7,6 @@
     <link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='../js/lib/moment.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="/js/testEvents.js"></script>
     <script src='../js/lib/fullcalendar.min.js'></script>
 
@@ -27,6 +25,26 @@
                 weekNumbers: true,
                 weekNumbersWithinDays: true,
                 weekNumberCalculation: 'ISO',
+                eventClick: function(event) {
+                    var m = $.fullCalendar.moment(event.start);
+                    m.stripTime();
+                    var date = m.format();
+                    console.log("** full date in event **" + date);
+                    $.ajax({
+                        url: '/calendarbookingdelete',
+                        method: 'DELETE',
+                        // ID skal også med HER - husk at hive id med ned fra server ved login.	
+                        data: {
+                            currentUser: localStorage.getItem('currentUser'),
+                            index: $(this).hasClass('fc-day-grid-event'),
+                            date: date
+                        }
+                    })
+                    var checkUser = $(this).children('div').children('span')[0].innerHTML;
+                    if (currentUser == checkUser) {
+                        $('#calendar').fullCalendar('removeEvents', event._id);
+                    }
+                },
                 selectable: true, // vælg datoer
                 select: function(start, end) {
 
@@ -49,20 +67,7 @@
                             var data = JSON.parse(dataStr);
                             console.log('from server: ', data);
                         });
-                    $.ajax({
-                            url: '/calendarbookingdelete',
-                            method: 'DELETE',
-                            // ID skal også med HER - husk at hive id med ned fra server ved login.	
-                            data: {
-                                date: start.format(),
-                                currentUser: localStorage.getItem('currentUser'),
-                                index: $(this).hasClass('fc-day-grid-event')
-                            }
-                        })
-                        .done(function(dataStr) {
-                            var data = JSON.parse(dataStr);
-                            console.log('from server: ', data);
-                        });
+
                     $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
 
 

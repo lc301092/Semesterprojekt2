@@ -186,26 +186,28 @@ router.route('/calendarbookingdelete')
         var index = req.body.index;
         console.log("current index: " + index);
         // Request our DB variable
-        var db = req.db; {
-            db.get('usercollection').update({
-                    username: {
-                        $in: [currentUser]
+        if (index) {
+            var db = req.db; {
+                db.get('usercollection').update({
+                        username: {
+                            $in: [currentUser]
+                        }
+                    }, {
+                        //scope er med users ikke med bookings. DET SKAL FIKSES 
+                        $pull: {
+                            "bookings": date
+                        }
+                    }),
+                    function (err, doc) {
+                        if (err) {
+                            // If it failed, return error
+                            res.send("There was a problem adding the information to the database.");
+                        } else {
+                            // And forward to success page
+                            return res.redirect("/main");
+                        }
                     }
-                }, {
-                    //scope er med users ikke med bookings. DET SKAL FIKSES 
-                    $pull: {
-                        "bookings": date
-                    }
-                }),
-                function (err, doc) {
-                    if (err) {
-                        // If it failed, return error
-                        res.send("There was a problem adding the information to the database.");
-                    } else {
-                        // And forward to success page
-                        res.send("booking deleted");
-                    }
-                }
+            }
         }
     });
 /* Login page. */
