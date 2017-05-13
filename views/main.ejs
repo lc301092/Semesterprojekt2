@@ -27,6 +27,9 @@
         var currentUser = cookieValue[1];
         //        console.log(currentUser);
         localStorage.setItem('currentUser', currentUser);
+        if (currentUser == undefined) {
+            location.href = '/'
+        };
 
     </script>
 </head>

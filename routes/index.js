@@ -177,6 +177,37 @@ router.route('/calendarbookingpost')
         }
     });
 
+router.route('/calendarbookingdelete')
+    /* DELETE route for main page. */
+    .delete(function (req, res) {
+        console.log('Delete request ', req.body);
+        var date = req.body.date;
+        var currentUser = req.body.currentUser;
+        var index = req.body.index;
+        console.log("current index: " + index);
+        // Request our DB variable
+        var db = req.db; {
+            db.get('usercollection').update({
+                    username: {
+                        $in: [currentUser]
+                    }
+                }, {
+                    //scope er med users ikke med bookings. DET SKAL FIKSES 
+                    $pull: {
+                        "bookings": date
+                    }
+                }),
+                function (err, doc) {
+                    if (err) {
+                        // If it failed, return error
+                        res.send("There was a problem adding the information to the database.");
+                    } else {
+                        // And forward to success page
+                        res.send("booking deleted");
+                    }
+                }
+        }
+    });
 /* Login page. */
 router.route('/')
     /* GET route for login page. */
