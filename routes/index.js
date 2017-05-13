@@ -41,7 +41,7 @@ router.route('/main')
                     res.send("There was a problem adding the information to the database.");
                 } else {
                     // And forward to success page
-                    res.redirect("main");
+                    res.redirect("/main");
                 }
             });
     })
@@ -80,6 +80,8 @@ router.route('/main')
                 });
         });
     });
+
+
 //route to edit news in newsbox
 router.route('/editnews')
     /* POST route for main page. */
@@ -123,25 +125,23 @@ router.route('/editnews')
 router.route('/calendarbooking')
     //GET route for calendar
     .post(function (req, res) {
-        console.log('request ', req.body);
+        //        console.log('calendarbooking request ', req.body);
         // getcollectionfind iterate over users etc
         var db = req.db;
         db.get('usercollection').find({}).then((data) => {
             var t = [];
-            for (var i = 0; i < data[0].users.length; i++) {
-                var user = data[0].users[i].username;
-
-                for (var j = 0; j < data[0].users[i].bookings.length; j++) {
-                    var dates = data[0].users[i].bookings[j];
-
+            for (var i = 0; i < data.length; i++) {
+                var user = data[i].username;
+                //                console.log("users " + user)
+                for (var j = 0; j < data[i].bookings.length; j++) {
+                    var date = data[i].bookings[j];
+                    //                    console.log("date " + date)
                     t.push({
                         status: user,
-                        date: dates
+                        date: date
                     });
                 }
-
             }
-            //			console.log("t ", t);
             res.send(JSON.stringify(t));
         });
     });
@@ -150,21 +150,19 @@ router.route('/calendarbooking')
 router.route('/calendarbookingpost')
     /* POST route for main page. */
     .post(function (req, res) {
-        console.log('request ', req.body);
-        var date = req.body;
+        console.log('post request ', req.body);
+        var date = req.body.date;
+        var currentUser = req.body.currentUser;
         // Request our DB variable
-        var db = req.db;
-        db.get('usercollection').find({}).then((data) => {
-            console.log('[ *** ');
-            //placeholder: index for datoen bookningen skal ske
-            console.log(' *** ]');
-            //console.log(i, data[0].news[i]);
-            db.get('usercollection').update({}, {
+        var db = req.db; {
+            db.get('usercollection').update({
+                    username: {
+                        $in: [currentUser]
+                    }
+                }, {
                     //scope er med users ikke med bookings. DET SKAL FIKSES 
                     $push: {
-                        "bookings": {
-                            date
-                        }
+                        "bookings": date
                     }
                 }),
                 function (err, doc) {
@@ -173,15 +171,43 @@ router.route('/calendarbookingpost')
                         res.send("There was a problem adding the information to the database.");
                     } else {
                         // And forward to success page
-                        res.send("editNews complete");
+                        res.send("booking complete");
                     }
                 }
-        });
+        }
     });
-//
 
-
-
+router.route('/calendarbookingdelete')
+    /* DELETE route for main page. */
+    .delete(function (req, res) {
+        console.log('Delete request ', req.body);
+        var date = req.body.date;
+        var currentUser = req.body.currentUser;
+        var index = req.body.index;
+        console.log("current index: " + index);
+        // Request our DB variable
+        var db = req.db; {
+            db.get('usercollection').update({
+                    username: {
+                        $in: [currentUser]
+                    }
+                }, {
+                    //scope er med users ikke med bookings. DET SKAL FIKSES 
+                    $pull: {
+                        "bookings": date
+                    }
+                }),
+                function (err, doc) {
+                    if (err) {
+                        // If it failed, return error
+                        res.send("There was a problem adding the information to the database.");
+                    } else {
+                        // And forward to success page
+                        res.send("booking deleted");
+                    }
+                }
+        }
+    });
 /* Login page. */
 router.route('/')
     /* GET route for login page. */
@@ -196,19 +222,20 @@ router.route('/signin')
     .post(function (req, res) {
         var x = req.body.User;
         var y = req.body.Password;
-        console.log("Form username and password:");
-        console.log("username x: " + x, "password y: " + y);
+        //        console.log("Form username and password:");
+        //        console.log("username x: " + x, "password y: " + y);
         // getcollectionfind iterate over users etc
         var db = req.db;
         db.get('usercollection').find({}).then((data) => {
             for (var i = 0; i < data.length; i++) {
-                console.log("Server username and password:");
-                console.log("username: " + data[i].username, "password: " + data[i].userPassword);
+                //                console.log("Server username and password:");
+                //                console.log("username: " + data[i].username, "password: " + data[i].userPassword);
                 if (x == data[i].username && y == data[i].userPassword) {
-                    return res.redirect("/main");
+                    res.cookie('currentUser', data[i].username);
+                    res.redirect('/main');
                 }
             }
-            return res.redirect('/');
+            res.redirect('/');
         });
     });
 
