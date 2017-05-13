@@ -154,61 +154,62 @@ router.route('/calendarbookingpost')
         var date = req.body.date;
         var currentUser = req.body.currentUser;
         // Request our DB variable
-        var db = req.db; {
-            db.get('usercollection').update({
-                    username: {
-                        $in: [currentUser]
-                    }
-                }, {
-                    //scope er med users ikke med bookings. DET SKAL FIKSES 
-                    $push: {
-                        "bookings": date
-                    }
-                }),
-                function (err, doc) {
-                    if (err) {
-                        // If it failed, return error
-                        res.send("There was a problem adding the information to the database.");
-                    } else {
-                        // And forward to success page
-                        res.send("booking complete");
-                    }
-                }
-        }
+        var db = req.db;
+        db.get('usercollection').update({
+            username: {
+                $in: [currentUser]
+            }
+        }, {
+            $push: {
+                "bookings": date
+            }
+        });
+        res.send('done');
     });
+
+
+
+
+
 
 router.route('/calendarbookingdelete')
     /* DELETE route for main page. */
     .delete(function (req, res) {
-        console.log('Delete request ', req.body);
+        //        console.log('Delete request ', req.body);
         var date = req.body.date;
         var currentUser = req.body.currentUser;
         var index = req.body.index;
-        console.log("current index: " + index);
+        var checkUser = req.body.checkUser;
         // Request our DB variable
-        if (index) {
-            var db = req.db; {
-                db.get('usercollection').update({
-                        username: {
-                            $in: [currentUser]
-                        }
-                    }, {
-                        //scope er med users ikke med bookings. DET SKAL FIKSES 
-                        $pull: {
-                            "bookings": date
-                        }
-                    }),
-                    function (err, doc) {
-                        if (err) {
-                            // If it failed, return error
-                            res.send("There was a problem adding the information to the database.");
-                        } else {
-                            // And forward to success page
-                            return res.redirect("/main");
-                        }
-                    }
-            }
+        if (index && currentUser == 'admin' && checkUser != 'Blokeret' && checkUser != 'admin') {
+            console.log('*** admin delete****');
+            var db = req.db;
+            db.get('usercollection').update({
+                username: {
+                    $in: [checkUser]
+                }
+            }, {
+                //scope er med users ikke med bookings. DET SKAL FIKSES 
+                $pull: {
+                    "bookings": date
+                }
+            });
+
+        } else if (index && checkUser == currentUser || currentUser == "admin") {
+            console.log('*** own delete****');
+            var db = req.db;
+            db.get('usercollection').update({
+                username: {
+                    $in: [currentUser]
+                }
+            }, {
+                //scope er med users ikke med bookings. DET SKAL FIKSES 
+                $pull: {
+                    "bookings": date
+                }
+            });
         }
+        res.send('done');
     });
 /* Login page. */
 router.route('/')

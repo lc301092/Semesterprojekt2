@@ -31,17 +31,24 @@
                     var date = m.format();
                     console.log("** full date in event **" + date);
                     $.ajax({
-                        url: '/calendarbookingdelete',
-                        method: 'DELETE',
-                        // ID skal også med HER - husk at hive id med ned fra server ved login.	
-                        data: {
-                            currentUser: localStorage.getItem('currentUser'),
-                            index: $(this).hasClass('fc-day-grid-event'),
-                            date: date
-                        }
-                    })
+                            url: '/calendarbookingdelete',
+                            method: 'DELETE',
+                            // ID skal også med HER - husk at hive id med ned fra server ved login.	
+                            data: {
+                                currentUser: localStorage.getItem('currentUser'),
+                                checkUser: $(this).children('div').children('span')[0].innerHTML,
+                                index: $(this).hasClass('fc-day-grid-event'),
+                                date: date
+                            }
+                        })
+                        .done(function(dataStr) {
+                            var data = JSON.parse(dataStr);
+                            console.log('from server: ', data);
+                        });
                     var checkUser = $(this).children('div').children('span')[0].innerHTML;
                     if (currentUser == checkUser) {
+                        $('#calendar').fullCalendar('removeEvents', event._id);
+                    } else if (currentUser == 'admin') {
                         $('#calendar').fullCalendar('removeEvents', event._id);
                     }
                 },
@@ -60,7 +67,7 @@
                             // ID skal også med HER - husk at hive id med ned fra server ved login.	
                             data: {
                                 date: start.format(),
-                                currentUser: localStorage.getItem('currentUser')
+                                currentUser: localStorage.getItem('currentUser'),
                             }
                         })
                         .done(function(dataStr) {
