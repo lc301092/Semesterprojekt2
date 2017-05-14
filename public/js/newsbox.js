@@ -12,11 +12,21 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
         ////Smidder nyhedens div tag ind øverst i nyhedsboksen
         $(".createDialog").after(div);
         //Smidder elementerne ind i div tagget
-        $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
-        //Henter titel, dato og paragraf værdier fra arrayet
-        $(".newsTab h1").first().append(newslist[i].title);
-        $(".newsTab h3").first().append(newslist[i].dato);
-        $(".newsTab p").first().append(newslist[i].paragraph);
+        if (localStorage.getItem('currentUser') == 'admin') {
+            $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
+            //Henter titel, dato og paragraf værdier fra arrayet
+            $(".newsTab h1").first().append(newslist[i].title);
+            $(".newsTab h3").first().append(newslist[i].dato);
+            $(".newsTab p").first().append(newslist[i].paragraph);
+        } else {
+            $(".newsTab").first().append(title, dato, paragraph);
+            //Henter titel, dato og paragraf værdier fra arrayet
+            $(".newsTab h1").first().append(newslist[i].title);
+            $(".newsTab h3").first().append(newslist[i].dato);
+            $(".newsTab p").first().append(newslist[i].paragraph);
+            $(".createDialog").hide();
+        }
+
     }
 }
 
