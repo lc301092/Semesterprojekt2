@@ -8,6 +8,38 @@
     <link rel="stylesheet" type="text/css" href="css/12cols.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  
+    <script>
+        /*script der gemmer/henter fra local storage*/
+    $(function() {
+ 
+                if (localStorage.chkbx && localStorage.chkbx != '') {
+                    $('#remember_me').attr('checked', 'checked');
+                    $('#username').val(localStorage.usrname);
+                    $('#pass').val(localStorage.pass);
+                } else {
+                    $('#remember_me').removeAttr('checked');
+                    $('#username').val('');
+                    $('#pass').val('');
+                }
+ 
+                $('#remember_me').click(function() {
+ 
+                    if ($('#remember_me').is(':checked')) {
+                        // save username and password
+                        localStorage.usrname = $('#username').val();
+                        localStorage.pass = $('#pass').val();
+                        localStorage.chkbx = $('#remember_me').val();
+                    } else {
+                        localStorage.usrname = '';
+                        localStorage.pass = '';
+                        localStorage.chkbx = '';
+                    }
+                });
+            });
+    </script>
+    
 </head>
 
 <body>
@@ -15,20 +47,31 @@
         <p class="overskrift">Velkommen</p>
         <form name="myForm" action="/signin" method="post">
             <div>
+                
+<!--                Brugernavn                  -->
                 <input id="username" type="text" name="User" placeholder="Brugernavn" required="">
                 <div class="user">
                     <img src="../img/user23.png" height="45px">
                 </div>
-                <input id="userPassword" type="password" name="Password" placeholder="Adgangskode" required="">
+                
+<!--                Adgangskode                 -->
+                <input id="pass" type="password" name="Password" placeholder="Adgangskode" required="">
                 <div class="padlock">
                     <img src="../img/padlock233.png" height="45px">
                 </div>
+                
             </div>
-            <br/><br/>
-            <!-- <input type="checkbox" name="remember" value="checked">Husk mig<br /><br /><br /> -->
+            
+<!--            "husk mig" knap                 -->
+             <label class="checkbox">
+                    <input type="checkbox" value="remember-me" id="remember_me"> Husk mig <br><br>
+                </label>
             <input type="submit" name="submit" value="LOG IND">
         </form>
     </div>
 </body>
 
 </html>
+
+
+            

@@ -81,7 +81,16 @@ input[type=submit] {
     width: 300px;
     height: 45px;
     margin-top: 0px;
+    transition-duration: 0.4s;
 }
+
+input[type=button],
+input[type=submit]:hover {
+    color: white;
+    background-color: #ed6863; 
+}
+
+
 
 
 /*Media Queries Section*/

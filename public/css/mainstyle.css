@@ -252,14 +252,27 @@ h1 {
     cursor: pointer;
 }
 
+/*log ud knap styling*/
+
 .logud {
     background-color: #c53c37;
-    color: white;
-    width: 110px;
-    height: 75px;
-    font-size: 18px;
     border: none;
+    color: white;
+    padding: 28.5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 0px;
+    font-size: 18px;
     cursor: pointer;
+    vertical-align: middle;
+    transition-duration: 0.4s;
+    
+}
+
+.logud:hover{
+    background-color: #ed6863;
+    color: white;
 }
 
 
