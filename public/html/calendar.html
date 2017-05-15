@@ -5,12 +5,15 @@
     <meta charset='utf-8' />
     <link href='../css/fullcalendar.min.css' rel='stylesheet' />
     <link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+
     <script src='../js/lib/moment.min.js'></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="/js/testEvents.js"></script>
     <script src='../js/lib/fullcalendar.min.js'></script>
+    <script src="../js/calender.js"></script>
 
     <script>
         var color;
@@ -30,10 +33,14 @@
                 selectable: true, // vælg datoer
                 select: function(start, end) {
 
+
                     var eventData = {
+
+
                         title: currentUser, //username/id skal ind her, når det virker.
                         start: start,
                         color: color
+
                     };
 
                     $.ajax({
@@ -79,7 +86,7 @@
         body {
             max-width: 1200px;
             width: auto;
-            margin-top: 40px;
+            margin-top: 10px;
             padding: 0;
             font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
             font-size: 14px;
@@ -93,9 +100,62 @@
 </head>
 
 <body>
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p><b>Tidsrum:</b></p>
+            <br>
+            <p><b>Regler for booking:</b> <br> - Man gør rent efter sig selv! <br> - Nøgleafhentning foregår ved (...) <br> - Betaling sker ved overførsel til konto nr. (....) <br> - Du kan maksimalt have 5 dage booket ad gangen</p>
+            <br>
+            <p><b> Denne booking kommer til at koste:</b> (antal dag(e)) <br>
+                <b>Din bookingkredit er lige nu:</b> (antal dag(e))</p>
+
+            <div>
+                <button type="Button" class="btn btn1">
+    Tilbage
+    </button>
+
+                <button type="Button" class="btn btn1">
+    Afbestil booking
+    </button>
+
+                <button type="Button" class="btn btn2">
+    Godkend booking
+    </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <!--	<button type="button" onclick="initUnavailableDates()"></button>-->
 
     <div id='calendar'></div>
+    <div class="colorhelp">
+        <p> Mine bookinger</p>
+        <div class="circleBase type1"> </div>
+
+        <p> Optagede datoer</p>
+        <div class="circleBase type2"> </div>
+
+        <p> Blokerede datoer </p>
+        <div class="circleBase type3"> </div>
+
+        <!--
+        <p> Ledige datoer </p>
+        <div class="circleBase type4"> </div>
+-->
+    </div>
+
+
+
 
 </body>
 
