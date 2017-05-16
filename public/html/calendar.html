@@ -1,229 +1,414 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset='utf-8' />
-    <link href='../css/fullcalendar.min.css' rel='stylesheet' />
-    <link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-
-    <script src='../js/lib/moment.min.js'></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script src="/js/testEvents.js"></script>
-    <script src='../js/lib/fullcalendar.min.js'></script>
-    <script src="../js/calender.js"></script>
-	<script>
-		var color;
-		var currentUser = localStorage.getItem('currentUser');
-		if (currentUser != 'admin') {
-			color = "#1E90FF";
-		} else {
-			color = "black";
-		}
-		$(document).ready(function () {
-
-			$('#calendar').fullCalendar({
-				height: "auto",
-				defaultDate: $('#calendar').fullCalendar('today'),
-				weekNumbers: true,
-				weekNumbersWithinDays: true,
-				weekNumberCalculation: 'ISO',
-				viewRender: function (view, element) {
-					var now = new Date();
-					var end = new Date();
-					end.setMonth(now.getMonth() + 12); //Adjust as needed
-					now.setMonth(now.getMonth() - 3);
-					// ***** kan blokere kalenderen bagud. 
-					//					if (view.start < now) {
-					//						$('.fc-prev-button').addClass("fc-state-disabled");
-					//						return false;
-					//					} else {
-					//						$('.fc-prev-button').removeClass("fc-state-disabled");
-					//					}
-
-					if (end < view.end) {
-						$('.fc-next-button').addClass("fc-state-disabled");
-						return false;
-					} else {
-						$('.fc-next-button').removeClass("fc-state-disabled");
-					}
-				},
-				eventClick: function (event) {
-					var m = $.fullCalendar.moment(event.start);
-					m.stripTime();
-					var date = m.format();
-					//console.log("** full date in event **" + date);
-					$.ajax({
-						url: '/calendarbookingdelete',
-						method: 'DELETE',
-						data: {
-							currentUser: localStorage.getItem('currentUser'),
-							checkUser: $(this).children('div').children('span')[0].innerHTML,
-							index: $(this).hasClass('fc-day-grid-event'),
-							date: date
-						}
-					})
-
-					var checkUser = $(this).children('div').children('span')[0].innerHTML;
-					if (currentUser == checkUser) {
-						console.log(event._id);
-						$('#calendar').fullCalendar('removeEvents', event._id);
-					} else if (currentUser == 'admin') {
-						$('#calendar').fullCalendar('removeEvents', event._id);
-					}
-				},
-				selectable: true, // vælg datoer
-				select: function (start, end) {
-					// her skal der tjekkes, hvor mange bookings man har, og om man må booke. 
-					if (currentUser != 'admin') {
-						ableToBook(currentUser, function (canBook) {
-							console.log(canBook);
-							if (canBook) {
-								var eventData = {
-									title: currentUser, //username/id skal ind her, når det virker.
-									start: start,
-									color: color
-								};
-
-								$.ajax({
-									url: '/calendarbookingpost',
-									method: 'POST',
-
-									data: {
-										date: start.format(),
-										currentUser: localStorage.getItem('currentUser'),
-									}
-								})
-
-    </script>
-    <style>
-        body {
-            max-width: 1200px;
-            width: auto;
-            margin-top: 10px;
-            padding: 0;
-            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
-            font-size: 14px;
-        }
-        
-        #calendar {
-            margin: 0 auto;
-        }
-
-								$('#calendar').fullCalendar('renderEvent', eventData, true);
-
-
-								$('#calendar').fullCalendar('unselect');
-							}
-						})
-					} else {
-						var eventData = {
-							title: currentUser, //username/id skal ind her, når det virker.
-							start: start,
-							color: color
-						};
-
-						$.ajax({
-							url: '/calendarbookingpost',
-							method: 'POST',
-
-							data: {
-								date: start.format(),
-								currentUser: localStorage.getItem('currentUser'),
-							}
-						})
-
-
-						$('#calendar').fullCalendar('renderEvent', eventData, true);
-
-
-						$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
-					}
-				},
-
-				editable: false,
-				eventLimit: true // betyder i princippet ikke noget - kan måske fjernes.
-			});
-			initUnavailableDates();
-
-		});
-	</script>
-	<style>
-		body {
-			max-width: 1200px;
-			width: auto;
-			margin-top: 40px;
-			padding: 0;
-			font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
-			font-size: 14px;
-		}
-		
-		#calendar {
-			margin: 0 auto;
-		}
-	</style>
-</head>
-
-<body>
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Open Modal</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p><b>Tidsrum:</b></p>
-            <br>
-            <p><b>Regler for booking:</b> <br> - Man gør rent efter sig selv! <br> - Nøgleafhentning foregår ved (...) <br> - Betaling sker ved overførsel til konto nr. (....) <br> - Du kan maksimalt have 5 dage booket ad gangen</p>
-            <br>
-            <p><b> Denne booking kommer til at koste:</b> (antal dag(e)) <br>
-                <b>Din bookingkredit er lige nu:</b> (antal dag(e))</p>
-
-            <div>
-                <button type="Button" class="btn btn1">
-    Tilbage
-    </button>
-
-                <button type="Button" class="btn btn1">
-    Afbestil booking
-    </button>
-
-                <button type="Button" class="btn btn2">
-    Godkend booking
-    </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!--	<button type="button" onclick="initUnavailableDates()"></button>-->
-
-    <div id='calendar'></div>
-    <div class="colorhelp">
-        <p> Mine bookinger</p>
-        <div class="circleBase type1"> </div>
-
-        <p> Optagede datoer</p>
-        <div class="circleBase type2"> </div>
-
-        <p> Blokerede datoer </p>
-        <div class="circleBase type3"> </div>
-
-        <!--
-        <p> Ledige datoer </p>
-        <div class="circleBase type4"> </div>
--->
-    </div>
-
-
-
-
-</body>
-
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+	<meta charset='utf-8' />
+
+	<link href='../css/fullcalendar.min.css' rel='stylesheet' />
+
+	<link href='../css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+
+
+
+	<script src='../js/lib/moment.min.js'></script>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+	<script src="/js/testEvents.js"></script>
+
+	<script src='/js/lib/fullcalendar.min.js'></script>
+
+	<script src="/js/calender.js"></script>
+
+	<script>
+		var color;
+
+		var currentUser = localStorage.getItem('currentUser');
+
+		if (currentUser != 'admin') {
+
+			color = "#1E90FF";
+
+		} else {
+
+			color = "black";
+
+		}
+
+		$(document).ready(function () {
+
+
+
+			$('#calendar').fullCalendar({
+
+				height: "auto",
+
+				defaultDate: $('#calendar').fullCalendar('today'),
+
+				weekNumbers: true,
+
+				weekNumbersWithinDays: true,
+
+				weekNumberCalculation: 'ISO',
+
+				viewRender: function (view, element) {
+
+					var now = new Date();
+
+					var end = new Date();
+
+					end.setMonth(now.getMonth() + 12); //Adjust as needed
+
+					now.setMonth(now.getMonth() - 3);
+
+					// ***** kan blokere kalenderen bagud. 
+
+					//					if (view.start < now) {
+
+					//						$('.fc-prev-button').addClass("fc-state-disabled");
+
+					//						return false;
+
+					//					} else {
+
+					//						$('.fc-prev-button').removeClass("fc-state-disabled");
+
+					//					}
+
+
+
+					if (end < view.end) {
+
+						$('.fc-next-button').addClass("fc-state-disabled");
+
+						return false;
+
+					} else {
+
+						$('.fc-next-button').removeClass("fc-state-disabled");
+
+					}
+
+				},
+
+				eventClick: function (event) {
+
+					var m = $.fullCalendar.moment(event.start);
+
+					m.stripTime();
+
+					var date = m.format();
+
+					//console.log("** full date in event **" + date);
+
+					$.ajax({
+
+						url: '/calendarbookingdelete',
+
+						method: 'DELETE',
+
+						data: {
+
+							currentUser: localStorage.getItem('currentUser'),
+
+							checkUser: $(this).children('div').children('span')[0].innerHTML,
+
+							index: $(this).hasClass('fc-day-grid-event'),
+
+							date: date
+
+						}
+
+					})
+
+
+
+					var checkUser = $(this).children('div').children('span')[0].innerHTML;
+
+					if (currentUser == checkUser) {
+
+						console.log(event._id);
+
+						$('#calendar').fullCalendar('removeEvents', event._id);
+
+					} else if (currentUser == 'admin') {
+
+						$('#calendar').fullCalendar('removeEvents', event._id);
+
+					}
+
+				},
+
+				selectable: true, // vælg datoer
+
+				select: function (start, end) {
+					// her skal der tjekkes, hvor mange bookings man har, og om man må booke. 
+					if (currentUser != 'admin') {
+						// Miriams modal skal være her
+						ableToBook(currentUser, function (canBook) {
+							console.log(canBook);
+							if (canBook) {
+								var eventData = {
+									title: currentUser, //username/id skal ind her, når det virker.
+									start: start,
+									color: color
+								};
+
+								$.ajax({
+									url: '/calendarbookingpost',
+									method: 'POST',
+
+									data: {
+										date: start.format(),
+										currentUser: localStorage.getItem('currentUser'),
+									}
+								})
+
+
+								$('#calendar').fullCalendar('renderEvent', eventData, true);
+
+
+								$('#calendar').fullCalendar('unselect');
+							}
+						})
+					} else {
+						var eventData = {
+							title: currentUser, //username/id skal ind her, når det virker.
+							start: start,
+							color: color
+						};
+
+						$.ajax({
+							url: '/calendarbookingpost',
+							method: 'POST',
+
+							data: {
+								date: start.format(),
+								currentUser: localStorage.getItem('currentUser'),
+							}
+						})
+
+
+						$('#calendar').fullCalendar('renderEvent', eventData, true);
+
+
+						$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
+					}
+				},
+
+				editable: false,
+				eventLimit: true // betyder i princippet ikke noget - kan måske fjernes.
+			});
+			initUnavailableDates();
+
+		});
+	</script>
+
+	<style>
+body {
+			max-width: 1200px;
+			width: auto;
+			margin-top: 10px;
+			padding: 0;
+			font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+			font-size: 14px;
+		}
+		
+		#calendar {
+			margin: 0 auto;
+		}
+		
+		$('#calendar').fullCalendar('renderEvent', eventData, true);
+		$('#calendar').fullCalendar('unselect');
+	}
+}
+)
+}
+else {
+	var eventData= {
+		title: currentUser, //username/id skal ind her, når det virker.
+		start: start,
+		color: color
+	}
+	;
+	$.ajax( {
+		url: '/calendarbookingpost',
+		method: 'POST',
+		data: {
+			date: start.format(), currentUser: localStorage.getItem('currentUser'),
+		}
+	}
+	) $('#calendar').fullCalendar('renderEvent',
+	eventData,
+	true);
+	$('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
+}
+
+}
+,
+editable: false,
+eventLimit: true // betyder i princippet ikke noget - kan måske fjernes.
+
+}
+);
+initUnavailableDates();
+
+}
+);
+</script> <style> body {
+	max-width: 1200px;
+	width: auto;
+	margin-top: 40px;
+	padding: 0;
+	font-family: "Lucida Grande",
+	Helvetica,
+	Arial,
+	Verdana,
+	sans-serif;
+	font-size: 14px;
+}
+#calendar {
+	margin: 0 auto;
+}
+	</style>
+
+</head>
+
+
+
+<body>
+
+	<!-- Trigger/Open The Modal -->
+
+	<button id="myBtn">Open Modal</button>
+
+
+
+	<!-- The Modal -->
+
+	<div id="myModal" class="modal">
+
+
+
+		<!-- Modal content -->
+
+		<div class="modal-content">
+
+			<span class="close">&times;</span>
+
+			<p><b>Tidsrum:</b></p>
+
+			<br>
+
+			<p><b>Regler for booking:</b>
+				<br> - Man gør rent efter sig selv!
+				<br> - Nøgleafhentning foregår ved (...)
+				<br> - Betaling sker ved overførsel til konto nr. (....)
+				<br> - Du kan maksimalt have 5 dage booket ad gangen</p>
+
+			<br>
+
+			<p><b> Denne booking kommer til at koste:</b> (antal dag(e))
+				<br>
+
+				<b>Din bookingkredit er lige nu:</b> (antal dag(e))</p>
+
+
+
+			<div>
+
+				<button type="Button" class="btn btn1">
+
+					Tilbage
+
+				</button>
+
+
+
+				<button type="Button" class="btn btn1">
+
+					Afbestil booking
+
+				</button>
+
+
+
+				<button type="Button" class="btn btn2">
+
+					Godkend booking
+
+				</button>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+	<!--	<button type="button" onclick="initUnavailableDates()"></button>-->
+
+
+
+	<div id='calendar'></div>
+
+	<div class="colorhelp">
+
+		<p> Mine bookinger</p>
+
+		<div class="circleBase type1"> </div>
+
+
+
+		<p> Optagede datoer</p>
+
+		<div class="circleBase type2"> </div>
+
+
+
+		<p> Blokerede datoer </p>
+
+		<div class="circleBase type3"> </div>
+
+
+
+		<!--
+
+        <p> Ledige datoer </p>
+
+        <div class="circleBase type4"> </div>
+
+-->
+
+	</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
 </html>
