@@ -89,4 +89,6 @@ sørger for at autofill ikke bliver gul
         background-color: #ed6863;
     }
     /*Media Queries Section*/
+    
+    @media only screen and (max-width: 800px) {}
     /* Responsiv del */
