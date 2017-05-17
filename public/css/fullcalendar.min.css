@@ -1141,10 +1141,9 @@ a.fc-more:hover {
 .fc-unthemed .fc-list-empty {
     background-color: #eee
 }
-.colorhelp{
+
+.colorhelp {
     position: relative;
-    left:10%;
-    right: 10%;
 }
 
 .circleBase {
@@ -1158,44 +1157,34 @@ a.fc-more:hover {
 .type1 {
     background-color: rgba(30, 144, 255, 0.6);
     border: solid black 1px;
-    transform: translate(20%, 50%);
+    transform: translate(15%, 50%);
     margin-right: 25px;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+}
+
+.type1 p {
+    transform: translate(0, -80%);
 }
 
 .type2 {
     background-color: rgba(197, 60, 55, 0.6);
     border: solid black 1px;
-    transform: translate(20%, 50%);
+    transform: translate(15%, 50%);
     margin-right: 25px;
 }
 
 .type3 {
     background-color: rgba(0, 0, 0, 0.6);
     border: solid black 1px;
-    transform: translate(20%, 50%);
+    transform: translate(15%, 50%);
     margin-right: 25px;
 }
 
-.bookingKreditBoks
-{
-    padding-top:10px;
-    padding-bottom:10px;
-    background-color: rgba(30, 144, 255, 0.6);
-    border: solid black 1px;
-    border-radius: 12px;
-    width: 40px;
-    margin-left: 15px;
-    margin-right: 25px;
-    min-width:40px;
-    max-height:40px;
-    color: white;
-    font-size: 1.2em;
-    text-align:center;
-    vertical-align:middle;
-    font-weight:bold;
-    text-shadow: 0 0 30px blue;
-    
-}
 
 /*
 .type4 {
