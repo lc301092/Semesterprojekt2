@@ -1,94 +1,100 @@
-    * {
-        margin: 0;
-        border: 0;
-        padding: 0;
-        font-family: 'Questrial', sans-serif;
-    }
-    
-    body {
-        background: url("../img/lejelighed.jpg") no-repeat center fixed;
-        background-size: cover;
-        min-width: 400px;
-    }
-    
-    .overskrift {
-        color: black;
-        font-size: 1.5em;
-        font-family: "Times New Roman", Georgia, Serif;
-        text-align: center;
-        text-transform: uppercase;
-        padding: 15px 0px 15px 0px;
-    }
-    
-    .container {
-        position: absolute;
-        background-color: white;
-        width: 400px;
-        height: 300px;
-        text-align: center;
-        right: 50%;
-        top: 50%;
-        transform: translate(50%, -50%);
-    }
-    
-    .padlock {
-        position: absolute;
-        margin-top: -60px;
-        margin-left: 50px;
-    }
-    
-    .user {
-        position: absolute;
-        margin-top: -60px;
-        margin-left: 50px;
-    }
-    
-    input[type=text],
-    input[type=password] {
-        box-sizing: border-box;
-        border: 1px solid #c53c37;
-        width: 300px;
-        height: 45px;
-        font-size: 16px;
-        margin-bottom: 15px;
-        margin-top: 5px;
-        background-color: white;
-        padding: 0px 50px 0px 50px;
-    }
-    
-    input[type=password] {
-        background-color: white;
-    }
-    /*
+ body {
+     background: url("../img/lejelighed.jpg") no-repeat center fixed;
+     background-size: cover;
+     min-width: 400px;
+ }
+ 
+ * {
+     margin: 0;
+     border: 0;
+     padding: 0;
+     font-family: 'Questrial', sans-serif;
+ }
+ 
+ body {
+     background: url("../img/lejelighed.jpg") no-repeat center fixed;
+     background-size: cover;
+     min-width: 400px;
+ }
+ 
+ .overskrift {
+     color: black;
+     font-size: 1.5em;
+     font-family: "Times New Roman", Georgia, Serif;
+     text-align: center;
+     text-transform: uppercase;
+     padding: 15px 0px 15px 0px;
+ }
+ 
+ .container {
+     position: absolute;
+     background-color: white;
+     width: 400px;
+     height: 300px;
+     text-align: center;
+     right: 50%;
+     top: 50%;
+     transform: translate(50%, -50%);
+ }
+ 
+ .padlock {
+     position: absolute;
+     margin-top: -60px;
+     margin-left: 50px;
+ }
+ 
+ .user {
+     position: absolute;
+     margin-top: -60px;
+     margin-left: 50px;
+ }
+ 
+ input[type=text],
+ input[type=password] {
+     box-sizing: border-box;
+     border: 1px solid #c53c37;
+     width: 300px;
+     height: 45px;
+     font-size: 16px;
+     margin-bottom: 15px;
+     margin-top: 5px;
+     background-color: white;
+     padding: 0px 50px 0px 50px;
+ }
+ 
+ input[type=password] {
+     background-color: white;
+ }
+ /*
 sørger for at autofill ikke bliver gul
 */
-    
-    input:-webkit-autofill {
-        -webkit-box-shadow: inset 0 0 0px 9999px white;
-        border: -3px solid #c53c37;
-        -webkit-border: 1px solid #c53c37;
-    }
-    
-    input[type=button],
-    input[type=submit] {
-        background-color: #c53c37;
-        color: #fff;
-        font-family: "Times New Roman", Georgia, Serif;
-        font-size: 1.5em;
-        padding: 10px, 15px;
-        cursor: pointer;
-        width: 300px;
-        height: 45px;
-        margin-top: 0px;
-        transition-duration: 0.4s;
-    }
-    
-    input[type=button],
-    input[type=submit]:hover {
-        color: white;
-        background-color: #ed6863;
-    }
-    /*Media Queries Section*/
-    
-    @media only screen and (max-width: 800px) {}
-    /* Responsiv del */
+ 
+ input:-webkit-autofill {
+     -webkit-box-shadow: inset 0 0 0px 9999px white;
+     border: -3px solid #c53c37;
+     -webkit-border: 1px solid #c53c37;
+ }
+ 
+ input[type=button],
+ input[type=submit] {
+     background-color: #c53c37;
+     color: #fff;
+     font-family: "Times New Roman", Georgia, Serif;
+     font-size: 1.5em;
+     padding: 10px, 15px;
+     cursor: pointer;
+     width: 300px;
+     height: 45px;
+     margin-top: 0px;
+     transition-duration: 0.4s;
+ }
+ 
+ input[type=button],
+ input[type=submit]:hover {
+     color: white;
+     background-color: #ed6863;
+ }
+ /*Media Queries Section*/
+ 
+ @media only screen and (max-width: 800px) {}
+ /* Responsiv del */
