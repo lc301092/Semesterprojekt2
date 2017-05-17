@@ -12,9 +12,6 @@
     <meta name="author" content="SitePoint">
     <!--Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
     <script src="js/newsbox.js"></script>
 
     <!--Stylesheets-->
@@ -31,6 +28,22 @@
             location.href = '/'
         };
 
+        $(document).ready(function() {
+            if ($(window).width() > 800) {
+                $(".rightside").height($(".leftside").height());
+            } else {
+                $(".rightside").css("height", "auto");
+            }
+        });
+
+        $(window).resize(function() {
+            if ($(window).width() > 800) {
+                $(".rightside").height($(".leftside").height());
+            } else {
+                $(".rightside").css("height", "auto");
+            }
+        });
+
     </script>
 </head>
 
@@ -38,10 +51,12 @@
     <!--Top baren-->
     <div class="section group">
         <div class='topbar col span_12_of_12'>
-            <img src="../img/logo.PNG" height="50px">
+
+            <img src="/img/test.png" height="75px" width="250">
+
             <!--Dropdown menuen-->
             <div class="logudPlacering">
-                <button class="logud"><a onclick=location.href='/'>LOG UD</a></button>
+                <a onclick=location.href='/' class="logud">LOG UD</a>
                 <!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
             </div>
         </div>
@@ -51,28 +66,23 @@
     <div class="body section group">
         <!--Mellemrum til venstre for centrering-->
         <div class="col span_1_of_12"></div>
-
-
-
-        <!--Centrerede elementer-->
-
         <div class="col span_10_of_12">
-
             <div class="section group">
-
                 <!-- Kalenderboks-->
+                <div class="leftside col span_8_of_12">
+                    <div class="section group">
+                        <div id='calendarHolder' class='col span_12_of_12'>
 
-                <div id='calendarHolder' class='col span_8_of_12'>
+                            <iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
 
-                    <iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
-
-                    <!--Infoboxen-->
+                        </div>
+                    </div>
                     <div class="section group">
                         <div class='infobox col span_12_of_12'>
-                            <h1>Praktisk information</h1>
+                            <h1 class="infobox_header">Praktisk information</h1>
                             <div class="line-separator"></div>
                             <!--Information om betaling-->
-                            <p>Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
+                            <p class="info">Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
                             <div class="line-separator"></div>
                             <!--Konto- og reg. nr.-->
                             <div class="section group">
@@ -102,56 +112,55 @@
 
                                 <div class="col span 1_of_12"></div>
 
+
+
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
-                <div class='newsbox col span_4_of_12'>
-
+                <div class='rightside newsbox col span_4_of_12 '>
                     <h1>Nyheder</h1>
-
                     <button class="createDialog" onclick="createDialog();">+</button>
-
                 </div>
-
             </div>
-
         </div>
-
         <!--Mellemrum til højre for centrering-->
 
         <div class="col span_1_of_12"></div>
-
     </div>
 
-    <!--<script>
 
+
+
+
+
+    <!--
+    <script>
+       
+        
         // Get the modal
 
-        var modal = document.getElementById('myModal');
+        var modal = document.getElementById('myModal ');
 
-        
 
-        
+
+
 
         // Get the button that opens the modal
 
         var btn = document.getElementById("myBtn");
 
-        
 
-        
+
+
 
         // Get the <span> element that closes the modal
 
         var span = document.getElementsByClassName("close")[0];
 
-        
 
-        
+
+
 
         // When the user clicks the button, open the modal 
 
@@ -161,9 +170,9 @@
 
         }
 
-        
 
-        
+
+
 
         // When the user clicks on <span> (x), close the modal
 
@@ -173,9 +182,9 @@
 
         }
 
-        
 
-        
+
+
 
         // When the user clicks anywhere outside of the modal, close it
 
@@ -189,9 +198,8 @@
 
         }
 
-
-
-    </script>-->
+    </script>
+-->
 
 </body>
 
