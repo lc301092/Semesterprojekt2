@@ -4,6 +4,10 @@
  * (c) 2017 Adam Shaw
  */
 
+body {
+    overflow: hidden;
+}
+
 .fc-icon,
 body .fc {
     font-size: 1em
