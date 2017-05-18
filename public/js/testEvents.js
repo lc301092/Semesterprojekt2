@@ -9,6 +9,7 @@ function addAndRenderBooking(username, date, color) {
 	$('#calendar').fullCalendar('addEvent', event);
 	//render calendar
 	$('#calendar').fullCalendar('renderEvent', event, true);
+
 }
 
 
@@ -36,6 +37,7 @@ function initUnavailableDates() {
 				} else {
 					addAndRenderBooking(data[i].status, data[i].date,
 						"#1E90FF");
+
 				}
 			}
 		});
@@ -65,13 +67,14 @@ function ableToBook(user, callback) {
 
 			}
 			if (t.length < 5) {
+
+
 				console.log('du har ' + (4 - t.length) + ' bookingtickets tilbage');
 				user = true;
 				console.log('return value should be: ' + user);
 				callback(user);
 
 			} else {
-				console.log('du kan ikek bok mer');
 				user = false;
 				console.log('return value should be: ' + user);
 				callback(user);
