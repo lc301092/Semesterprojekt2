@@ -7,19 +7,24 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
         var deleteButton = $("<button>Slet nyhed</button>").addClass("deleteNews");
         var editButton = $("<button>Rediger nyhed</button>").addClass("editNews");
         var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
-        var dato = $("<h3></h3>").attr("name", "dato");
+        var dato = $("<h3></h3>").attr("name", "dato").addClass("newsdate");
         var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
+        var lineseparator = $("<div></div>").addClass("line-separator");
+
+
+
         ////Smidder nyhedens div tag ind øverst i nyhedsboksen
-        $(".createDialog").after(div);
+        $(".newsContainer").after(div);
         //Smidder elementerne ind i div tagget
         if (localStorage.getItem('currentUser') == 'admin') {
-            $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
+            $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph, lineseparator);
             //Henter titel, dato og paragraf værdier fra arrayet
+
             $(".newsTab h1").first().append(newslist[i].title);
             $(".newsTab h3").first().append(newslist[i].dato);
             $(".newsTab p").first().append(newslist[i].paragraph);
         } else {
-            $(".newsTab").first().append(title, dato, paragraph);
+            $(".newsTab").first().append(title, dato, paragraph, lineseparator);
             //Henter titel, dato og paragraf værdier fra arrayet
             $(".newsTab h1").first().append(newslist[i].title);
             $(".newsTab h3").first().append(newslist[i].dato);
@@ -84,7 +89,7 @@ function createNews() {
     var dato = $("<h3></h3>").attr("name", "dato");
     var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
     //Smidder nyhedens div tag ind i øverst i nyhedsboksen
-    $(".createDialog").after(div);
+    $(".newsContainer").after(div);
     //Smidder elementerne ind i nyheden
     $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
     //Henter titel, dato og paragraf værdier fra inputsne i createDialog()
@@ -99,7 +104,7 @@ function createNews() {
 //Redigerer en nyhed
 $(document).on('click', '.editNews', function () {
     //Finder alle nyheder i nuværende div, og gør dem redigerbare
-    var index = $(this).parent('div').index() - 1;
+    var index = $(this).parent('div').index();
     var x = $(this).parent('div').find('.news');
     //Ændrer stadie mellem redigerbar og låst
     if (x.attr('contentEditable') == "true") {
@@ -134,7 +139,7 @@ $(document).on('click', '.editNews', function () {
 //Sletter en nyhed
 $(document).on('click', '.deleteNews', function () {
     //Sletter nyhedens parent div m. alt indhold
-    var index = $(this).parent('div').index() - 1;
+    var index = $(this).parent('div').index();
     $(this).parent('div').remove();
     $.ajax({
             url: '/main',

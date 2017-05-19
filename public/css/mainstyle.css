@@ -4,6 +4,17 @@ body {
     min-width: 400px;
 }
 
+.main {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 30%;
+    position: relative;
+    z-index: 10;
+}
+
 h1 {
     color: black;
     font-size: 1.5em;
@@ -20,20 +31,19 @@ h1 {
 .newsbox {
     font-family: "Times New Roman", Georgia, Serif;
     background: rgba(255, 255, 255, 0.8);
-    overflow: hidden;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     overflow-y: auto;
-    height: auto;
+    position: relative;
 }
 
 .nyhed_header {
     font-size: 25px;
-    padding-left: 30px;
-    letter-spacing: 5px;
+    text-align: center;
+    letter-spacing: 3px;
 }
 
-.newsbox button {
+.newsTab button {
     border-radius: 5px;
     background-color: #c53c37;
     color: white;
@@ -46,24 +56,37 @@ h1 {
     transform: translate(-100%, 0%);
 }
 
+.newsTab {
+    background: rgba(245, 245, 245, 0.4);
+    border-radius: 20px;
+}
+
 .newsTab h1 {
-    text-align: center;
     color: black;
     font-size: 1.5em;
     font-family: "Times New Roman", Georgia, Serif;
     text-transform: none;
-}
-
-.infobox h1 {
-    text-align: center;
+    margin-left: 0px;
+    padding-left: 40px;
+    margin-bottom: 0px;
 }
 
 .newsTab h3 {
-    text-align: center;
+    padding-left: 40px;
+    padding-bottom: 20px;
 }
 
 .newsTab p {
-    text-align: center;
+    padding-left: 40px;
+}
+
+.createDialog {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 5px;
+    background-color: #c53c37;
+    color: white;
 }
 
 .line-separator {
@@ -74,6 +97,39 @@ h1 {
     margin-left: 20px;
     margin-top: 15px;
     margin-bottom: 20px;
+}
+
+
+/*infobox styles*/
+
+.infobox {
+    font-family: "Times New Roman", Georgia, Serif;
+    background: rgba(255, 255, 255, 0.8);
+    overflow-y: auto;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    min-height: 250px;
+    max-height: 500px;
+    min-width: 395px;
+}
+
+.infobox_header {
+    font-size: 25px;
+    padding-left: 30px;
+    letter-spacing: 3px;
+}
+
+.info {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 30px;
+    padding-left: 40px;
+    margin-right: 5px;
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+.infobox h1 {
+    text-align: center;
 }
 
 
@@ -115,7 +171,8 @@ h1 {
     font-family: "Times New Roman", Georgia, Serif;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    height: 500px;
+    height: 470px;
+    min-width: 395px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     float: left;
 }
@@ -125,31 +182,9 @@ h1 {
     position: 150
 }
 
-
-/*infobox styles*/
-
-.infobox {
-    font-family: "Times New Roman", Georgia, Serif;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    float: left;
-    clear: left;
-}
-
-.infobox_header {
-    font-size: 25px;
-    padding-left: 30px;
-    letter-spacing: 5px;
-}
-
-.info {
-    font-family: "Times New Roman", Georgia, Serif;
-    font-size: 30px;
-    padding-left: 40px;
-    margin-right: 5px;
-    margin-top: -10px;
-    margin-bottom: 25px;
+iframe {
+    position: relative;
+    z-index: 5;
 }
 
 
@@ -170,72 +205,6 @@ h1 {
 
 .topbar p {
     line-height: 0px;
-}
-
-
-/* The Modal (background) */
-
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-
-/* Modal Content */
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-
-/* The Close Button */
-
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/*Dropdown menu*/
-
-.dropbtn {
-    background-color: #c53c37;
-    color: white;
-    width: 110px;
-    height: 60px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
 }
 
 
@@ -260,33 +229,6 @@ h1 {
     background-color: #ed6863;
     color: white;
 }
-
-
-/*
-
-
-
-.minresevationer{
-
-    background-color: #c53c37;
-
-    color: white;
-
-    width: 150px;
-
-    height: 60px;
-
-    font-size: 16px;
-
-    border: none;
-
-    cursor: pointer;
-
-    margin-top: 0px;
-
-}
-
-*/
 
 .logudPlacering {
     position: absolute;

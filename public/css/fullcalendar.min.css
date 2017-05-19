@@ -1206,7 +1206,7 @@ a.fc-more:hover {
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
-    z-index: 1;
+    z-index: 2;
     /* Sit on top */
     left: 0;
     top: 0;
@@ -1214,9 +1214,8 @@ a.fc-more:hover {
     /* Full width */
     height: 100%;
     /* Full height */
-    overflow: auto;
     /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
+    /*	background-color: rgb(0, 0, 0);*/
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
@@ -1239,22 +1238,19 @@ a.fc-more:hover {
 
 /* The Close Button */
 
-.close {
+#closeModal {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+#closeModal:hover,
+#closeModal:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
-
-
-/* btn style in modal */
 
 .btn {
     border-radius: 10px;
@@ -1263,7 +1259,7 @@ a.fc-more:hover {
     font-size: 15px;
     padding: 5px 10px 5px 10px;
     text-decoration: none;
-    margin-right: 2%;
+    margin-right: 20px;
 }
 
 .btn1:hover {
@@ -1278,4 +1274,13 @@ a.fc-more:hover {
 
 .btn2 {
     background-color: rgba(30, 144, 255, 0.6);
+}
+
+
+/* Calendar hightlight */
+
+.fc-content-skeleton table tbody tr td:hover,
+.fc-day:hover {
+    background: lightblue;
+    cursor: pointer;
 }
