@@ -24,6 +24,7 @@ function initUnavailableDates() {
 			}
 		})
 		.done(function (dataStr) {
+			currentUserBookingCounter = 0;
 			var data = JSON.parse(dataStr);
 			var currentUser = localStorage.getItem('currentUser');
 			for (var i = 0; i < data.length; i++) {
@@ -37,18 +38,17 @@ function initUnavailableDates() {
 				} else {
 					addAndRenderBooking(data[i].status, data[i].date,
 						"#1E90FF");
-
+					currentUserBookingCounter += 1;
 				}
 			}
+			console.log(currentUserBookingCounter);
+			$('#bookingCounter').text(currentUserBookingCounter);
 		});
 
 }
 
 function ableToBook(user, callback) {
 
-	//find currentUsers bookings.length:
-	//	ajax call 
-	//	.done() tjek om arrayet er længere end 5.
 	$.ajax({
 			url: '/calendarbooking',
 			method: 'POST',
@@ -66,15 +66,18 @@ function ableToBook(user, callback) {
 				}
 
 			}
+			//			console.log(currentUserBookingCounter)
 			if (t.length < 5) {
-
 
 				console.log('du har ' + (4 - t.length) + ' bookingtickets tilbage');
 				user = true;
 				console.log('return value should be: ' + user);
+
+				currentUserBookingCounter = t.length + 1;
 				callback(user);
 
 			} else {
+				currentUserBookingCounter = t.length;
 				user = false;
 				console.log('return value should be: ' + user);
 				callback(user);

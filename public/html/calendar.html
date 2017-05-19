@@ -33,6 +33,7 @@
 	<script>
 		var color;
 		var currentUser = localStorage.getItem('currentUser');
+		var currentUserBookingCounter = 0;
 
 		if (currentUser != 'admin') {
 
@@ -147,6 +148,8 @@
 
 					}
 
+					currentUserBookingCounter--
+					$('#bookingCounter').text(currentUserBookingCounter);
 				},
 
 				selectable: true, // vælg datoer
@@ -156,7 +159,9 @@
 					if (currentUser != 'admin') {
 						// Miriams modal skal være her
 						ableToBook(currentUser, function (canBook) {
-							console.log(canBook);
+							console.log(canBook, currentUserBookingCounter);
+
+							$('#bookingCounter').text(currentUserBookingCounter);
 							if (canBook) {
 								// modal book
 								var eventData = {
@@ -213,6 +218,7 @@
 			});
 			initUnavailableDates();
 
+			// den skal være der når siden loades og den skal ændres når der bookes/slettes/datoen udgår.
 			// her skal der findes og appendes en variabel for egne bookinger
 			//console.log(currenUser);
 			//			$('.type1').append();
@@ -323,9 +329,10 @@
 	<div id='calendar'></div>
 	<div class="colorhelp">
 
-		<p> Mine bookinger:</p>
+		<p> Mine bookinger: </p>
 
 		<div class="circleBase type1">
+			<span id="bookingCounter"></span>
 
 		</div>
 
@@ -333,7 +340,7 @@
 
 		<p> Optagede datoer:</p>
 
-		<div ounlass="circleBase type2"> </div>
+		<div class="circleBase type2"> </div>
 
 
 
