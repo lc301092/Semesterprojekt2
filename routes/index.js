@@ -62,7 +62,7 @@ router.route('/main')
         db.get('newscollection').find({}).then((data) => {
             console.log('[ *** ');
             console.log(data[0].news);
-            var i = data[0].news.length - index;
+            var i = data[0].news.length - index - 1;
             console.log(i, data[0].news[i]);
             console.log(' *** ]');
 
@@ -101,10 +101,9 @@ router.route('/editnews')
         var db = req.db;
         db.get('newscollection').find({}).then((data) => {
             console.log('[ *** ');
-            console.log(data[0].news);
-            var i = data[0].news.length - index;
+            var i = data[0].news.length - index - 1;
 
-            console.log(i, data[0].news[i]);
+            console.log('The index: ' + i, data[0].news[i]);
             console.log(' *** ]');
 
             data[0].news[i].title = title;

@@ -14,7 +14,7 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
 
 
         ////Smidder nyhedens div tag ind øverst i nyhedsboksen
-        $(".newsContainer").after(div);
+        $(".newsContainer").prepend(div);
         //Smidder elementerne ind i div tagget
         if (localStorage.getItem('currentUser') == 'admin') {
             $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph, lineseparator);
@@ -89,7 +89,7 @@ function createNews() {
     var dato = $("<h3></h3>").attr("name", "dato");
     var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
     //Smidder nyhedens div tag ind i øverst i nyhedsboksen
-    $(".newsContainer").after(div);
+    $(".newsContainer").append(div);
     //Smidder elementerne ind i nyheden
     $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
     //Henter titel, dato og paragraf værdier fra inputsne i createDialog()
@@ -105,6 +105,7 @@ function createNews() {
 $(document).on('click', '.editNews', function () {
     //Finder alle nyheder i nuværende div, og gør dem redigerbare
     var index = $(this).parent('div').index();
+    console.log(index);
     var x = $(this).parent('div').find('.news');
     //Ændrer stadie mellem redigerbar og låst
     if (x.attr('contentEditable') == "true") {
