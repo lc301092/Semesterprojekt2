@@ -3,214 +3,146 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--Titlen på siden-->
-    <title>The HTML5 Herald</title>
-    <!--Titlens beskrives-->
-    <meta name="description" content="The HTML5 Herald">
-    <!--Sidens Author-->
-    <meta name="author" content="SitePoint">
-    <!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/newsbox.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Titlen på siden-->
+	<title>The HTML5 Herald</title>
+	<!--Titlens beskrives-->
+	<meta name="description" content="The HTML5 Herald">
+	<!--Sidens Author-->
+	<meta name="author" content="SitePoint">
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/newsbox.js"></script>
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="css/html5reset.css">
-    <link rel="stylesheet" type="text/css" href="css/col.css">
-    <link rel="stylesheet" type="text/css" href="css/12cols.css">
-    <link rel="stylesheet" href="css/mainstyle.css">
-    <script>
-        var cookieValue = document.cookie.split('=');
-        var currentUser = cookieValue[1];
-        //        console.log(currentUser);
-        localStorage.setItem('currentUser', currentUser);
-        if (currentUser == undefined) {
-            location.href = '/'
-        };
+	<!--Stylesheets-->
+	<link rel="stylesheet" type="text/css" href="css/html5reset.css">
+	<link rel="stylesheet" type="text/css" href="css/col.css">
+	<link rel="stylesheet" type="text/css" href="css/12cols.css">
+	<link rel="stylesheet" href="css/mainstyle.css">
+	<script>
+		var cookieValue = document.cookie.split('=');
+		var currentUser = cookieValue[1];
+		//        console.log(currentUser);
+		localStorage.setItem('currentUser', currentUser);
+		if (currentUser == undefined) {
+			location.href = '/'
+		};
 
-        $(document).ready(function() {
-            if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
+		$(document).ready(function () {
+			if ($(window).width() > 800) {
+				$(".rightside").height($(".leftside").height());
+			} else {
+				$(".rightside").css("height", "auto");
+			}
+		});
 
-        $(window).resize(function() {
-            if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
-        window.addEventListener('message', function(event) {
-            if (event.data.message == 'makeModal') {
-                $('.modalMain').css('display', 'block');
-            } else {
-                $('.modalMain').css('display', 'none');
-            }
-        }, false);
-
-    </script>
+		$(window).resize(function () {
+			if ($(window).width() > 800) {
+				$(".rightside").height($(".leftside").height());
+			} else {
+				$(".rightside").css("height", "auto");
+			}
+		});
+		window.addEventListener('message', function (event) {
+			if (event.data.message == 'makeModal') {
+				$('.modalMain').css('display', 'block');
+			} else {
+				$('.modalMain').css('display', 'none');
+			}
+		}, false);
+	</script>
 </head>
 
 <body onload="initializeNews((<%=JSON.stringify(newslist)%>));">
-    <!--Top baren-->
-    <div class="section group">
-        <div class='topbar col span_12_of_12'>
+	<!--Top baren-->
+	<div class="section group">
+		<div class='topbar col span_12_of_12'>
 
-            <img src="/img/test.png" height="75px" width="250">
+			<img src="/img/test.png" height="75px" width="250">
 
-            <!--Dropdown menuen-->
-            <div class="logudPlacering">
-                <a onclick=location.href='/' class="logud">LOG UD</a>
-                <!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
-            </div>
-        </div>
-    </div>
+			<!--Dropdown menuen-->
+			<div class="logudPlacering">
+				<a onclick=location.href='/' class="logud">LOG UD</a>
+				<!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
+			</div>
+		</div>
+	</div>
 
-    <!--Hjemmesidens "body"-->
-    <div class="body section group">
-        <!--Mellemrum til venstre for centrering-->
-        <div class="col span_1_of_12"></div>
-        <div class="col span_10_of_12">
-            <div class="section group">
-                <!-- Kalenderboks-->
-                <div class="leftside col span_8_of_12">
-                    <div class="section group">
-                        <div id='calendarHolder' class='col span_12_of_12'>
+	<!--Hjemmesidens "body"-->
+	<div class="body section group">
+		<!--Mellemrum til venstre for centrering-->
+		<div class="col span_1_of_12"></div>
+		<div class="col span_10_of_12">
+			<div class="section group">
+				<!-- Kalenderboks-->
+				<div class="leftside col span_8_of_12">
+					<div class="section group">
 
-                            <iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
+						<div id='calendarHolder' class='col span_12_of_12'>
 
-                        </div>
-                    </div>
-                    <div class="section group">
-                        <div class='infobox col span_12_of_12'>
-                            <h1 class="infobox_header">Praktisk information</h1>
-                            <div class="line-separator"></div>
-                            <!--Information om betaling-->
-                            <p class="info">Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
-                            <div class="line-separator"></div>
-                            <!--Konto- og reg. nr.-->
-                            <div class="section group">
-                                <div class="col span 1_of_12"></div>
-                                <!--Registreringsnummer-->
+							<iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
 
-                                <div class="col span_5_of_12">
+						</div>
+					</div>
+					<div class="section group">
+						<div class='infobox col span_12_of_12'>
+							<h1 class="infobox_header">Praktisk information</h1>
+							<div class="line-separator"></div>
+							<!--Information om betaling-->
+							<p class="info">Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
+							<div class="line-separator"></div>
+							<!--Konto- og reg. nr.-->
+							<div class="section group">
+								<div class="col span 1_of_12"></div>
+								<!--Registreringsnummer-->
 
-                                    <div class="kontoText">Reg. nr.</div>
+								<div class="col span_5_of_12">
 
-                                    <br>
+									<div class="kontoText">Reg. nr.</div>
 
-                                    <div class="konto">1234</div>
+									<br>
 
-                                </div>
+									<div class="konto">1234</div>
 
-                                <!--Kontonummer-->
+								</div>
 
-                                <div class="col span_5_of_12">
+								<!--Kontonummer-->
 
-                                    <div class="kontoText">Konto nr.:</div>
+								<div class="col span_5_of_12">
 
-                                    <br>
+									<div class="kontoText">Konto nr.:</div>
 
-                                    <div class="konto">xxx123456xxx</div>
-                                </div>
+									<br>
 
-                                <div class="col span 1_of_12"></div>
+									<div class="konto">xxx123456xxx</div>
+								</div>
 
+								<div class="col span 1_of_12"></div>
 
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='rightside newsbox col span_4_of_12 '>
-                    <h1 class="nyhed_header">Nyheder</h1>
-                    <div class="line-separator"></div>
-                    <button class="createDialog" onclick="createDialog();">Tilføj Nyhed</button>
-                    <div class="newsContainer"></div>
-                </div>
-            </div>
-        </div>
-        <!--Mellemrum til højre for centrering-->
 
-        <div class="col span_1_of_12"></div>
-    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='rightside newsbox col span_4_of_12 '>
+					<h1 class="nyhed_header">Nyheder</h1>
+					<div class="line-separator"></div>
+					<button class="createDialog" onclick="createDialog();">Tilføj Nyhed</button>
+					<div class="newsContainer"></div>
+				</div>
+			</div>
+		</div>
+		<!--Mellemrum til højre for centrering-->
 
+		<div class="col span_1_of_12"></div>
+	</div>
 
 
 
 
-
-    <!--
-    <script>
-       
-        
-        // Get the modal
-
-        var modal = document.getElementById('myModal ');
-
-
-
-
-
-        // Get the button that opens the modal
-
-        var btn = document.getElementById("myBtn");
-
-
-
-
-
-        // Get the <span> element that closes the modal
-
-        var span = document.getElementsByClassName("close")[0];
-
-
-
-
-
-        // When the user clicks the button, open the modal 
-
-        btn.onclick = function() {
-
-            var modalBox = modal.style.display = "block";
-
-        }
-
-
-
-
-
-        // When the user clicks on <span> (x), close the modal
-
-        span.onclick = function() {
-
-            modal.style.display = "none";
-
-        }
-
-
-
-
-
-        // When the user clicks anywhere outside of the modal, close it
-
-        window.onclick = function(event) {
-
-            if (event.target == modal) {
-
-                modal.style.display = "none";
-
-            }
-
-        }
-
-    </script>
--->
-
+	<div class="modalMain"></div>
 </body>
 
 
