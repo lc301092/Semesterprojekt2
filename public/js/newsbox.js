@@ -29,7 +29,6 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
             $(".newsTab h1").first().append(newslist[i].title);
             $(".newsTab h3").first().append(newslist[i].dato);
             $(".newsTab p").first().append(newslist[i].paragraph);
-            $(".createDialog").hide();
         }
 
     }
