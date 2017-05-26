@@ -35,7 +35,7 @@
         });
         $(document).ready(function() {
             if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
+                $(".rightside").height($(".leftside").height() - 10);
             } else {
                 $(".rightside").css("height", "auto");
             }
@@ -43,7 +43,7 @@
 
         $(window).resize(function() {
             if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
+                $(".rightside").height($(".leftside").height() - 11);
             } else {
                 $(".rightside").css("height", "auto");
             }
