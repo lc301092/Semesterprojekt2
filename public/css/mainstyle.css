@@ -27,6 +27,7 @@ h1 {
     border-radius: 5px;
     overflow-y: auto;
     position: relative;
+  
 }
 
 .nyhed_header {
@@ -46,14 +47,26 @@ h1 {
     top: 0%;
     left: 100%;
     transform: translate(-100%, 0%);
+    transition-duration: 0.4s;
 }
+
 
 .deleteNews{
     cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.deleteNews:hover{
+    background-color:#ed6863;
 }
 
 .editNews{
     cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.editNews:hover{
+    background-color:#ed6863;
 }
 
 .newsTab {
@@ -82,12 +95,18 @@ h1 {
 
 .createDialog {
     position: absolute;
+    padding: 15px;
     top: 0px;
     right: 0px;
     border-radius: 5px;
     background-color: #c53c37;
     color: white;
     cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.createDialog:hover{
+    background-color:#ed6863;
 }
 
 .line-separator {
@@ -203,7 +222,7 @@ h1 {
     /* Full width */
     height: 100%;
     /* Full height */
-    overflow: auto;
+    overflow: auto; 
     /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
     /* Fallback color */
@@ -214,7 +233,6 @@ h1 {
 .addNews{
     position: relative;
     top: 120px;
-    bottom: 50px;
     margin-left: -500px;
 	background-color: #c53c37;
 	border-radius:10px;
@@ -262,7 +280,7 @@ h1 {
     height: 75px;
     margin-left: 50px;
     margin-bottom: -50px;
-    color: black;
+    color: blue;
 }
 
 .newTitle{
@@ -273,7 +291,7 @@ h1 {
 
 .inputTekst{
     
-    color: black;
+    color: green;
 }
 
 /*vælger input tekst*/
@@ -285,7 +303,8 @@ h1 {
 
 
 .hejmeddig{
-   
+   background-color: pink;
+
     
 }
 
@@ -373,6 +392,7 @@ iframe {
     right: 0px;
 }
 
+/*_________________________________________________________________________________*/
 
 .modalMain {
     display: none;
