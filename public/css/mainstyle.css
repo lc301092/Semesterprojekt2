@@ -4,16 +4,7 @@ body {
     min-width: 400px;
 }
 
-.main {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    height: 30%;
-    position: relative;
-    z-index: 10;
-}
+
 
 h1 {
     color: black;
@@ -25,6 +16,7 @@ h1 {
 
 .body {}
 
+/*________________________________________________________________________*/
 
 /* Newsbox styles */
 
@@ -54,6 +46,14 @@ h1 {
     top: 0%;
     left: 100%;
     transform: translate(-100%, 0%);
+}
+
+.deleteNews{
+    cursor: pointer;
+}
+
+.editNews{
+    cursor: pointer;
 }
 
 .newsTab {
@@ -87,6 +87,7 @@ h1 {
     border-radius: 5px;
     background-color: #c53c37;
     color: white;
+    cursor: pointer;
 }
 
 .line-separator {
@@ -99,6 +100,13 @@ h1 {
     margin-bottom: 20px;
 }
 
+
+
+/*_____________________________________________________________________________________*/
+
+
+
+/*_____________________________________________________________________________________*/
 
 /*infobox styles*/
 
@@ -132,8 +140,56 @@ h1 {
     text-align: center;
 }
 
+.konto {
+    font-size: 1.3em;
+    color: rgb(150, 20, 0);
+}
 
-/* createDialog */
+.infobox p {
+    margin: 3.43%;
+    font-size: 1.2em;
+}
+
+.konto,
+.kontoText {
+    text-align: center;
+}
+
+
+/*____________________________________________________________________________________-*/
+
+/*dialogBox style on create news*/
+
+.top {
+    background-color: #c53c37;
+    border: 30px solid #265478;
+/*
+    position: inherit;
+    left: 110px;
+    background: #c53c37;
+    border: 1px solid #c53c37;
+    height: 20px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: -20px;
+    z-index: 11;
+*/
+}
+
+
+.main {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #888;
+    width: 80%;
+    height: 30%;
+    position: relative;
+    z-index: 10;
+}
+
 
 .dialogBox {
     position: fixed;
@@ -155,12 +211,85 @@ h1 {
     /* Black w/ opacity */
 }
 
-.cancelNews {
-    bottom: 0px;
-    left: 50%;
+.addNews{
+    position: relative;
+    top: 120px;
+    bottom: 50px;
+    margin-left: -500px;
+	background-color: #c53c37;
+	border-radius:10px;
+	border: none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size:28px;
+	padding:17px 50px;
+	text-decoration:none;
+    transition-duration: 0.4s;
 }
 
-.top {}
+.addNews:hover {
+	background-color:#ed6863;
+    
+}
+
+.cancelNews {
+    position: relative;
+    top: 120px;
+    background-color: #c53c37;
+	border-radius:10px;
+	border: none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: "Times New Roman", Georgia, Serif;
+	font-size:28px;
+	padding:17px 50px;
+	text-decoration:none;
+    transition-duration: 0.4s;
+}
+
+.cancelNews:hover {
+    background-color:#ed6863;
+}
+
+
+
+.overskrift{
+   display: inline-block;
+    width: 110px;
+    height: 75px;
+    margin-left: 50px;
+    margin-bottom: -50px;
+    color: black;
+}
+
+.newTitle{
+    
+    color: blue;
+}
+
+
+.inputTekst{
+    
+    color: black;
+}
+
+/*vælger input tekst*/
+.newParagraph{
+    
+    color: green;
+}
+
+
+
+.hejmeddig{
+   
+    
+}
+
+/*__________________________________________________________________________*/
 
 
 /* Kalender styles*/
@@ -188,6 +317,9 @@ iframe {
 }
 
 
+/*___________________________________________________________________________________*/
+
+
 /* topbar styles*/
 
 .topbar {
@@ -206,6 +338,11 @@ iframe {
 .topbar p {
     line-height: 0px;
 }
+
+
+
+/*___________________________________________________________________________________*/
+
 
 
 /*log ud knap styling*/
@@ -236,20 +373,6 @@ iframe {
     right: 0px;
 }
 
-.konto {
-    font-size: 1.3em;
-    color: rgb(150, 20, 0);
-}
-
-.infobox p {
-    margin: 3.43%;
-    font-size: 1.2em;
-}
-
-.konto,
-.kontoText {
-    text-align: center;
-}
 
 .modalMain {
     display: none;
