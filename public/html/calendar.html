@@ -8,10 +8,10 @@
 
 	<meta charset='utf-8' />
 	<link href='../css/fullcalendar.min.css' rel='stylesheet' />
+	<link href="../css/calendarstyle.css" rel="stylesheet" />
 	<script src='../js/lib/moment.min.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="/js/testEvents.js"></script>
-	<script src="/cupertino/jquery-ui.min.css"></script>
 	<script src='/js/lib/fullcalendar.min.js'></script>
 	<script src='/js/lib/da.js'></script>
 
@@ -33,11 +33,6 @@
 
 			$('#calendar').fullCalendar({
 				height: "auto",
-				theme: true,
-				buttonIcons: {
-					prev: 'carat-1-w',
-					next: 'carat-1-e'
-				},
 				defaultDate: $('#calendar').fullCalendar('today'),
 				weekNumbers: true,
 				weekNumbersWithinDays: true,
@@ -125,6 +120,7 @@
 				eventLimit: true // betyder i princippet ikke noget - kan måske fjernes.
 			});
 			initUnavailableDates();
+			$('fc-next-button').css('background-color', 'red');
 		});
 	</script>
 
