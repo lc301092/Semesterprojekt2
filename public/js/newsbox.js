@@ -9,7 +9,6 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
         var title = $("<h1></h1>").attr("name", "title").addClass("news").attr('contenteditable', 'false');
         var dato = $("<h3></h3>").attr("name", "dato").addClass("newsdate");
         var paragraph = $("<p></p>").attr("name", "paragraph").addClass("news").attr('contenteditable', 'false');
-        var lineseparator = $("<div></div>").addClass("line-separator");
 
 
 
@@ -17,14 +16,14 @@ function initializeNews(newslist) { //Parameteren er alle nyheder fra databasen 
         $(".newsContainer").prepend(div);
         //Smidder elementerne ind i div tagget
         if (localStorage.getItem('currentUser') == 'admin') {
-            $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph, lineseparator);
+            $(".newsTab").first().append(deleteButton, editButton, title, dato, paragraph);
             //Henter titel, dato og paragraf værdier fra arrayet
 
             $(".newsTab h1").first().append(newslist[i].title);
             $(".newsTab h3").first().append(newslist[i].dato);
             $(".newsTab p").first().append(newslist[i].paragraph);
         } else {
-            $(".newsTab").first().append(title, dato, paragraph, lineseparator);
+            $(".newsTab").first().append(title, dato, paragraph);
             //Henter titel, dato og paragraf værdier fra arrayet
             $(".newsTab h1").first().append(newslist[i].title);
             $(".newsTab h3").first().append(newslist[i].dato);

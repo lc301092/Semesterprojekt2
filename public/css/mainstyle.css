@@ -54,8 +54,14 @@
         }
         
         .newsTab {
-            background: rgba(245, 245, 245, 0.4);
+            position: relative;
+            background: rgba(245, 245, 245, 0.8);
             border-radius: 20px;
+            margin-bottom: 20px;
+            width: 95%;
+            transform: translate(-50%, 0%);
+            left: 50%;
+            border: 3px solid #D3D3D3;
         }
         
         .newsTab h1 {
@@ -70,11 +76,14 @@
         
         .newsTab h3 {
             padding-left: 40px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #D3D3D3;
         }
         
         .newsTab p {
             padding-left: 40px;
+            margin-bottom: 20px;
         }
         
         .createDialog {
@@ -90,13 +99,16 @@
         }
         
         .line-separator {
-            height: 0.8px;
+            position: relative;
+            height: 1px;
+            border-radius: 500px;
             background: #c53c37;
             border-bottom: 1px solid #c53c37;
             width: 90%;
-            margin-left: 20px;
             margin-top: 15px;
             margin-bottom: 20px;
+            transform: translate(-50%, 0%);
+            left: 50%;
         }
         /*_____________________________________________________________________________________*/
         /*_____________________________________________________________________________________*/
