@@ -110,7 +110,7 @@
             border-radius: 5px;
             min-height: 250px;
             max-height: 500px;
-            min-width: 395px;
+            min-width: 400px;
         }
         
         .infobox_header {
@@ -150,33 +150,10 @@
         /*dialogBox style on create news*/
         
         .top {
-            background-color: #c53c37;
-            border: 30px solid #265478;
-            /*
-
-    position: inherit;
-
-    left: 110px;
-
-    background: #c53c37;
-
-    border: 1px solid #c53c37;
-
-    height: 20px;
-
-    width: 100%;
-
-    margin-left: 20px;
-
-    margin-right: 20px;
-
-    margin-top: 15px;
-
-    margin-bottom: -20px;
-
-    z-index: 11;
-
-*/
+            position: relative;
+            background-color: #265478;
+            border: 20px solid #265478;
+            border-radius: 5px;
         }
         
         .main {
@@ -188,6 +165,16 @@
             height: 350px;
             position: relative;
             z-index: 10;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .top p {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 2px;
+            color: white;
         }
         
         .dialogBox {
@@ -300,7 +287,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 5px;
             height: 470px;
-            min-width: 395px;
+            min-width: 400px;
             box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
             float: left;
         }

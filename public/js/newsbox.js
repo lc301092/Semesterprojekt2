@@ -43,7 +43,7 @@ function createDialog() {
         //Holder et div tag
         var div = $("<div></div>").addClass("dialogBox");
         //Holder en top bar i dialogboxen
-        var top = $("<div></div>").addClass("top");
+        var top = $("<div><p>Ny Nyhed</p></div>").addClass("top");
         //Holder hovedfeltet i dialogboxen
         var main = $("<div></div>").addClass("main");
         //Holder en form til dialogboxen
