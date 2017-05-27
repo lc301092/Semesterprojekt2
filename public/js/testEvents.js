@@ -46,11 +46,9 @@ function initUnavailableDates() {
             $('#bookingRemaining').text(5 - currentUserBookingCounter);
             $('#abe').text(6 - currentUserBookingCounter);
         });
-
 }
 
 function ableToBook(user, callback) {
-
     $.ajax({
             url: '/calendarbooking',
             method: 'POST',
