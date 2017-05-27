@@ -29,7 +29,7 @@
         .nyhed_header {
             font-size: 25px;
             text-align: center;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
         .newsTab button {
@@ -81,6 +81,8 @@
             position: absolute;
             top: 0px;
             right: 0px;
+            width: 20%;
+            transform: translate(0%, 0%);
             border-radius: 5px;
             background-color: #c53c37;
             color: white;
@@ -114,7 +116,7 @@
         .infobox_header {
             font-size: 25px;
             padding-left: 30px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
         .info {
