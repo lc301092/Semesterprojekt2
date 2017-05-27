@@ -34,16 +34,16 @@
             }
         });
         $(document).ready(function() {
-            if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
+            if ($(window).width() > 900) {
+                $(".rightside").height($(".leftside").height() - 10);
             } else {
                 $(".rightside").css("height", "auto");
             }
         });
 
         $(window).resize(function() {
-            if ($(window).width() > 800) {
-                $(".rightside").height($(".leftside").height());
+            if ($(window).width() > 900) {
+                $(".rightside").height($(".leftside").height() - 11);
             } else {
                 $(".rightside").css("height", "auto");
             }
@@ -104,7 +104,7 @@
 
                                 <div class="col span_5_of_12">
 
-                                    <div class="kontoText">Reg. nr.</div>
+                                    <div class="kontoText"><b>Reg. nr:</b></div>
 
                                     <br>
 
@@ -116,7 +116,7 @@
 
                                 <div class="col span_5_of_12">
 
-                                    <div class="kontoText">Konto nr.:</div>
+                                    <div class="kontoText"><b>Konto nr:</b></div>
 
                                     <br>
 

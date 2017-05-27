@@ -48,14 +48,14 @@
         width: 4.666%;
     }
     
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         .col {
             margin: 1% 0 1% 0%;
         }
     }
     /*  GO FULL WIDTH AT LESS THAN 800 PIXELS */
     
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 900px) {
         .span_12_of_12 {
             width: 100%;
         }
@@ -78,7 +78,7 @@
             width: 100%;
         }
         .span_5_of_12 {
-            width: 100%;
+            width: 50%;
         }
         .span_4_of_12 {
             width: 100%;
