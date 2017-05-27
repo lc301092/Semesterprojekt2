@@ -72,9 +72,7 @@
                     // her skal der tjekkes, hvor mange bookings man har, og om man må booke. 
                     var bookingDate = new Date(start.format());
                     var now = new Date();
-                    console.log(now, bookingDate);
                     if (bookingDate > now || bookingDate == now) {
-
                         if (currentUser != 'admin') {
                             ableToBook(currentUser, function(canBook) {
                                 console.log(canBook);
