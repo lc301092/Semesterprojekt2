@@ -47,9 +47,9 @@ function createDialog() {
         //Holder hovedfeltet i dialogboxen
         var main = $("<div></div>").addClass("main");
         //Holder en form til dialogboxen
-        var form = $("<form></form>").attr("id", "formAddNews").attr("name", "addNews").attr("method", "post").attr("action", "/main");
+        var form = $("<form></form>").attr("id", "formAddNews").attr("name", "addNews").attr("method", "post").attr("action", "/main").addClass("hejmeddig");
         //Holder et label til titlen
-        var newTitleLabel = $("<label>Overskrift:</label>").attr('for', 'newTitle');
+        var newTitleLabel = $("<label>Overskrift:</label>").attr('for', 'newTitle').addClass("overskrift");
         //Holder titlen
         var newTitle = $("<input>").attr('type', 'text').addClass("newTitle").attr('name', 'newTitle');
         //Holder dags dato
@@ -57,7 +57,7 @@ function createDialog() {
         var datoString = "" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
         var newDato = $("<input>").attr('type', 'hidden').addClass("newDato").attr('name', 'newDato');
         //Holder et label til paragrafen
-        var newParagraphLabel = $("<label>Tekst:</label>").attr('for', 'newParagraph');
+        var newParagraphLabel = $("<label>Tekst:</label>").addClass("inputTekst").attr('for', 'newParagraph');
         //Holder paragrafen
         var newParagraph = $("<input>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
         //Holder annuler knappen
@@ -68,9 +68,9 @@ function createDialog() {
         //Smidder dialogboxens div tag ind i dokumentet
         $(document.body).prepend(div);
         //Smidder top baren og hovedfeltet ind i dialogboxen
-        $(".dialogBox").first().append(top, main);
+        $(".dialogBox").first().append(main);
         //Smidder formen ind i hovedfeltet
-        $(".main").first().append(form);
+        $(".main").first().append(top, form);
         //Smidder resten af elementerne ind i formen
         $("#formAddNews").first().append(newTitleLabel, newTitle, newDato, newParagraphLabel, newParagraph, cancel, addNews);
         //Giver datoen til et det skjulte input (newDato)
