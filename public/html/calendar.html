@@ -72,7 +72,8 @@
                     // her skal der tjekkes, hvor mange bookings man har, og om man må booke. 
                     var bookingDate = new Date(start.format());
                     var now = new Date();
-                    if (bookingDate > now) {
+                    console.log(now, bookingDate);
+                    if (bookingDate > now || bookingDate == now) {
 
                         if (currentUser != 'admin') {
                             ableToBook(currentUser, function(canBook) {
@@ -113,7 +114,7 @@
                             $('#calendar').fullCalendar('unselect'); // så man kan vælge igen. 
                         }
                     } else {
-                        alert('Den valgte kun forud for dags dato.');
+                        alert('Du kan kun booke forud for dags dato.');
                     }
                 },
                 editable: false,

@@ -144,7 +144,7 @@ router.route('/calendarbooking')
                     var date = data[i].bookings[j];
                     var bookingDate = new Date(date);
                     var now = new Date();
-                    if (bookingDate > now) {
+                    if (bookingDate > now || bookingDate == now) {
                         console.log(date + ' er fin og ligger i fremtiden!');
                         t.push({
                             status: user,
