@@ -45,37 +45,62 @@
             transform: translate(-100%, 0%);
         }
         
-        .deleteNews {
-            cursor: pointer;
-        }
-        
-        .editNews {
-            cursor: pointer;
-        }
+     .deleteNews{
+    transition-duration: 0.4s;
+}
+
+.deleteNews:hover {
+    cursor: pointer;
+    background-color: #ed6863;
+}
+
+.editNews{
+    transition-duration: 0.4s;
+}
+
+.editNews:hover{
+    cursor: pointer;
+    background-color: #ed6863;
+}
         
         .newsTab {
-            background: rgba(245, 245, 245, 0.4);
+            position: relative;
+            background: rgba(245, 245, 245, 0.6);
             border-radius: 20px;
+            width: 100%;
+            word-wrap: break-word;
+            margin-bottom: 10px;
         }
         
         .newsTab h1 {
+            position: relative;
+            width: 80%;
             color: black;
             font-size: 1.5em;
             font-family: "Times New Roman", Georgia, Serif;
             text-transform: none;
             margin-left: 0px;
-            padding-left: 40px;
             margin-bottom: 0px;
+            transform: translate(-50%, 0%);
+            left: 50%;
         }
         
         .newsTab h3 {
-            padding-left: 40px;
             padding-bottom: 20px;
+            left: 10%;
+            position: relative;
+            width: 80%;
         }
         
         .newsTab p {
-            padding-left: 40px;
+            position: relative;
+            width: 80%;
+            transform: translate(-50%, 0%);
+            left: 50%;
+            
         }
+
+        
         
         .createDialog {
             position: absolute;
@@ -85,16 +110,24 @@
             background-color: #c53c37;
             color: white;
             cursor: pointer;
+            transition-duration: 0.4s;
         }
+
+.createDialog:hover{
+    cursor: pointer;
+    background-color: #ed6863;
+}
         
         .line-separator {
             height: 0.8px;
             background: #c53c37;
             border-bottom: 1px solid #c53c37;
             width: 90%;
-            margin-left: 20px;
             margin-top: 15px;
             margin-bottom: 20px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         /*_____________________________________________________________________________________*/
         /*_____________________________________________________________________________________*/
@@ -149,32 +182,8 @@
         
         .top {
             background-color: #c53c37;
-            border: 30px solid #265478;
-            /*
-
-    position: inherit;
-
-    left: 110px;
-
-    background: #c53c37;
-
-    border: 1px solid #c53c37;
-
-    height: 20px;
-
-    width: 100%;
-
-    margin-left: 20px;
-
-    margin-right: 20px;
-
-    margin-top: 15px;
-
-    margin-bottom: -20px;
-
-    z-index: 11;
-
-*/
+            border: 30px solid #c53c37;
+            color: white;
         }
         
         .main {
@@ -186,6 +195,7 @@
             height: 350px;
             position: relative;
             z-index: 10;
+            max-width: 700px;
         }
         
         .dialogBox {
@@ -249,37 +259,46 @@
         .cancelNews:hover {
             background-color: #ed6863;
         }
+
         
         .overskrift {
             color: black;
-            display: inline-block;
+            width: 38%;
+            position: absolute;
+            top: 0px;
+            left: 15px;
         }
         
         .newTitle {
             position: absolute;
             top: 20px;
             left: 15px;
+            word-wrap: break-word;
             color: blue;
             width: 38%;
             height: 180px;
+            resize: none;
         }
         
         .inputTekst {
+            position: absolute;
+            top: 0px;
+            right: 55px;
             color: black;
-            display: inline-block;
+             width: 38%;
+            
         }
         /*vælger input tekst*/
         
         .newParagraph {
             position: absolute;
+            word-wrap: break-word;
             top: 20px;
             right: 50px;
             color: green;
             width: 38%;
             height: 180px;
             resize: none;
-            overflow: auto;
-            display: block;
         }
         
         .hejmeddig {

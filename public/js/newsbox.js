@@ -43,7 +43,7 @@ function createDialog() {
         //Holder et div tag
         var div = $("<div></div>").addClass("dialogBox");
         //Holder en top bar i dialogboxen
-        var top = $("<div></div>").addClass("top");
+        var top = $("<div>Lav en nyhed</div>").addClass("top");
         //Holder hovedfeltet i dialogboxen
         var main = $("<div></div>").addClass("main");
         //Holder en form til dialogboxen
@@ -51,7 +51,7 @@ function createDialog() {
         //Holder et label til titlen
         var newTitleLabel = $("<label>Overskrift:</label>").attr('for', 'newTitle').addClass("overskrift");
         //Holder titlen
-        var newTitle = $("<input>").attr('type', 'text').addClass("newTitle").attr('name', 'newTitle');
+        var newTitle = $("<textarea></textarea>").attr('type', 'text').addClass("newTitle").attr('name', 'newTitle');
         //Holder dags dato
         var d = new Date();
         var datoString = "" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear();
@@ -59,9 +59,9 @@ function createDialog() {
         //Holder et label til paragrafen
         var newParagraphLabel = $("<label>Tekst:</label>").addClass("inputTekst").attr('for', 'newParagraph');
         //Holder paragrafen
-        var newParagraph = $("<input>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
+        var newParagraph = $("<textarea></textarea>").attr('type', 'text').addClass("newParagraph").attr('name', 'newParagraph');
         //Holder annuler knappen
-        var cancel = $("<button>Annuller</button>").addClass("cancelNews").attr('onclick', 'deleteDialog();');
+        var cancel = $("<button>Fortryd</button>").addClass("cancelNews").attr('onclick', 'deleteDialog();');
         //Holder tilføj nyhed knappen
         var addNews = $("<button>Tilføj Nyhed</button>").addClass("addNews").attr("type", "submit").attr('onclick', 'createNews();');
 
