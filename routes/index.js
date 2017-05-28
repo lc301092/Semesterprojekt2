@@ -52,22 +52,18 @@ router.route('/main')
 	})
 	/* DELETE route for main page. */
 	.delete(function (req, res, next) {
-		console.log("delete function works");
-		console.log(req.body);
+
 		var index = req.body.index;
 
 		// Require our DB variable
 		var db = req.db;
 
 		db.get('newscollection').find({}).then((data) => {
-			console.log('[ *** ');
-			console.log(data[0].news);
+
 			var i = data[0].news.length - index - 1;
-			console.log(i, data[0].news[i]);
-			console.log(' *** ]');
 
 			data[0].news.splice(i, 1);
-			console.log('new array', data[0].news);
+
 
 
 			// delete data to newscollection
@@ -100,16 +96,12 @@ router.route('/editnews')
 		// Request our DB variable
 		var db = req.db;
 		db.get('newscollection').find({}).then((data) => {
-			console.log('[ *** ');
 			var i = data[0].news.length - index - 1;
 
-			console.log('The index: ' + i, data[0].news[i]);
-			console.log(' *** ]');
 
 			data[0].news[i].title = title;
 			data[0].news[i].paragraph = paragraph;
 
-			console.log(i, data[0].news[i]);
 
 			db.get('newscollection').update({}, {
 					$set: {
@@ -132,27 +124,22 @@ router.route('/editnews')
 router.route('/calendarbooking')
 	//GET route for calendar
 	.post(function (req, res) {
-		//        console.log('calendarbooking request ', req.body);
 		// getcollectionfind iterate over users etc
 		var db = req.db;
 		db.get('usercollection').find({}).then((data) => {
 			var t = [];
 			for (var i = 0; i < data.length; i++) {
 				var user = data[i].username;
-				//console.log("user " + user + " has this many bookings: " + data[i].bookings.length);
 				for (var j = 0; j < data[i].bookings.length; j++) {
 					var date = data[i].bookings[j];
 					var bookingDate = new Date(date);
 					var now = new Date();
 					if (bookingDate.toISOString().substring(0, 10) >= now.toISOString().substring(0, 10)) {
-						console.log(date + ' er fin og ligger i fremtiden!');
 						t.push({
 							status: user,
 							date: date
 						});
-					} else {
-						console.log('Denne dato skal sgu slettes:' + date);
-					}
+					} else {}
 
 				}
 			}
@@ -163,7 +150,6 @@ router.route('/calendarbooking')
 router.route('/calendarbookingpost')
 	/* POST route for main page. */
 	.post(function (req, res) {
-		console.log('post request ', req.body);
 		var date = req.body.date;
 		var currentUser = req.body.currentUser;
 		var t = [];
@@ -177,7 +163,6 @@ router.route('/calendarbookingpost')
 					t.push(booking);
 				}
 			}
-			console.log('bookings: ', t);
 			if (t.includes(date) == false) {
 				db.get('usercollection').update({
 
@@ -197,14 +182,12 @@ router.route('/calendarbookingpost')
 router.route('/calendarbookingdelete')
 	/* DELETE route for main page. */
 	.delete(function (req, res) {
-		//        console.log('Delete request ', req.body);
 		var date = req.body.date;
 		var currentUser = req.body.currentUser;
 		var index = req.body.index;
 		var checkUser = req.body.checkUser;
 		// Request our DB variable
 		if (index && currentUser == 'admin' && checkUser != 'Blokeret' && checkUser != 'admin') {
-			console.log('*** admin delete****');
 			var db = req.db;
 			db.get('usercollection').update({
 				username: {
@@ -218,7 +201,6 @@ router.route('/calendarbookingdelete')
 			});
 
 		} else if (index && checkUser == currentUser || currentUser == "admin") {
-			console.log('*** own delete****');
 			var db = req.db;
 			db.get('usercollection').update({
 				username: {
@@ -247,14 +229,12 @@ router.route('/signin')
 	.post(function (req, res) {
 		var x = req.body.User;
 		var y = req.body.Password;
-		//        console.log("Form username and password:");
-		//        console.log("username x: " + x, "password y: " + y);
+
 		// getcollectionfind iterate over users etc
 		var db = req.db;
 		db.get('usercollection').find({}).then((data) => {
 			for (var i = 0; i < data.length; i++) {
-				//                console.log("Server username and password:");
-				//                console.log("username: " + data[i].username, "password: " + data[i].userPassword);
+
 				if (x == data[i].username && y == data[i].userPassword) {
 					res.cookie('currentUser', data[i].username);
 					res.redirect('/main');

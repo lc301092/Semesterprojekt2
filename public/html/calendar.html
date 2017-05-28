@@ -62,10 +62,11 @@
 					var checkUser = $(this).children('div').children('span')[0].innerHTML;
 					var index = $(this).hasClass('fc-day-grid-event');
 
-					modalDelete.openModalPanel(event, checkUser, index);
-
-
-
+					if (currentUser == checkUser) {
+						modalDelete.openModalPanel(event, checkUser, index);
+					} else if (currentUser == 'admin') {
+						modalDelete.openModalPanel(event, checkUser, index);
+					}
 				},
 				selectable: true, // vælg datoer
 				select: function (start, end) {
@@ -75,7 +76,7 @@
 					if (bookingDate.toISOString().substring(0, 10) >= now.toISOString().substring(0, 10)) {
 						if (currentUser != 'admin') {
 							ableToBook(currentUser, function (canBook) {
-								console.log(canBook);
+
 								if (canBook) {
 
 									var eventData = {
@@ -189,7 +190,7 @@
 				<br> - Du kan maksimalt have 5 dage booket ad gangen</p>
 			<br>
 			<p>
-				<b>Din bookingkredit bliver hermed: </b> <span id="abe"></span> dag(e)</p>
+				<b>Din nye bookingkredit bliver hermed: </b> <span id="abe"></span> dag(e)</p>
 			<div>
 				<button type=" Button " class="btn btn1" onclick="modalDelete.close()">
 					Fortryd
