@@ -3,151 +3,167 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--Titlen på siden-->
-    <title>AB Læssøesgade 1A-C</title>
-    <!--Titlens beskrives-->
-    <meta name="description" content="The HTML5 Herald">
-    <!--Sidens Author-->
-    <meta name="author" content="SitePoint">
-    <!--Scripts-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/newsbox.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Titlen på siden-->
+	<title>AB Læssøesgade 1A-C</title>
+	<!--Titlens beskrives-->
+	<meta name="description" content="The HTML5 Herald">
+	<!--Sidens Author-->
+	<meta name="author" content="SitePoint">
+	<!--Scripts-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/newsbox.js"></script>
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" type="text/css" href="css/html5reset.css">
-    <link rel="stylesheet" type="text/css" href="css/col.css">
-    <link rel="stylesheet" type="text/css" href="css/12cols.css">
-    <link rel="stylesheet" href="css/mainstyle.css">
-    <script>
-        var cookieValue = document.cookie.split('=');
-        var currentUser = cookieValue[1];
-        //        console.log(currentUser);
-        localStorage.setItem('currentUser', currentUser);
-        if (currentUser == undefined) {
-            location.href = '/'
-        };
-        $(document).ready(function() {
-            if (currentUser != 'admin') {
-                $(".createDialog").hide();
-            }
-        });
-        $(document).ready(function() {
-            if ($(window).width() > 900) {
-                $(".rightside").height($(".leftside").height() - 10);
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
+	<!--Stylesheets-->
+	<link rel="stylesheet" type="text/css" href="css/html5reset.css">
+	<link rel="stylesheet" type="text/css" href="css/col.css">
+	<link rel="stylesheet" type="text/css" href="css/12cols.css">
+	<link rel="stylesheet" href="css/mainstyle.css">
+	<script>
+		var cookieValue = document.cookie.split('=');
+		var currentUser = cookieValue[1];
+		//        console.log(currentUser);
+		localStorage.setItem('currentUser', currentUser);
+		if (currentUser == undefined) {
+			location.href = '/'
+		};
+		$(document).ready(function () {
+			if (currentUser != 'admin') {
+				$(".createDialog").hide();
+			}
+		});
+		$(document).ready(function () {
+			if ($(window).width() > 900) {
+				$(".rightside").height($(".leftside").height() - 10);
+			} else {
+				$(".rightside").css("height", "auto");
+			}
+		});
 
-        $(window).resize(function() {
-            if ($(window).width() > 900) {
-                $(".rightside").height($(".leftside").height() - 11);
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
-        window.addEventListener('message', function(event) {
-            if (event.data.message == 'makeModal') {
-                $('.modalMain').css('display', 'block');
-            } else {
-                $('.modalMain').css('display', 'none');
-            }
-        }, false);
-
-    </script>
+		$(window).resize(function () {
+			if ($(window).width() > 900) {
+				$(".rightside").height($(".leftside").height() - 11);
+			} else {
+				$(".rightside").css("height", "auto");
+			}
+		});
+		window.addEventListener('message', function (event) {
+			if (event.data.message == 'makeModal') {
+				$('.modalMain').css('display', 'block');
+			} else {
+				$('.modalMain').css('display', 'none');
+			}
+		}, false);
+	</script>
 </head>
 
 <body onload="initializeNews((<%=JSON.stringify(newslist)%>));">
-    <!--Top baren-->
-    <div class="section group">
-        <div class='topbar col span_12_of_12'>
+	<!--Top baren-->
+	<div class="section group">
+		<div class='topbar col span_12_of_12'>
 
-            <img src="/img/test.png" height="75px" width="250">
+			<img src="/img/test.png" height="75px" width="250">
 
-            <!--Dropdown menuen-->
-            <div class="logudPlacering">
-                <a onclick=location.href='/' class="logud">LOG UD</a>
-                <!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
-            </div>
-        </div>
-    </div>
+			<!--Dropdown menuen-->
+			<div class="logudPlacering">
+				<a onclick=location.href='/' class="logud">LOG UD</a>
+				<!--                <button class="minresevationer">MINE RESEVATIONER</button>-->
+			</div>
+		</div>
+	</div>
 
-    <!--Hjemmesidens "body"-->
-    <div class="body section group">
-        <!--Mellemrum til venstre for centrering-->
-        <div class="col span_1_of_12"></div>
-        <div class="col span_10_of_12">
-            <div class="section group">
-                <!-- Kalenderboks-->
-                <div class="leftside col span_8_of_12">
-                    <div class="section group">
+	<!--Hjemmesidens "body"-->
+	<div class="body section group">
+		<!--Mellemrum til venstre for centrering-->
+		<div class="col span_1_of_12"></div>
+		<div class="col span_10_of_12">
+			<div class="section group">
+				<!-- Kalenderboks-->
+				<div class="leftside col span_8_of_12">
+					<div class="section group">
 
-                        <div id='calendarHolder' class='col span_12_of_12'>
+						<div id='calendarHolder' class='col span_12_of_12'>
 
-                            <iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
+							<iframe src="/html/calendar.html" width="100%" height="100%" frameBorder="0"></iframe>
 
-                        </div>
-                    </div>
-                    <div class="section group">
-                        <div class='infobox col span_12_of_12'>
-                            <h1 class="infobox_header">Praktisk information</h1>
-                            <div class="line-separator"></div>
-                            <!--Information om betaling-->
-                            <p class="info">Indbetaling af depositum for leje af lokale skal ske senest 24 timer efter booking, og betales til: </p>
-                            <div class="line-separator"></div>
-                            <!--Konto- og reg. nr.-->
-                            <div class="section group">
-                                <div class="col span 1_of_12"></div>
-                                <!--Registreringsnummer-->
+						</div>
+					</div>
+					<div class="section group">
+						<div class='infobox col span_12_of_12'>
+							<h1 class="infobox_header">Praktisk information</h1>
+							<div class="line-separator"></div>
+							<!--Konto- og reg. nr.-->
+							<div style="background: rgba(255, 255, 255, 0.6); border-radius: 20px;">
+								<ul class="info">
+									<h3 style="text-align: center"> Retningslinjer for booking</h3>
+									<li>Du har en bookingkredit på 5 dage. Dette betyder at du maksimalt kan have 5 bookinger ad gangen.</li>
+									<li>Ved afbestilling af dato returneres bookingkredit og dagen frigøres for andre, men betaling refunderes ikke.</li>
+									<li>Du kan ikke booke længere ud i fremtiden end et år fra dags dato.</li>
+									<li>Du kan ikke booke længere ud i fremtiden end et år fra dags dato.</li>
+									<li>Gæsteværelset skal forlades ryddet og rengjort inden lejemålet ophører.</li>
+									<li>Nøgler til gæsteværelset kan hentes hos et bestyrelsesmedlem, og afleveres igen til samme person.</li>
+									<li>Gæsteværelset er forbeholdt beboere og deres gæster, og må ikke fremlejes videre til en tredjepart (F.eks. AirBnB)./li>
+								</ul>
+							</div>
+							<div class="line-separator"></div>
+							<div style="background: rgba(255, 255, 255, 0.6); border-radius: 20px; padding-bottom: 5px;">
+								<ul class="info">
+									<h3 style="text-align: center"> Retningslinjer for betaling</h3>
+									<li>Betaling er bindende og indbetales til Sjeldani adm. på konto nr. 0011355056 og reg. nr. 3001.</li>
+									<li>Betaling for leje af gæsterum skal betales umiddelbart efter booking.</li>
+									<li>Prisen per lejet dag er 50 kr. i sommerhalvåret (1/4 – 30/9) og 75 kr. i vinterhalvåret (1/10 – 31/3).</li>
+									<li>Ved betaling bedes noteres den/de bookede dato(er), samt navn og adresse. (F.eks.: ”1 C st. 30/5”).</li>
+									<li>NB! Betaling kan ikke refunderes.</li>
+								</ul>
+								<div class="section group">
+									<div class="col span 1_of_12"></div>
 
-                                <div class="col span_5_of_12">
+									<div class="col span_5_of_12">
+										<div class="kontoText"><b>Reg. nr:</b></div>
 
-                                    <div class="kontoText"><b>Reg. nr:</b></div>
+										<br>
 
-                                    <br>
+										<div class="konto">1234</div>
 
-                                    <div class="konto">1234</div>
-
-                                </div>
-
-                                <!--Kontonummer-->
-
-                                <div class="col span_5_of_12">
-
-                                    <div class="kontoText"><b>Konto nr:</b></div>
-
-                                    <br>
-
-                                    <div class="konto">xxx123456xxx</div>
-                                </div>
-
-                                <div class="col span 1_of_12"></div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='rightside newsbox col span_4_of_12 '>
-                    <h1 class="nyhed_header">Nyheder</h1>
-                    <div class="line-separator"></div>
-                    <button class="createDialog" onclick="createDialog();">Tilføj Nyhed</button>
-                    <div class="newsContainer"></div>
-                </div>
-            </div>
-        </div>
-        <!--Mellemrum til højre for centrering-->
-
-        <div class="col span_1_of_12"></div>
-    </div>
+									</div>
 
 
+									<div class="col span_5_of_12">
+
+										<div class="kontoText"><b>Konto nr:</b></div>
+
+										<br>
+
+										<div class="konto">xxx123456xxx</div>
+									</div>
+
+									<div class="col span 1_of_12"></div>
+
+								</div>
+							</div>
+							<div class="line-separator"></div>
+
+						</div>
+					</div>
+				</div>
+				<div class='rightside newsbox col span_4_of_12 '>
+					<h1 class="nyhed_header">Nyheder</h1>
+					<div class="line-separator"></div>
+					<button class="createDialog" onclick="createDialog();">Tilføj Nyhed</button>
+					<div class="newsContainer"></div>
+				</div>
+			</div>
+		</div>
+		<!--Mellemrum til højre for centrering-->
+
+		<div class="col span_1_of_12"></div>
+	</div>
 
 
-    <div class="modalMain"></div>
+
+
+	<div class="modalMain"></div>
 </body>
 
 
