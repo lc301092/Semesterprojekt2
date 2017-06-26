@@ -34,28 +34,7 @@
             }
 
         });
-        $(document).ready(function() {
-            if ($(window).width() > 900) {
-                $(".rightside").height($(".leftside").height() - 10);
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
 
-        $(window).resize(function() {
-            if ($(window).width() > 900) {
-                $(".rightside").height($(".leftside").height() - 11);
-            } else {
-                $(".rightside").css("height", "auto");
-            }
-        });
-        window.addEventListener('message', function(event) {
-            if (event.data.message == 'makeModal') {
-                $('.modalMain').css('display', 'block');
-            } else {
-                $('.modalMain').css('display', 'none');
-            }
-        }, false);
 
         $(document).ready(function() {
             var list = document.getElementById("ollist1");
@@ -107,6 +86,28 @@
                 infobutton.innerHTML = "Vis retningslinjer for betaling"
             }
         }
+        $(document).ready(function() {
+            if ($(window).width() > 900) {
+                $(".rightside").height($(".leftside").height() - 10);
+            } else {
+                $(".rightside").css("height", "auto");
+            }
+        });
+
+        $(window).resize(function() {
+            if ($(window).width() > 900) {
+                $(".rightside").height($(".leftside").height() - 11);
+            } else {
+                $(".rightside").css("height", "auto");
+            }
+        });
+        window.addEventListener('message', function(event) {
+            if (event.data.message == 'makeModal') {
+                $('.modalMain').css('display', 'block');
+            } else {
+                $('.modalMain').css('display', 'none');
+            }
+        }, false);
 
     </script>
 </head>
