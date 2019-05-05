@@ -239,8 +239,11 @@ router.route('/signin')
 					res.cookie('currentUser', data[i].username);
 					res.redirect('/main');
 				}
+				else{
+					res.redirect('/');
+				}
 			}
-			res.redirect('/');
+			
 		});
 	});
 
