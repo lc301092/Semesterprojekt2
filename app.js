@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // Connect to MongoDB mLab
 var mongo = require('mongodb')
 var monk = require('monk');
-var url = 'mongodb://admin1:admin@ds157500.mlab.com:57500/heroku_kr26vbnh';
+var url = 'mongodb://admin:admin123@ds261755.mlab.com:61755/sp3db';
 var db = monk(url);
 db.then(() => {
     console.log('Connected correctly to server')
