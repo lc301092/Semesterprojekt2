@@ -232,17 +232,18 @@ router.route('/signin')
 
 		// getcollectionfind iterate over users etc
 		var db = req.db;
-		db.get('usercollection').find({}).then((data) => {
-			for (var i = 0; i < data.length; i++) {
+		db.get('usercollection').findOne({username: x}).then((data) => {
+			console.log(data);
 
-				if (x == data[i].username && y == data[i].userPassword) {
-					res.cookie('currentUser', data[i].username);
-					res.redirect('/main');
+				if (x == data.username && y == data.userPassword) {
+					console.log("match");
+					res.cookie('currentUser', data.username);
+					res.redirect('main');
+
 				}
-				else{
+				else {
 					res.redirect('/');
 				}
-			}
 			
 		});
 	});
