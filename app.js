@@ -12,7 +12,7 @@ var monk = require('monk');
 var url = 'mongodb://admin:admin123@bookingdb-shard-00-00.nurdj.mongodb.net:27017,bookingdb-shard-00-01.nurdj.mongodb.net:27017,bookingdb-shard-00-02.nurdj.mongodb.net:27017/sp3db?ssl=true&replicaSet=atlas-iy97g4-shard-0&authSource=admin&retryWrites=true&w=majority';
 var db = monk(url);
 db.catch(function (err) {
-	console.log(err)
+	console.log('this is the error', err)
 });
 db.then(() => {
 	console.log('Connected correctly to server')
